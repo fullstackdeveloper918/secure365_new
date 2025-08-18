@@ -1,0 +1,350 @@
+{
+  "servicesData": [
+    {
+      "slug": "ai-services",
+      "title1": "Turn Hours into Minutes with ",
+      "subtitle": " AI Automations",
+      "description1": "Secure, Scalable, and Hassle-Free",
+      "title2": "Benefits of Choosing",
+      "subtitle2": "Secure365",
+      "description2": "Secure365 Choosing Secure365 means partnering with a team that prioritizes security, reliability, and round-the-clock protection. We go beyond basic support — delivering comprehensive solutions designed to keep your operations running smoothly.",
+      "services": [
+        {
+          "title": "Web Design",
+          "description": "Modern and responsive web design to showcase your business.",
+          "image1": "/assets/img/inner-service/sercive-details/Benefit1.jpg",
+          "image2": "/assets/img/inner-service/sercive-details/Benefit2.jpg"
+        },
+        {
+          "title": "App Development",
+          "description": "Custom mobile and desktop applications built for performance.",
+          "image1": "https://example.com/app-dev1.jpg",
+          "image2": "https://example.com/app-dev2.jpg"
+        },
+        {
+          "title": "SEO Services",
+          "description": "Optimize your content and site for search engine visibility.",
+          "image1": "https://example.com/seo1.jpg",
+          "image2": "https://example.com/seo2.jpg"
+        },
+        {
+          "title": "Social Media",
+          "description": "Grow your audience and engage customers across platforms.",
+          "image1": "https://example.com/social1.jpg",
+          "image2": "https://example.com/social2.jpg"
+        }
+      ],
+      "cards": [
+        {
+          "title": "Web Design",
+          "description": "Modern and responsive web design to showcase your business.",
+          "image1": "https://example.com/web-design1.jpg",
+          "buttonName": "Read More"
+        },
+        {
+          "title": "Web Design",
+          "description": "Modern and responsive web design to showcase your business.",
+          "image1": "https://example.com/web-design1.jpg",
+          "buttonName": "Read More"
+        },
+        {
+          "title": "Web Design",
+          "description": "Modern and responsive web design to showcase your business.",
+          "image1": "https://example.com/web-design1.jpg",
+          "buttonName": "Read More"
+        },
+        {
+          "title": "Web Design",
+          "description": "Modern and responsive web design to showcase your business.",
+          "image1": "https://example.com/web-design1.jpg",
+          "buttonName": "Read More"
+        }
+      ],
+      "banner": {
+        "title": "Turn Hours into Minutes with AI Automations",
+        "description": "Embed cutting-edge AI and automation into your business operations to save time, reduce costs, and unlock new capabilities.",
+        "button1": "Book a 15-min AI Readiness Call",
+        "button2": "Get Your Free AI Readiness Scorecard",
+        "backgroundType": "video",
+        "backgroundUrl": "/aiService.mp4"
+      }
+    },
+    {
+      "slug": "app-development",
+      "title1": "Secure & ",
+      "subtitle": "App Development",
+      "description1": "We offer innovative design and development services tailored to your brand.",
+      "title2": "Benefits of Choosing",
+      "subtitle2": "Secure365",
+      "description2": "Secure365 Choosing Secure365 means partnering with a team that prioritizes security, reliability, and round-the-clock protection. We go beyond basic support — delivering comprehensive solutions designed to keep your operations running smoothly.",
+      "services": [
+        {
+          "title": "Web Design",
+          "description": "Modern and responsive web design to showcase your business.",
+          "image1": "https://example.com/web-design1.jpg",
+          "image2": "https://example.com/web-design2.jpg"
+        },
+        {
+          "title": "App Development",
+          "description": "Custom mobile and desktop applications built for performance.",
+          "image1": "https://example.com/app-dev1.jpg",
+          "image2": "https://example.com/app-dev2.jpg"
+        },
+        {
+          "title": "SEO Services",
+          "description": "Optimize your content and site for search engine visibility.",
+          "image1": "https://example.com/seo1.jpg",
+          "image2": "https://example.com/seo2.jpg"
+        },
+        {
+          "title": "Social Media",
+          "description": "Grow your audience and engage customers across platforms.",
+          "image1": "https://example.com/social1.jpg",
+          "image2": "https://example.com/social2.jpg"
+        }
+      ],
+      "cards": [
+        {
+          "title": "Web Design",
+          "description": "Modern and responsive web design to showcase your business.",
+          "image1": "https://example.com/web-design1.jpg",
+          "buttonName": "Read More"
+        },
+        {
+          "title": "Web Design",
+          "description": "Modern and responsive web design to showcase your business.",
+          "image1": "https://example.com/web-design1.jpg",
+          "buttonName": "Read More"
+        },
+        {
+          "title": "Web Design",
+          "description": "Modern and responsive web design to showcase your business.",
+          "image1": "https://example.com/web-design1.jpg",
+          "buttonName": "Read More"
+        },
+        {
+          "title": "Web Design",
+          "description": "Modern and responsive web design to showcase your business.",
+          "image1": "https://example.com/web-design1.jpg",
+          "buttonName": "Read More"
+        }
+      ],
+      "banner": {
+        "title": "Your One-Stop App Development Partner",
+        "description": "We build mobile, web, and integrated applications that delight users and drive business growth.",
+        "button1": "Request a 48-hour MVP Storyboard",
+        "button2": "Try Our Interactive Cost Estimator",
+        "backgroundType": "video",
+        "backgroundUrl": "/App-Development.mp4"
+      }
+    },
+    {
+      "slug": "site-design",
+      "title1": "Site Design &",
+      "subtitle": "UX",
+      "description1": "We offer innovative design and development services tailored to your brand.",
+      "title2": "Benefits of Choosing",
+      "subtitle2": "Secure365",
+      "description2": "Secure365 Choosing Secure365 means partnering with a team that prioritizes security, reliability, and round-the-clock protection. We go beyond basic support — delivering comprehensive solutions designed to keep your operations running smoothly.",
+      "services": [
+        {
+          "title": "Web Design",
+          "description": "Modern and responsive web design to showcase your business.",
+          "image1": "https://example.com/web-design1.jpg",
+          "image2": "https://example.com/web-design2.jpg"
+        },
+        {
+          "title": "App Development",
+          "description": "Custom mobile and desktop applications built for performance.",
+          "image1": "https://example.com/app-dev1.jpg",
+          "image2": "https://example.com/app-dev2.jpg"
+        },
+        {
+          "title": "SEO Services",
+          "description": "Optimize your content and site for search engine visibility.",
+          "image1": "https://example.com/seo1.jpg",
+          "image2": "https://example.com/seo2.jpg"
+        },
+        {
+          "title": "Social Media",
+          "description": "Grow your audience and engage customers across platforms.",
+          "image1": "https://example.com/social1.jpg",
+          "image2": "https://example.com/social2.jpg"
+        }
+      ],
+      "cards": [
+        {
+          "title": "Web Design",
+          "description": "Modern and responsive web design to showcase your business.",
+          "image1": "https://example.com/web-design1.jpg",
+          "buttonName": "Read More"
+        },
+        {
+          "title": "Web Design",
+          "description": "Modern and responsive web design to showcase your business.",
+          "image1": "https://example.com/web-design1.jpg",
+          "buttonName": "Read More"
+        },
+        {
+          "title": "Web Design",
+          "description": "Modern and responsive web design to showcase your business.",
+          "image1": "https://example.com/web-design1.jpg",
+          "buttonName": "Read More"
+        },
+        {
+          "title": "Web Design",
+          "description": "Modern and responsive web design to showcase your business.",
+          "image1": "https://example.com/web-design1.jpg",
+          "buttonName": "Read More"
+        }
+      ],
+      "banner": {
+        "title": "Websites That Convert & Perform",
+        "description": "Rapid-delivery websites optimized for speed, user experience, and conversion rates.",
+        "button1": "Claim Your Free UX Audit",
+        "button2": "View Our Portfolio",
+        "backgroundImage": "/assets/img/inner-service/service/E-commerce-Platform.jpg",
+        "backgroundType": "video",
+        "backgroundUrl": "/Site-design-and-UX.mp4"
+      }
+    },
+    {
+      "slug": "cybersecurity",
+      "title1": "Cybersecurity &",
+      "subtitle": "Compliance",
+      "description1": "We offer innovative design and development services tailored to your brand.",
+      "title2": "Benefits of Choosing",
+      "subtitle2": "Secure365",
+      "description2": "Secure365 Choosing Secure365 means partnering with a team that prioritizes security, reliability, and round-the-clock protection. We go beyond basic support — delivering comprehensive solutions designed to keep your operations running smoothly.",
+      "services": [
+        {
+          "title": "Web Design",
+          "description": "Modern and responsive web design to showcase your business.",
+          "image1": "https://example.com/web-design1.jpg",
+          "image2": "https://example.com/web-design2.jpg"
+        },
+        {
+          "title": "App Development",
+          "description": "Custom mobile and desktop applications built for performance.",
+          "image1": "https://example.com/app-dev1.jpg",
+          "image2": "https://example.com/app-dev2.jpg"
+        },
+        {
+          "title": "SEO Services",
+          "description": "Optimize your content and site for search engine visibility.",
+          "image1": "https://example.com/seo1.jpg",
+          "image2": "https://example.com/seo2.jpg"
+        },
+        {
+          "title": "Social Media",
+          "description": "Grow your audience and engage customers across platforms.",
+          "image1": "https://example.com/social1.jpg",
+          "image2": "https://example.com/social2.jpg"
+        }
+      ],
+      "cards": [
+        {
+          "title": "Web Design",
+          "description": "Modern and responsive web design to showcase your business.",
+          "image1": "https://example.com/web-design1.jpg",
+          "buttonName": "Read More"
+        },
+        {
+          "title": "Web Design",
+          "description": "Modern and responsive web design to showcase your business.",
+          "image1": "https://example.com/web-design1.jpg",
+          "buttonName": "Read More"
+        },
+        {
+          "title": "Web Design",
+          "description": "Modern and responsive web design to showcase your business.",
+          "image1": "https://example.com/web-design1.jpg",
+          "buttonName": "Read More"
+        },
+        {
+          "title": "Web Design",
+          "description": "Modern and responsive web design to showcase your business.",
+          "image1": "https://example.com/web-design1.jpg",
+          "buttonName": "Read More"
+        }
+      ],
+      "banner": {
+        "title": "Sleep-Proof Security for SMBs",
+        "description": "Comprehensive cybersecurity and compliance solutions that protect your business from threats and data breaches.",
+        "button1": "Run a Free 60-second Vulnerability Scan",
+        "button2": "Book a Security Consultation",
+        "backgroundType": "video",
+        "backgroundUrl": "/CyberSecurity-Banner-Video.mp4"
+      }
+    },
+    {
+      "slug": "marketing",
+      "title1": "Secure & ",
+      "subtitle": "Growth Marketing",
+      "description1": "We offer innovative design and development services tailored to your brand.",
+      "title2": "Benefits of Choosing",
+      "subtitle2": "Secure365",
+      "description2": "Secure365 Choosing Secure365 means partnering with a team that prioritizes security, reliability, and round-the-clock protection. We go beyond basic support — delivering comprehensive solutions designed to keep your operations running smoothly.",
+      "services": [
+        {
+          "title": "Web Design",
+          "description": "Modern and responsive web design to showcase your business.",
+          "image1": "https://example.com/web-design1.jpg",
+          "image2": "https://example.com/web-design2.jpg"
+        },
+        {
+          "title": "App Development",
+          "description": "Custom mobile and desktop applications built for performance.",
+          "image1": "https://example.com/app-dev1.jpg",
+          "image2": "https://example.com/app-dev2.jpg"
+        },
+        {
+          "title": "SEO Services",
+          "description": "Optimize your content and site for search engine visibility.",
+          "image1": "https://example.com/seo1.jpg",
+          "image2": "https://example.com/seo2.jpg"
+        },
+        {
+          "title": "Social Media",
+          "description": "Grow your audience and engage customers across platforms.",
+          "image1": "https://example.com/social1.jpg",
+          "image2": "https://example.com/social2.jpg"
+        }
+      ],
+      "cards": [
+        {
+          "title": "Web Design",
+          "description": "Modern and responsive web design to showcase your business.",
+          "image1": "https://example.com/web-design1.jpg",
+          "buttonName": "Read More"
+        },
+        {
+          "title": "Web Design",
+          "description": "Modern and responsive web design to showcase your business.",
+          "image1": "https://example.com/web-design1.jpg",
+          "buttonName": "Read More"
+        },
+        {
+          "title": "Web Design",
+          "description": "Modern and responsive web design to showcase your business.",
+          "image1": "https://example.com/web-design1.jpg",
+          "buttonName": "Read More"
+        },
+        {
+          "title": "Web Design",
+          "description": "Modern and responsive web design to showcase your business.",
+          "image1": "https://example.com/web-design1.jpg",
+          "buttonName": "Read More"
+        }
+      ],
+      "banner": {
+        "title": "Turn Clicks into Customers—Guaranteed",
+        "description": "Full-funnel growth marketing that drives measurable results for your business.",
+        "button1": "Get a Free 7-day Traffic Forecast",
+        "button2": "Book a Growth Strategy Call",
+        "backgroundType": "video",
+        "backgroundUrl": "/Growth-Marketing1.mp4"
+      }
+    }
+  ]
+}

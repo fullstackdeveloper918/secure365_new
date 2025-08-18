@@ -1,0 +1,23 @@
+.center {
+  text-align: center;
+}
+
+.main {
+  width: full;
+  margin: auto;
+  height: 100vh;
+  background-color: white;
+}
+
+@keyframes scrollLeft {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.mainContainersec h2.text-black {
+  text-transform: lowercase;
+}

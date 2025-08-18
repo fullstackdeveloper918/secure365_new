@@ -1,0 +1,38 @@
+.slider-wrapper {
+  width: 100%;
+  overflow: hidden;
+  padding: 60px 0;
+}
+
+.keen-slider {
+  overflow: visible !important;
+}
+.keen-slider__slide{
+  background-color: #02224E;
+  border-radius: 20px;
+}
+
+.custom-slide {
+  width: 60vw !important;
+  flex-shrink: 0;
+  opacity: 1;
+  transform: scale(0.85);
+  transition: all 0.3s ease;
+  z-index: 1;
+}
+
+.active-slide {
+  opacity: 1;
+  transform: scale(1);
+  z-index: 2;
+}
+
+.slider-image {
+  width: 100%;
+  height: 560px;
+  object-fit: contain;
+  border-radius: 12px;
+}
+.keen-slider {
+  touch-action: pan-y;
+}
