@@ -51,9 +51,9 @@ const NavigatingSection = ({ serviceList }) => {
         // Determine animation positions based on screen size ranges
         let xStart, yStart, xEnd, yEnd;
         if (screenSize.width >= 1920) {
-            xStart = 250; yStart = 150; xEnd = -350; yEnd = -150; // Large Desktop
+            xStart = 450; yStart = 250; xEnd = -450; yEnd = -250; // Large Desktop
         } else if (screenSize.width >= 1440) {
-            xStart = 200; yStart = 150; xEnd = -300; yEnd = -150;   // Desktop / Standard
+            xStart = 350; yStart = 200; xEnd = -350; yEnd = -200;   // Desktop / Standard
         } else if (screenSize.width >= 1366) {
             xStart = 150; yStart = 80; xEnd = -250; yEnd = -80;   // Small Desktop / Laptop
         } else if (screenSize.width >= 1280) {
@@ -82,29 +82,29 @@ const NavigatingSection = ({ serviceList }) => {
         tl.to(leftText, {
             opacity: 1,
             y: 0,
-            duration: 3, // Increased duration for slower animation
+            duration: 300, // Increased duration for slower animation
             ease: "power2.out",
         })
             .to(rightText, {
                 opacity: 1,
                 y: 0,
-                duration: 3,
+                duration: 300,
                 ease: "power2.out",
-                delay: 2, // Increased delay to ensure left text completes
+                delay: 8, // Increased delay to ensure left text completes
             })
             .to(button, {
                 opacity: 1,
                 y: 0,
-                duration: 3,
+                duration: 300,
                 ease: "power2.out",
-                delay: 2, // Increased delay to ensure right text completes
+                delay: 8, // Increased delay to ensure right text completes
             })
             .to(rocket, {
                 xPercent: xEnd,
                 yPercent: yEnd,
                 ease: "none",
-                duration: 10, // Further increased duration for slower rocket animation
-                delay: 2, // Increased delay to ensure button completes
+                duration: 5000, //  Further increased duration for slower rocket animation
+                delay: 8, // Increased delay to ensure button completes
             });
 
         return () => {

@@ -10,7 +10,7 @@ import Link from "next/link";
 
 gsap.registerPlugin(ScrollTrigger);
 
-export default function WhySecure365Section({ containerRef }) {
+export default function WhySecure365Section({ containerRef, serviceList }) {
     const pathRef = useRef(null);
     const rocketRef = useRef(null);
     const [totalLen, setTotalLen] = useState(1);
@@ -134,6 +134,8 @@ export default function WhySecure365Section({ containerRef }) {
             tl.kill();
         };
     }, [screenSize]);
+
+    console.log("service list on whysecure", serviceList)
 
     return (
         <section

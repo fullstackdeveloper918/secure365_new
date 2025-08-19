@@ -148,7 +148,7 @@ export default function HomePage() {
             <ToastContainer />
             <HeroSection serviceList={serviceList} />
             <NavigatingSection serviceList={serviceList} rocketRef={rocketRef} className="relative z-20" />
-            <WhySecure365Section containerRef={containerRef} className="relative z-20" />
+            <WhySecure365Section containerRef={containerRef} serviceList={serviceList} className="relative z-20" />
 
             {/* What Make Us Different Section */}
             <section className="relative overflow-hidden what-make-different-sec z-20">
