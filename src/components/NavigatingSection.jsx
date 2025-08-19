@@ -175,6 +175,7 @@ const NavigatingSection = ({ serviceList }) => {
                     </div>
                 </div>
             </div>
+            </div>
         </section>
     );
 };
