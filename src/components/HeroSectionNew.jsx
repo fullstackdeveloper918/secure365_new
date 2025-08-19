@@ -3,6 +3,7 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { useState, useEffect, useRef } from "react";
+import Link from "next/link";
 
 export default function HeroSection({ serviceList }) {
     const [heroAnimationComplete, setHeroAnimationComplete] = useState(false);
@@ -75,9 +76,9 @@ export default function HeroSection({ serviceList }) {
                                         <p className="main-banner-paraTxt text-white mb-0">
                                             {serviceList.home_advanced_it_and_cyber_security_paragraph}
                                         </p>
-                                        <Button className="bg-[#00AEEF] hover:bg-[#0099d4] text-white start-mission-btn">
+                                        <Link href={"/contact-us"} className="bg-[#00AEEF] hover:bg-[#0099d4] text-white rounded-lg start-mission-btn">
                                             {serviceList.home_advanced_it_and_cyber_security_fourth}
-                                        </Button>
+                                        </Link>
                                     </motion.div>
                                 )}
                             </AnimatePresence>
@@ -87,12 +88,23 @@ export default function HeroSection({ serviceList }) {
                         <motion.div
                             animate={{ y: [0, 10, 0] }}
                             transition={{ duration: 2, repeat: Infinity }}
-                            className="flex items-center text-white/70"
+                            className="flex items-center text-white/70 cursor-pointer"
+                            onClick={() => {
+                                window.scrollTo({
+                                    top: window.innerHeight, // scrolls down by 1 screen
+                                    behavior: "smooth",
+                                });
+                            }}
                         >
-                            <img src="/Scroll-down-icon.svg" alt="scroll-down-icon" className="me-2" />
+                            <img
+                                src="/Scroll-down-icon.svg"
+                                alt="scroll-down-icon"
+                                className="me-2"
+                            />
                             <div className="text-sm text-white font-normal">Scroll Down</div>
                         </motion.div>
                     </div>
+
                 </div>
             </div>
         </section>

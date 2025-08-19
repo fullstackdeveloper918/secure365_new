@@ -4,6 +4,7 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Image from "next/image";
 import { Button } from "./ui/button";
+import Link from "next/link";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -40,11 +41,21 @@ const NavigatingSection = ({ serviceList }) => {
 
         if (!section || !rocket) return;
 
-        // ✅ Rocket path: bottom-right → top-left
-        const xStart = screenSize.width > 1024 ? 150 : 100;   // start off right
-        const yStart = screenSize.height > 800 ? 100 : 80;    // start off bottom
-        const xEnd = screenSize.width > 1024 ? -350 : -100;   // move to left
-        const yEnd = screenSize.height > 800 ? -300 : -80;    // move to top
+        console.log("screen width and height ", screenSize.width, "height", screenSize.height)
+
+        // Determine animation positions based on screen size ranges
+        let xStart, yStart, xEnd, yEnd;
+        if (screenSize.width >= 1920) {
+            xStart = 150; yStart = 100; xEnd = -400; yEnd = -100; // Large Desktop
+        } else if (screenSize.width >= 1440) {
+            xStart = 150; yStart = 80; xEnd = -350; yEnd = -80;   // Desktop / Standard
+        } else if (screenSize.width >= 1366) {
+            xStart = 150; yStart = 80; xEnd = -350; yEnd = -80;   // Small Desktop / Laptop
+        } else if (screenSize.width >= 1280) {
+            xStart = 120; yStart = 60; xEnd = -300; yEnd = -60;   // Laptop / Notebook
+        } else {
+            xStart = 100; yStart = 50; xEnd = -250; yEnd = -50;   // Small Laptop / Netbook
+        }
 
         // Initial rocket position (offscreen bottom-right)
         gsap.set(rocket, { xPercent: xStart, yPercent: yStart });
@@ -54,18 +65,19 @@ const NavigatingSection = ({ serviceList }) => {
                 trigger: section,
                 start: "top top",
                 end: "bottom top",
-                scrub: 2,
+                scrub: 1.5, // Reduced scrub for smoother animation
                 pin: true,
                 anticipatePin: 1,
                 // markers: true,
             },
         });
 
-        // Animate rocket diagonally up-left
+        // Animate rocket diagonally up-left with ease
         tl.to(rocket, {
             xPercent: xEnd,
             yPercent: yEnd,
-            ease: "none",
+            ease: "none", // Added easing for natural motion
+            // duration: 2, // Added duration for control
         });
 
         return () => {
@@ -73,7 +85,6 @@ const NavigatingSection = ({ serviceList }) => {
             tl.kill();
         };
     }, [screenSize]);
-
 
     return (
         <section
@@ -93,24 +104,15 @@ const NavigatingSection = ({ serviceList }) => {
             {/* Content */}
             <div className="relative z-10 container mx-auto px-6">
                 <div className="grid lg:grid-cols-2 gap-12 items-end relative">
-                    <div>
+                    <div className="z-20">
                         <h2 className="text-white font-semibold navigate-heading">
-                            {/* Navigating
-                            <br />
-                            Your Business
-                            <br />
-                            Through
-                            <br />
-                            the Stars... and
-                            <br />
-                            <span className="">Safeguarding</span> */}
                             {serviceList.home_page_challenge_section_challenge}
                         </h2>
                     </div>
 
                     <div>
                         {/* Rocket image */}
-                        <div className="relative h-52 w-full overflow-visible">
+                        <div className="relative h-60 w-full overflow-visible">
                             <Image
                                 ref={rocketRef}
                                 src="/images/rocket/R3.png"
@@ -129,19 +131,10 @@ const NavigatingSection = ({ serviceList }) => {
                                 id="content-responsive"
                             >
                                 {serviceList.home_page_challenge_section_paragraph}
-                                {/* Think of Secure365 as your interstellar co-pilot, guiding you
-                                safely through the ever-expanding cosmos of modern technology.
-                                We blend visionary web development with rock-solid IT services,
-                                cloud solutions, and cybersecurity—ensuring that no matter which
-                                galaxy (or market) you're aiming for, you'll arrive unscathed.
-                                <br />
-                                <br />
-                                Our mission? Simple: to help your brand thrive and remain
-                                secure, from initial launch to the far reaches of tomorrow. */}
                             </p>
-                            <Button className="bg-[#00AEEF] hover:bg-[#0099d4] text-white navigate-contact-btn">
+                            <Link href={"/contact-us"} className="bg-[#00AEEF] hover:bg-[#0099d4] text-white rounded-lg navigate-contact-btn">
                                 Contact Us
-                            </Button>
+                            </Link>
                         </div>
                     </div>
                 </div>

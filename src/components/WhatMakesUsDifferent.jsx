@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Image from "next/image";
+import Link from "next/link";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -57,9 +58,9 @@ const WhatMakesUsDifferent = () => {
                             What Make<br />
                             Us Different?
                         </h2>
-                        <Button className="bg-[#00AEEF] hover:bg-[#0099d4] text-white primary-btn-style">
+                        <Link href={"/contact-us"} className="bg-[#00AEEF] hover:bg-[#0099d4] rounded-lg text-white primary-btn-style">
                             Start Your Mission
-                        </Button>
+                        </Link>
                     </motion.div>
 
                     <motion.div

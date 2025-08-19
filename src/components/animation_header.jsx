@@ -132,13 +132,12 @@ const AnimationHeader = () => {
       {/* <div className="word"></div> */}
 
       <header
-        className={`clapat-header classic-menu invert-header ${
-          routeName == "about-us" ||
+        className={`clapat-header classic-menu invert-header ${routeName == "about-us" ||
           routeName == "contact-us" ||
           routeName == ""
-            ? ""
-            : "scrolled"
-        } ${scrolled ? "scrolled" : ""}`}
+          ? ""
+          : "scrolled"
+          } ${scrolled ? "scrolled" : ""}`}
         data-menucolor="#0c0c0c"
       >
         <div className="header-gradient"></div>
@@ -164,73 +163,87 @@ const AnimationHeader = () => {
           </div>
           <div className="menu-link-call-action">
             <nav
-            className={
-              active ? "clapat-nav-wrapper-show" : "clapat-nav-wrapper"
-            }
-          >
-            <ul
-              data-breakpoint="1025"
-              className={active ? "flexnav flexnav-show" : "flexnav"}
+              className={
+                active ? "clapat-nav-wrapper-show" : "clapat-nav-wrapper"
+              }
             >
-              {menuItems.map((item, idx) => (
-                <li
-                  key={idx}
-                  className={`menu-timeline link header-link ${
-                    activeItem === item ? "active" : ""
-                  }`}
-                  onMouseEnter={() => isDesktop && setHoveredItem(item)}
-                  onMouseLeave={() => isDesktop && setHoveredItem(null)}
-                >
-                <Link
-                    className="ajax-link"
-                    href={
-                      item === "Home"
-                        ? "/"
-                        : item === "Why Choose Us"
-                        ? "/why-choose" : item === "Free Audit"
-                        ? "/analyzer" 
-                         : item === "Our Services"
-                        ? "/service"
-                        : `/${item.toLowerCase().replace(/\s+/g, "-")}`
-                    }
-                    onClick={() => handleClick(item)}
+              <ul
+                data-breakpoint="1025"
+                className={active ? "flexnav flexnav-show" : "flexnav"}
+              >
+                {menuItems.map((item, idx) => (
+                  <li
+                    key={idx}
+                    className={`menu-timeline link header-link ${activeItem === item ? "active" : ""
+                      }`}
+                    onMouseEnter={() => isDesktop && setHoveredItem(item)}
+                    onMouseLeave={() => isDesktop && setHoveredItem(null)}
                   >
-                    {item}
-                    <ScrambleText text={item} />
-                  </Link>
+                    <Link
+                      className="ajax-link"
+                      href={
+                        item === "Home"
+                          ? "/"
+                          : item === "Why Choose Us"
+                            ? "/why-choose" : item === "Free Audit"
+                              ? "/analyzer"
+                              : item === "Our Services"
+                                ? "/service"
+                                : `/${item.toLowerCase().replace(/\s+/g, "-")}`
+                      }
+                      onClick={() => handleClick(item)}
+                    >
+                      {item}
+                      <ScrambleText text={item} />
+                    </Link>
 
-                  {/* Show submenu on hover */}
-                  {item === "Service" &&
-                    isDesktop &&
-                    hoveredItem === "Service" && (
-                      <div className="sub-menu">
-                        {serviceList?.home_page_service_section_loop_data?.map(
-                          (service, index) => (
-                            <Link
-                              key={index}
-                              href={`/service/${service.home_page_service_section_loop.substring(
-                                service.home_page_service_section_loop.lastIndexOf(
-                                  "/"
-                                ) + 1
-                              )}`}
-                            >
-                              {
-                                service.home_page_service_section_loop.split(
-                                  "/"
-                                )[0]
-                              }
-                            </Link>
-                          )
-                        )}
-                      </div>
-                    )}
-                </li>
-              ))}
-            </ul>
-          </nav>
-            <div className="lets-talk-btn-inner">
-            <Link href="/contact-us" className="let-talk-btn"><img src="/Call-btn.svg" alt="call-icon" /><span>Let's Talk</span></Link>
-          </div>
+                    {/* Show submenu on hover */}
+                    {item === "Service" &&
+                      isDesktop &&
+                      hoveredItem === "Service" && (
+                        <div className="sub-menu">
+                          {serviceList?.home_page_service_section_loop_data?.map(
+                            (service, index) => (
+                              <Link
+                                key={index}
+                                href={`/service/${service.home_page_service_section_loop.substring(
+                                  service.home_page_service_section_loop.lastIndexOf(
+                                    "/"
+                                  ) + 1
+                                )}`}
+                              >
+                                {
+                                  service.home_page_service_section_loop.split(
+                                    "/"
+                                  )[0]
+                                }
+                              </Link>
+                            )
+                          )}
+                        </div>
+                      )}
+                  </li>
+                ))}
+                {!isDesktop && (
+                  <li className="lets-talk-btn-inner">
+                    <Link href="/contact-us" className="let-talk-btn">
+                      <img src="/Call-btn.svg" alt="call-icon" />
+                      <span>Let's Talk</span>
+                    </Link>
+                  </li>
+                )}
+              </ul>
+            </nav>
+            {isDesktop && (
+              <div className="lets-talk-btn-inner">
+                <Link href="/contact-us" className="let-talk-btn">
+                  <img src="/Call-btn.svg" alt="call-icon" />
+                  <span>Let's Talk</span>
+                </Link>
+              </div>
+            )}
+
+
           </div>
 
           {/* <Link className="header-button ajax-link" href="/contact-us">
@@ -246,7 +259,7 @@ const AnimationHeader = () => {
                 <span data-hover="Let's Talk">Let's Talk</span>
               </div>
             </div>
-          </Link>
+          </Link> */}
 
           <div className="button-wrap right menu burger-lines d-none mobile-menu">
             <div
@@ -287,7 +300,7 @@ const AnimationHeader = () => {
                 </div>
               </div>
             </div>
-          </div> */}
+          </div>
         </div>
       </header>
     </>

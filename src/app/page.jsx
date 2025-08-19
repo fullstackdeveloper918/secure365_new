@@ -33,6 +33,7 @@ import { config } from "../../config";
 import { toast, ToastContainer } from "react-toastify";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import Link from "next/link";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -171,7 +172,7 @@ export default function HomePage() {
                                 What Make<br />
                                 Us Different?
                             </h2>
-                            <Button className="bg-[#00AEEF] hover:bg-[#0099d4] text-white primary-btn-style">Start Your Mission</Button>
+                            <Link href={"/contact-us"} className="bg-[#00AEEF] rounded-lg hover:bg-[#0099d4] text-white primary-btn-style">Start Your Mission</Link>
                         </motion.div>
 
                         <motion.div

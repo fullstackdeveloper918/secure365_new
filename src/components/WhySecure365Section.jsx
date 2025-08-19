@@ -6,6 +6,7 @@ import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Image from "next/image";
+import Link from "next/link";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -266,9 +267,9 @@ export default function WhySecure365Section({ containerRef }) {
                                 industry-leading technology to deliver seamless experiences,
                                 minimize risk, and maximize efficiency.
                             </p>
-                            <Button className="bg-[#00AEEF] hover:bg-[#0099d4] text-white primary-btn-style">
+                            <Link href={"/contact-us"} className="bg-[#00AEEF] hover:bg-[#0099d4] rounded-lg text-white primary-btn-style">
                                 Discuss Your Requirement
-                            </Button>
+                            </Link>
                         </div>
                     </motion.div>
 
