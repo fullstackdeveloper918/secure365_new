@@ -103,7 +103,7 @@ const NavigatingSection = ({ serviceList }) => {
 
             {/* Content */}
             <div className="relative z-10 container mx-auto px-6">
-                <div className="grid lg:grid-cols-2 gap-12 items-end relative">
+                <div className="grid lg:grid-cols-2 gap-12 items-end relative navigate-inner">
                     <div className="z-20">
                         <h2 className="text-white font-semibold navigate-heading">
                             {serviceList.home_page_challenge_section_challenge}

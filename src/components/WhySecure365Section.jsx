@@ -148,7 +148,7 @@ export default function WhySecure365Section({ containerRef }) {
                 />
             </div>
 
-            <div className="relative z-10 px-6">
+            <div className="relative z-10">
                 {/* Marquee Heading */}
                 <div className="overflow-hidden whitespace-nowrap">
                     {/* <div className="inline-block text-6xl lg:text-9xl animate-marquee">
@@ -162,6 +162,7 @@ export default function WhySecure365Section({ containerRef }) {
                     </div>
                 </div>
                 {/* Timeline */}
+                <div className="container">
                 <div className="relative min-h-[1300px] timeline-inner-box">
                     <svg
                         className="absolute inset-0 w-full h-full pointer-events-none"
@@ -339,6 +340,7 @@ export default function WhySecure365Section({ containerRef }) {
                             </div>
                         </div>
                     </motion.div>
+                </div>
                 </div>
             </div>
         </section>
