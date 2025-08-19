@@ -103,7 +103,7 @@ const NavigatingSection = ({ serviceList }) => {
                 xPercent: xEnd,
                 yPercent: yEnd,
                 ease: "none",
-                duration: 40, // Further increased duration for slower rocket animation
+                duration: 10, // Further increased duration for slower rocket animation
                 delay: 2, // Increased delay to ensure button completes
             });
 
