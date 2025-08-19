@@ -3,7 +3,6 @@ import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Image from "next/image";
-import { Button } from "./ui/button";
 import Link from "next/link";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -11,6 +10,9 @@ gsap.registerPlugin(ScrollTrigger);
 const NavigatingSection = ({ serviceList }) => {
     const sectionRef = useRef(null);
     const rocketRef = useRef(null);
+    const leftTextRef = useRef(null);
+    const rightTextRef = useRef(null);
+    const buttonRef = useRef(null);
     const [screenSize, setScreenSize] = useState({ width: 0, height: 0 });
 
     // Function to get screen and viewport size
@@ -38,47 +40,72 @@ const NavigatingSection = ({ serviceList }) => {
     useEffect(() => {
         const section = sectionRef.current;
         const rocket = rocketRef.current;
+        const leftText = leftTextRef.current;
+        const rightText = rightTextRef.current;
+        const button = buttonRef.current;
 
-        if (!section || !rocket) return;
+        if (!section || !rocket || !leftText || !rightText || !button) return;
 
-        console.log("screen width and height ", screenSize.width, "height", screenSize.height)
+        console.log("screen width and height ", screenSize.width, "height", screenSize.height);
 
         // Determine animation positions based on screen size ranges
         let xStart, yStart, xEnd, yEnd;
         if (screenSize.width >= 1920) {
-            xStart = 150; yStart = 100; xEnd = -400; yEnd = -100; // Large Desktop
+            xStart = 150; yStart = 140; xEnd = -300; yEnd = -140; // Large Desktop
         } else if (screenSize.width >= 1440) {
-            xStart = 150; yStart = 80; xEnd = -350; yEnd = -80;   // Desktop / Standard
+            xStart = 150; yStart = 120; xEnd = -250; yEnd = -120;   // Desktop / Standard
         } else if (screenSize.width >= 1366) {
-            xStart = 150; yStart = 80; xEnd = -350; yEnd = -80;   // Small Desktop / Laptop
+            xStart = 150; yStart = 80; xEnd = -250; yEnd = -80;   // Small Desktop / Laptop
         } else if (screenSize.width >= 1280) {
             xStart = 120; yStart = 60; xEnd = -300; yEnd = -60;   // Laptop / Notebook
         } else {
             xStart = 100; yStart = 50; xEnd = -250; yEnd = -50;   // Small Laptop / Netbook
         }
 
-        // Initial rocket position (offscreen bottom-right)
+        // Initial states
         gsap.set(rocket, { xPercent: xStart, yPercent: yStart });
+        gsap.set([leftText, rightText, button], { opacity: 0, y: 50 });
 
         const tl = gsap.timeline({
             scrollTrigger: {
                 trigger: section,
                 start: "top top",
                 end: "bottom top",
-                scrub: 1.5, // Reduced scrub for smoother animation
+                scrub: 2,
                 pin: true,
                 anticipatePin: 1,
                 // markers: true,
             },
         });
 
-        // Animate rocket diagonally up-left with ease
-        tl.to(rocket, {
-            xPercent: xEnd,
-            yPercent: yEnd,
-            ease: "none", // Added easing for natural motion
-            // duration: 2, // Added duration for control
-        });
+        // Sequential animations with increased duration and delay
+        tl.to(leftText, {
+            opacity: 1,
+            y: 0,
+            duration: 3, // Increased duration for slower animation
+            ease: "power2.out",
+        })
+            .to(rightText, {
+                opacity: 1,
+                y: 0,
+                duration: 3,
+                ease: "power2.out",
+                delay: 2, // Increased delay to ensure left text completes
+            })
+            .to(button, {
+                opacity: 1,
+                y: 0,
+                duration: 3,
+                ease: "power2.out",
+                delay: 2, // Increased delay to ensure right text completes
+            })
+            .to(rocket, {
+                xPercent: xEnd,
+                yPercent: yEnd,
+                ease: "none",
+                duration: 40, // Further increased duration for slower rocket animation
+                delay: 2, // Increased delay to ensure button completes
+            });
 
         return () => {
             if (tl.scrollTrigger) tl.scrollTrigger.kill();
@@ -103,9 +130,12 @@ const NavigatingSection = ({ serviceList }) => {
 
             {/* Content */}
             <div className="relative z-10 container mx-auto px-6">
-                <div className="grid lg:grid-cols-2 gap-12 items-end relative">
+                <div className="grid lg:grid-cols-2 gap-12 items-end relative md:top-[73px]">
                     <div className="z-20">
-                        <h2 className="text-white font-semibold navigate-heading">
+                        <h2
+                            ref={leftTextRef}
+                            className="text-white font-semibold navigate-heading"
+                        >
                             {serviceList.home_page_challenge_section_challenge}
                         </h2>
                     </div>
@@ -124,15 +154,20 @@ const NavigatingSection = ({ serviceList }) => {
                             />
                         </div>
 
-                        {/* Text paragraph */}
+                        {/* Text paragraph and button */}
                         <div className="space-y-4 relative bottom-[60px]">
                             <p
+                                ref={rightTextRef}
                                 className="text-lg lg:text-xl max-w-[80%] text-gray-300 leading-relaxed mb-0"
                                 id="content-responsive"
                             >
                                 {serviceList.home_page_challenge_section_paragraph}
                             </p>
-                            <Link href={"/contact-us"} className="bg-[#00AEEF] hover:bg-[#0099d4] text-white rounded-lg navigate-contact-btn">
+                            <Link
+                                ref={buttonRef}
+                                href={"/contact-us"}
+                                className="bg-[#00AEEF] hover:bg-[#0099d4] text-white rounded-lg navigate-contact-btn inline-block px-6 py-3"
+                            >
                                 Contact Us
                             </Link>
                         </div>
