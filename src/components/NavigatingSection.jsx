@@ -51,9 +51,9 @@ const NavigatingSection = ({ serviceList }) => {
         // Determine animation positions based on screen size ranges
         let xStart, yStart, xEnd, yEnd;
         if (screenSize.width >= 1920) {
-            xStart = 250; yStart = 100; xEnd = -350; yEnd = -100; // Large Desktop
+            xStart = 250; yStart = 150; xEnd = -350; yEnd = -150; // Large Desktop
         } else if (screenSize.width >= 1440) {
-            xStart = 200; yStart = 100; xEnd = -300; yEnd = -100;   // Desktop / Standard
+            xStart = 200; yStart = 150; xEnd = -300; yEnd = -150;   // Desktop / Standard
         } else if (screenSize.width >= 1366) {
             xStart = 150; yStart = 80; xEnd = -250; yEnd = -80;   // Small Desktop / Laptop
         } else if (screenSize.width >= 1280) {
