@@ -70,7 +70,8 @@ const NavigatingSection = ({ serviceList }) => {
             scrollTrigger: {
                 trigger: section,
                 start: "top top",
-                end: "bottom top",
+                // end: "bottom top",
+                end: "+=2000",
                 scrub: 2,
                 pin: true,
                 anticipatePin: 1,
@@ -82,20 +83,20 @@ const NavigatingSection = ({ serviceList }) => {
         tl.to(leftText, {
             opacity: 1,
             y: 0,
-            duration: 300, // Increased duration for slower animation
+            duration: 10, // Increased duration for slower animation
             ease: "power2.out",
         })
             .to(rightText, {
                 opacity: 1,
                 y: 0,
-                duration: 300,
+                duration: 10,
                 ease: "power2.out",
                 delay: 8, // Increased delay to ensure left text completes
             })
             .to(button, {
                 opacity: 1,
                 y: 0,
-                duration: 300,
+                duration: 10,
                 ease: "power2.out",
                 delay: 8, // Increased delay to ensure right text completes
             })
@@ -103,7 +104,7 @@ const NavigatingSection = ({ serviceList }) => {
                 xPercent: xEnd,
                 yPercent: yEnd,
                 ease: "none",
-                duration: 5000, //  Further increased duration for slower rocket animation
+                duration: 100, //  Further increased duration for slower rocket animation
                 delay: 8, // Increased delay to ensure button completes
             });
 
@@ -130,8 +131,7 @@ const NavigatingSection = ({ serviceList }) => {
 
             {/* Content */}
             <div className="relative z-10 container mx-auto px-6">
-                <div className="grid lg:grid-cols-2 gap-12 items-end relative md:top-[73px]">
-                <div className="grid lg:grid-cols-2 gap-12 items-end relative navigate-inner">
+                <div className="grid lg:grid-cols-2 gap-12 items-end relative">
                     <div className="z-20">
                         <h2
                             ref={leftTextRef}
@@ -174,7 +174,6 @@ const NavigatingSection = ({ serviceList }) => {
                         </div>
                     </div>
                 </div>
-            </div>
             </div>
         </section>
     );
