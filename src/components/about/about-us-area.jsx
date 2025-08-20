@@ -53,7 +53,7 @@ export default function AboutUsArea({ aboutResponse }) {
         <div id="about-info" className="about-info-wrap row">
           <div className="about-title text-center">
             <div className="ab-about-content p-relative">
-              <p className="tp_fade_bottom p-0 core-val-head fw-bold text-white">
+              <p className="tp_fade_bottom p-0 core-val-head fw-semibold text-white">
                 {aboutResponse?.data?.about_our_core_headning_main}
               </p>
             </div>
@@ -106,7 +106,7 @@ export default function AboutUsArea({ aboutResponse }) {
                           ))} */}
                       </ul>
 
-                      <div className="cta-project-btn service-all-btn">
+                      {/* <div className="cta-project-btn service-all-btn">
                         <button className="relative z-[99] bannerbtn flex items-center justify-content-center w-full">
                           <Link className="header-button ajax-link" href="/contact-us">
                             <div className="button-icon-link right white-hovBtn">
@@ -125,7 +125,12 @@ export default function AboutUsArea({ aboutResponse }) {
                             </div>
                           </Link>
                         </button>
-                      </div>
+                      </div> */}
+                      <div className="text-center">
+                      <Link href={"/contact-us"} className="bg-[#00AEEF] hover:bg-[#0099d4] text-white rounded-lg global-primary-btn">
+                         Learn More
+                </Link>
+                </div>
                     </div>
                   </div>
                 </div>

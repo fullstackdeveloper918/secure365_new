@@ -13,7 +13,7 @@ export default function FaqArea({whyChooseData}) {
             <div className="fq-faq-wrapper">
               <div className="tp-service-2-accordion-box">
               <div className="tm-hero-content">
-                       <h2 className="tm-herointro-title tp-char-animation text-center mb-0 what-set-head fw-bold">
+                       <h2 className="tm-herointro-title tp-char-animation text-center mb-0 what-set-head fw-semibold">
                        {whyChooseData?.why_choose_sets_us_main_heading}
                         </h2>
                       </div>

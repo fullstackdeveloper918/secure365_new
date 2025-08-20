@@ -57,7 +57,7 @@ const FaqMain = ({ whyChooseData }) => {
                     <div className="col-xl-12">
                       <div className="tm-hero-content">
                         {/* <span className="tm-hero-subtitle">Secure 365</span> */}
-                        <h2 className="tm-hero-title sv-hero-title tp-char-animation text-white why-choose-head text-uppercase fw-bold">
+                        <h2 className="tm-hero-title sv-hero-title tp-char-animation text-white why-choose-head text-uppercase fw-semibold">
                           {whyChooseData?.title}{" "}
                           <span className="blueColor">{whyChooseData?.why_choose_right_partner_heading_secure}?</span>
                         </h2>
@@ -119,7 +119,7 @@ const FaqMain = ({ whyChooseData }) => {
                             </svg>
                           </span>
                         </Link> */}
-                            <div className="cta-project-btn service-all-btn">
+                            {/* <div className="cta-project-btn service-all-btn">
                               <button className="relative z-[99] bannerbtn flex items-center justify-content-center justify-content-lg-start w-full">
                                 <Link className="header-button ajax-link" href="/contact-us">
                                   <div className="button-icon-link right">
@@ -136,7 +136,10 @@ const FaqMain = ({ whyChooseData }) => {
                                   </div>
                                 </Link>
                               </button>
-                            </div>
+                            </div> */}
+                            <Link href={"/contact-us"} className="bg-[#00AEEF] hover:bg-[#0099d4] text-white rounded-lg global-primary-btn">
+                               Request a Consultation
+                            </Link>
                           </div>
 
                         </div>
@@ -198,7 +201,7 @@ const FaqMain = ({ whyChooseData }) => {
                             </svg>
                           </span>
                         </Link> */}
-                            <div className="cta-project-btn service-all-btn">
+                            {/* <div className="cta-project-btn service-all-btn">
                               <button className="relative z-[99] bannerbtn flex items-center justify-content-center justify-content-lg-start w-full">
                                 <Link className="header-button ajax-link" href="/contact-us">
                                   <div className="button-icon-link right">
@@ -215,7 +218,10 @@ const FaqMain = ({ whyChooseData }) => {
                                   </div>
                                 </Link>
                               </button>
-                            </div>
+                            </div> */}
+                            <Link href={"/contact-us"} className="bg-[#00AEEF] hover:bg-[#0099d4] text-white rounded-lg global-primary-btn">
+                                     Start With Us
+                            </Link>
                           </div>
                         </div>
                       </div>

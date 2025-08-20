@@ -45,7 +45,7 @@ const location_data = [
 ];
 const ContactLocationTwo = ({contactData}) => {
   return (
-    <div className="cn-contact-2-info-area pb-90 pt-90">
+    <div className="cn-contact-2-info-area pb-90 pt-90 main-contact-bg">
       <div className="container container-1530">
         <div className="row">
           {contactData && contactData?.contact_secure_loop.map((item,index) => (

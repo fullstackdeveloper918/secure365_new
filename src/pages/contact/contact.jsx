@@ -60,7 +60,7 @@ const ContactMain = ({ contactData }) => {
                     <div className="col-xl-12">
                       <div className="tm-hero-content">
                         <span className="tm-hero-subtitle">Secure 365</span>
-                        <h1 className="tp-char-animation sv-hero-title">
+                        <h1 className="tp-char-animation sv-hero-title contact-ban-head">
                           {contactData?.reach_contact_section_heading}
                         </h1>
                         <p>

@@ -41,7 +41,7 @@ export default function ServiceFour({whyChooseData}) {
                 height={100}
                 />
               </div> */}
-              <h2 className="tp_text_invert tp_fade_bottom ocs-head fw-bold text-white">
+              <h2 className="tp_text_invert tp_fade_bottom ocs-head fw-semibold text-white">
             {/* {whyChooseData?.why_choose_core_strength_main_heading} {whyChooseData?.why_choose_core_strength_main_heading_second} */}Our <span>Core Strengths</span>
               </h2>
             </div>

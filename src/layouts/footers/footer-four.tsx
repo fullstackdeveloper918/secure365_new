@@ -43,7 +43,8 @@ export default function FooterFour() {
             <div className="d-flex align-items-center">
               <input type="text" className="form-control me-2 news-foot-input" placeholder="Enter your email" />
               <button className="btn btn-outline-primary submit-news-btn">
-                <RightArrow clr='#19191A' />
+                {/* <RightArrow clr='#19191A' /> */}
+                <img src="/Arrow-Footer.png" alt="" />
               </button>
             </div>
             <div className="social-icons">

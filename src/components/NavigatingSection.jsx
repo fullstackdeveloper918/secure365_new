@@ -117,7 +117,7 @@ const NavigatingSection = ({ serviceList }) => {
     return (
         <section
             ref={sectionRef}
-            className="arrieved-destination hero-sec relative py-32 overflow-hidden h-[100vh] navigate-second-sec"
+            className="hero-sec relative py-32 overflow-hidden h-[100vh] navigate-second-sec"
             style={{ backgroundColor: "#000" }}
         >
             {/* Background */}
@@ -131,7 +131,7 @@ const NavigatingSection = ({ serviceList }) => {
 
             {/* Content */}
             <div className="relative z-10 container mx-auto px-6">
-                <div className="grid lg:grid-cols-2 gap-12 items-end relative">
+                <div className="grid lg:grid-cols-2 gap-12 items-end relative navigate-box-iner">
                     <div className="z-20">
                         <h2
                             ref={leftTextRef}

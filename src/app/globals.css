@@ -5817,7 +5817,7 @@ section#real-estate-section
   top: 0;
   color: #01aaeb;
   font-size: 100px;
-  font-weight: 800;
+  font-weight: 700;
 }
 
 .tp-service-5-area
@@ -5830,7 +5830,7 @@ section#real-estate-section
   top: 0;
   color: #01aaeb;
   font-size: 100px;
-  font-weight: 800;
+  font-weight: 700;
 }
 
 .tp-service-5-area
@@ -5843,7 +5843,7 @@ section#real-estate-section
   top: 0;
   color: #01aaeb;
   font-size: 100px;
-  font-weight: 800;
+  font-weight: 700;
 }
 
 .tp-service-5-area .tp-service-5-wrap.set-inner-serv {
@@ -5860,10 +5860,9 @@ section#real-estate-section
 }
 
 .tp-service-5-area .tp-service-4-title-sm a {
-  font-weight: 800;
-  font-size: 22px;
+  font-weight: 600;
+  font-size: 24px;
   text-transform: uppercase;
-  font-family: "Montserrat", sans-serif !important;
 }
 
 .tp-service-5-area
@@ -5881,11 +5880,10 @@ section#real-estate-section
   .tp-service-5-title-box
   h2.tp-service-5-title {
   text-transform: uppercase;
-  font-weight: 800;
+  font-weight: 600;
   line-height: 48px;
   max-width: 85%;
   margin-bottom: 0px !important;
-  font-family: "Manrope", sans-serif !important;
 }
 
 /* Service Page css start here End */
@@ -5930,12 +5928,12 @@ section#real-estate-section
   letter-spacing: 0px;
   max-width: 60%;
   line-height: normal;
-  font-family: "Manrope", sans-serif !important;
+   
 }
 
 .service-details__title-box.mb-10 h2.sv-hero-title.tp-char-animation div {
   font-weight: 500;
-  font-family: "Manrope", sans-serif !important;
+   
 }
 
 .service-details__title-box.mb-10
@@ -5952,11 +5950,11 @@ section#real-estate-section
 }
 
 .service-details__title-box.mb-10 span.service-details__subtitle {
-  font-family: "Manrope", sans-serif !important;
+   
 }
 
 .service-details__title-box.mb-10 span.service-details__subtitle div {
-  font-family: "Manrope", sans-serif !important;
+   
 }
 
 .service-details__left-wrap .service-details__left-text.pb-6.flex p {
@@ -6208,7 +6206,7 @@ a.serv-in-ban-btn {
   font-size: 16px;
   transition: 0.8s all;
   padding: 17px 20px !important;
-  font-family: "Manrope", sans-serif !important;
+   
 }
 
 a.serv-in-ban-btn:hover {
@@ -6411,7 +6409,7 @@ section.pricing-serv-tier
 
 .ab-inner-hero-area.ab-inner-hero-bg .ab-inner-hero-content p {
   font-size: 18px;
-  font-weight: 500;
+  font-weight: 400;
   line-height: 26px;
   margin-bottom: 30px;
   letter-spacing: 0px;
@@ -6430,7 +6428,7 @@ section.pricing-serv-tier
   font-size: 3.4rem !important;
   line-height: normal !important;
   letter-spacing: 0px;
-  font-weight: bold;
+  font-weight: 600;
   text-transform: uppercase;
   margin-bottom: 0px !important;
   transform: translateX(0px);
@@ -6661,7 +6659,7 @@ div#why-choose-bg::before {
   letter-spacing: 0px;
   line-height: normal;
   padding-bottom: 0px !important;
-  margin-bottom: 24px !important;
+  margin-bottom: 15px !important;
 }
 
 .why-ban-para p {
@@ -7397,6 +7395,9 @@ div#singleSerivce .cn-contactform-input textarea {
 
 .step-5-para {
   max-width: 60%;
+}
+.contact-ban-head{
+  font-size: 86px;
 }
 
 @media (min-width: 2800px) {
@@ -8826,13 +8827,13 @@ div#singleSerivce .cn-contactform-input textarea {
 /* Custom Style */
 
 .main-ban-home {
-  font-family: "Manrope", sans-serif !important;
+   
   font-size: 5vw;
   line-height: 5.8vw;
 }
 
 .main-ban-home span {
-  font-family: "Manrope", sans-serif !important;
+   
 }
 
 .real-second-section .real-content-box h2 {
@@ -8841,34 +8842,34 @@ div#singleSerivce .cn-contactform-input textarea {
 }
 
 /* .bannercontent h1{
-    font-family: "Manrope", sans-serif !important;
+     
 }
 .bannercontent h1 span{
-    font-family: "Manrope", sans-serif !important;
+     
 }
 .real-content-box h2{
-   font-family: "Manrope", sans-serif !important;
+    
 }
 .bt-why-head{
-  font-family: "Manrope", sans-serif !important;
+   
 }
 .bt-why-head strong{
-  font-family: "Manrope", sans-serif !important;
+   
 }
 .h-service-name{
-   font-family: "Manrope", sans-serif !important;
+    
 }
 .latest-project-head{
-  font-family: "Manrope", sans-serif !important;
+   
 }
 .proj-text-sc span{
-   font-family: "Manrope", sans-serif !important;
+    
 }
 .blog-home-head{
-  font-family: "Manrope", sans-serif !important;
+   
 }
 .blog-main-new .blog-content h2{
-   font-family: "Manrope", sans-serif !important;
+    
 } */
 .night {
   position: absolute;
@@ -8959,7 +8960,7 @@ h1.main-serv-head {
   font-size: 54px !important;
   letter-spacing: -1px !important;
   line-height: normal !important;
-  font-family: "Manrope", sans-serif !important;
+   
   font-weight: 500 !important;
 }
 
@@ -9478,6 +9479,14 @@ header.clapat-header.classic-menu.invert-header.scrolled div#header-container {
 .scroll-down-button {
   bottom: 60px;
 }
+.global-primary-btn{
+  padding: 20px 30px;
+  font-size: 18px;
+  line-height: normal;
+  font-weight: normal;
+  display: inline-block;
+  height: auto;
+}
 /* section.main-secure-banner::after {
     position: absolute;
     content: '';
@@ -9640,8 +9649,12 @@ header.clapat-header.classic-menu.invert-header.scrolled div#header-container {
   z-index: 1;
 }
 .hero-sec::after {
+    position: absolute;
+    content: "";
+    left: 0;
+    bottom: 0;
   width: 100%;
-  height: 200px;
+  height: 100px;
   background: linear-gradient(180deg, #02020200, #020202) !important;
   z-index: 1;
 }
@@ -9683,6 +9696,16 @@ header.clapat-header.classic-menu.invert-header.scrolled div#header-container {
 }
 
 /* End */
+.navigate-second-sec::before{
+  position: absolute;
+    content: "";
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 200px;
+    background: linear-gradient(360deg, #04071400, #000000);
+    z-index: 1;
+}
 .arrieved-destination{
   padding: 144px 0px 100px 0px;
 }
@@ -9698,7 +9721,7 @@ header.clapat-header.classic-menu.invert-header.scrolled div#header-container {
   top: 0;
   width: 100%;
   height: 200px;
-  background: linear-gradient(360deg, #04071400, #040714);
+  background: linear-gradient(360deg, #02020200, #020202);
   z-index: 1;
 }
 .form-input-home {
@@ -9910,10 +9933,34 @@ footer.footer {
     background: linear-gradient(180deg, #ffffff10, #ffffff10);
     backdrop-filter: blur(50px);
 }
-
+.cn-contact-2-info-area.main-contact-bg .cn-contact-2-thumb {
+    background: #fff;
+    border: 1px solid #009dd6;
+    margin: 0px auto;
+    padding: 20px;
+    border-radius: 50px;
+    min-width: 90px;
+    height: 90px;
+    object-fit: cover;
+}
+.main-contact-bg{
+      background-color: #02050f;
+}
+.contact-container .contactForm input {
+    min-height: 50px;
+    border-radius: 10px !important;
+}
 
 
 @media screen and (max-width:1480px){
+  .global-primary-btn{
+  padding: 18px 30px;
+  font-size: 18px;
+  line-height: normal;
+  font-weight: normal;
+  display: inline-block;
+  height: auto;
+}
 
   .main-secure-banner .main-banner-heading {
     font-size: 64px;
@@ -10026,6 +10073,16 @@ div#header-container .menu-link-call-action nav.clapat-nav-wrapper ul.flexnav li
 }
 
 @media screen and (max-width:991px){
+  .global-primary-btn {
+    padding: 16px 30px;
+    font-size: 18px;
+}
+  header.clapat-header.classic-menu.invert-header.scrolled div#header-container {
+    padding: 20px 20px !important;
+  }
+  #clapat-logo img {
+    max-width: 200px !important;
+  }
 .ban-inner-wrapper{
   flex-direction: column;
   height: 100% !important;
@@ -10154,11 +10211,17 @@ div#header-container .menu-link-call-action nav.clapat-nav-wrapper ul.flexnav li
 }
 .navigate-second-sec {
     padding: 80px 0px 80px 0px !important;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.navigate-second-sec .navigate-box-iner {
+    gap: 20px;
 }
 .navigate-second-sec .navigate-contact-btn {
     padding: 18px 28px !important;
     font-size: 16px !important;
-    margin-top: 20px !important;
+    margin-top: 30px !important;
 }
 .main-secure-banner .main-banner-paraTxt {
     font-size: 18px;
@@ -10169,9 +10232,51 @@ div#header-container .menu-link-call-action nav.clapat-nav-wrapper ul.flexnav li
     font-size: 48px !important;
     line-height: 120%;
 }
+div#header-container .icon-wrap.parallax-wrap .button-icon.parallax-element {
+    width: 20px !important;
+    height: 20px !important;
+}
+#burger-wrapper {
+    width: 24px;
+    height: 24px;
+}
+.menu-link-call-action a.let-talk-btn {
+    padding: 15px 16px;
+    border: 1px solid #fff;
+    border-radius: 6px;
+    display: inline-block;
+    font-size: 18px;
+    line-height: normal;
+    transition: 0.5s all;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 180px;
+    margin: 15px auto 0;
+}
+.menu-link-call-action a.let-talk-btn span{
+        transform: translateY(0px);
+        font-size: 18px;
+        line-height: normal;
+}
 }
 
 @media screen and (max-width:767px){
+    .global-primary-btn {
+    padding: 16px 30px;
+    font-size: 16px;
+}
+div#header-container .menu-link-call-action ul.flexnav.flexnav-show {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+.menu-link-call-action a.let-talk-btn {
+    margin: 0px auto 0;
+}
+div#header-container a.ajax-link{
+  font-size: 20px !important;
+}
   .main-secure-banner .main-banner-heading {
     font-size: 40px !important;
     line-height: 120%;
@@ -10283,6 +10388,10 @@ div#header-container .menu-link-call-action nav.clapat-nav-wrapper ul.flexnav li
 }
 
 @media screen and (max-width:575px){
+  .global-primary-btn {
+    padding: 14px 30px;
+    font-size: 16px;
+}
   .project-del-contBox p {
     font-size: 15px;
     line-height: 150%;
