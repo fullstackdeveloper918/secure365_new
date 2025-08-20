@@ -131,6 +131,7 @@ const NavigatingSection = ({ serviceList }) => {
             {/* Content */}
             <div className="relative z-10 container mx-auto px-6">
                 <div className="grid lg:grid-cols-2 gap-12 items-end relative md:top-[73px]">
+                <div className="grid lg:grid-cols-2 gap-12 items-end relative navigate-inner">
                     <div className="z-20">
                         <h2
                             ref={leftTextRef}
@@ -173,6 +174,7 @@ const NavigatingSection = ({ serviceList }) => {
                         </div>
                     </div>
                 </div>
+            </div>
             </div>
         </section>
     );

@@ -36,7 +36,7 @@ export default function AchievementsSection({ achievementCards }) {
                 scrub: true,
             },
             width: "100%",
-            borderRadius: "20px",
+            borderRadius: "6px",
             margin: "0 auto",
             duration: 1,
         });
@@ -129,13 +129,13 @@ export default function AchievementsSection({ achievementCards }) {
                                 transition={{ duration: 0.6, ease: "easeInOut" }}
                             >
                                 {achievementCards.map((card, idx) => (
-                                    <div key={idx} className="w-1/4 flex-shrink-0 p-3">
-                                        <div className="h-full flex flex-col bg-transparent backdrop-blur-sm border border-gray-700 rounded-lg p-6 py-8 hover:border-[#00AEEF] transition-all duration-300">
+                                    <div key={idx} className="w-1/4 flex-shrink-0 p-3 serv-mainCard-Wrap">
+                                        <div className="h-full flex flex-col bg-transparent border border-gray-700 rounded-lg hover:border-[#00AEEF] transition-all duration-300 serv-home-card">
                                             {/* Gradient Background */}
                                             <div className="absolute inset-0 bg-gradient-to-r from-[#1A1A1A] via-[#3A4A65] to-[#B2B2B2] opacity-60 rounded-lg"></div>
 
                                             {/* Image */}
-                                            <div className="flex justify-left mb-4 relative z-10">
+                                            <div className="flex justify-left relative z-10 service-img-box">
                                                 <Image
                                                     src={card.icon}
                                                     alt="service"
@@ -146,13 +146,13 @@ export default function AchievementsSection({ achievementCards }) {
                                             </div>
 
                                             {/* Title and Subtitle */}
-                                            <div className="text-left mb-2 relative z-10">
-                                                <span className="text-lg font-semibold text-white">{card.title}</span><br />
-                                                <span className="text-lg font-semibold text-white">{card.subtitle}</span>
+                                            <div className="text-left mb-2 relative z-10 service-card-head">
+                                                <span className="font-normal font-anta text-white">{card.title}</span><br />
+                                                <span className="font-normal font-anta text-white">{card.subtitle}</span>
                                             </div>
 
                                             {/* Description */}
-                                            <p className="text-gray-400 text-sm mb-4 relative z-10">{card.desc}</p>
+                                            <p className="text-gray-400 text-sm mb-4 relative z-10 service-card-para">{card.desc}</p>
 
                                             {/* Button */}
                                             <div className="flex justify-left relative z-10">
@@ -199,6 +199,7 @@ export default function AchievementsSection({ achievementCards }) {
 
                     className="arrieved-destination min-h-screen pt-[120px] flex flex-col items-center bg-[#02050f] justify-center relative overflow-hidden px-14 pb-12 w-full"
                 >
+                    <div className="container">
                     {/* Text animation */}
                     <motion.div
                         className="relative z-10 text-center mb-10"
@@ -206,7 +207,7 @@ export default function AchievementsSection({ achievementCards }) {
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 1, ease: "easeOut" }}
                     >
-                        <h2 className="text-4xl lg:text-6xl text-white font-semibold mb-8">
+                        <h2 className="text-white font-semibold destination-head">
                             You Arrived Your Destination
                         </h2>
                     </motion.div>
@@ -223,6 +224,7 @@ export default function AchievementsSection({ achievementCards }) {
                             src={"/space-earth.mp4"}
                             type="video/mp4"
                         />
+                    </div>
                     </div>
                 </section>
             </div>

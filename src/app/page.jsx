@@ -233,26 +233,26 @@ export default function HomePage() {
 
             <AchievementsSection achievementCards={serviceCards} className="relative z-20" />
 
-            <section className="bg-[#02050f] py-20 px-6 relative z-20">
-                <div className="max-w-7xl mx-auto bg-[#11151b] p-8 md:p-12 rounded-lg border border-gray-800">
+             <section className="bg-[#02050f] relative z-20 website-audit-form">
+                <div className="audit-form-box relative">
                     <div className="flex flex-col">
                         {/* Left Column */}
-                        <div className="flex justify-between ">
-                            <h2 className="text-5xl md:text-6xl text-white leading-snug">
+                        <div className="flex top-audit-head">
+                            <h2 className="text-5xl md:text-6xl text-white leading-snug mb-0">
                                 Wanna A Free <br /> WEBSITE AUDIT?
                             </h2>
-                            <div className="text-left mr-20 mt-3 ">
-                                <p className=" text-gray-400 text-sm md:text-base mb-4">
-                                    Our SEO Ready specialists speak to you <br />
-                                    and uncover the potential of your business.
+                            <div className="text-left mr-20 mt-3 right-audit-cont">
+                                <p className=" text-white audit-para">
+                                    Or a GTM Design Plan? Hop on a 30-min <br />
+                                    call to unlock the potential of your business.
                                 </p>
-                                <div className="relative flex">
+                                <div className="relative flex audit-link-box">
                                     <a
                                         href={`mailto:${email}`}
                                         className="block text-[#00AEEF] text-sm relative"
                                         style={{
                                             textDecoration: "none",
-                                            borderBottom: "2px solid #00AEEF",
+                                            borderBottom: "1px solid #00AEEF",
                                             paddingBottom: "3px",
                                             width: "40%",
                                             display: "flex"
@@ -322,13 +322,13 @@ export default function HomePage() {
                                 className="w-full px-4 py-3 bg-transparent border-b border-gray-700 text-white text-sm focus:border-[#00AEEF] outline-none form-input-home"
                             />
 
-                            <div className="flex justify-between">
-                                <p className="text-xs text-white font-semibold paragraph-line-home">
+                            <div className="flex justify-between text-btn-wrap">
+                                <p className="text-xs text-white font-normal paragraph-line-home">
                                     Curious how we handle your data with care? Scoop into our Privacy Policy
                                 </p>
                                 <button
                                     type="submit"
-                                    className="px-6 mt-2 py-3 bg-[#00AEEF] hover:bg-[#0095c4] transition text-white text-md font-normal rounded"
+                                    className="bg-[#00AEEF] hover:bg-[#0095c4] transition text-white font-normal send-req-btn"
                                 >
                                     Send Request
                                 </button>

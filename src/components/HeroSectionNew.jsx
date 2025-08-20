@@ -46,7 +46,7 @@ export default function HeroSection({ serviceList }) {
 
             <div className="relative z-10 w-full">
                 <div className="container mx-auto px-6">
-                    <div className="grid lg:grid-cols-2 gap-12 items-end min-h-screen">
+                    <div className="flex gap-12 items-end min-h-screen ban-inner-wrapper">
                         <div className="main-head-banner-box">
                             <AnimatePresence>
                                 {heroAnimationComplete && (
@@ -64,7 +64,7 @@ export default function HeroSection({ serviceList }) {
                             </AnimatePresence>
                         </div>
 
-                        <div className="space-y-8">
+                        <div className="space-y-8 ban-content-box">
                             <AnimatePresence>
                                 {heroAnimationComplete && (
                                     <motion.div
