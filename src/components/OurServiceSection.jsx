@@ -320,8 +320,7 @@ export default function AchievementsSection({ achievementCards }) {
             </h2>
           </motion.div>
 
-          {/* Video */}
-    {/* Video */}
+      
 <div className="relative w-full max-w-full shadow-lg">
   <video
     className="w-full h-full object-cover rounded-none"
