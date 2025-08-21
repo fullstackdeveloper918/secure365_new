@@ -3757,6 +3757,7 @@ p .link-text {
   background: transparent;
 }
 
+
 /*--------------------------------------------------
 07. Responsive
 ---------------------------------------------------*/
@@ -9463,7 +9464,7 @@ header.clapat-header.classic-menu.invert-header.scrolled div#header-container {
   font-weight: normal !important;
   display: inline-block;
   height: auto !important;
-  margin-top: 40px !important;
+  /* margin-top: 40px !important; */
 }
 .main-secure-banner .main-head-banner-box {
   padding-bottom: 243px;

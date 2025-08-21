@@ -37,85 +37,79 @@ const NavigatingSection = ({ serviceList }) => {
         return () => window.removeEventListener("resize", getScreenSize);
     }, []);
 
-    useEffect(() => {
-        const section = sectionRef.current;
-        const rocket = rocketRef.current;
-        const leftText = leftTextRef.current;
-        const rightText = rightTextRef.current;
-        const button = buttonRef.current;
+   useEffect(() => {
+    const section = sectionRef.current;
+    const rocket = rocketRef.current;
+    const leftText = leftTextRef.current;
+    const rightText = rightTextRef.current;
+    const button = buttonRef.current;
 
-        if (!section || !rocket || !leftText || !rightText || !button) return;
+    if (!section || !rocket || !leftText || !rightText || !button) return;
 
-        console.log("screen width and height ", screenSize.width, "height", screenSize.height);
+    let xStart, yStart, xEnd, yEnd;
+    if (screenSize.width >= 1920) {
+        xStart = 450; yStart = 250; xEnd = -450; yEnd = -250;
+    } else if (screenSize.width >= 1440) {
+        xStart = 350; yStart = 200; xEnd = -350; yEnd = -200;
+    } else if (screenSize.width >= 1366) {
+        xStart = 150; yStart = 80; xEnd = -250; yEnd = -80;
+    } else if (screenSize.width >= 1280) {
+        xStart = 120; yStart = 60; xEnd = -300; yEnd = -60;
+    } else {
+        xStart = 100; yStart = 50; xEnd = -250; yEnd = -50;
+    }
 
-        // Determine animation positions based on screen size ranges
-        let xStart, yStart, xEnd, yEnd;
-        if (screenSize.width >= 1920) {
-            xStart = 450; yStart = 250; xEnd = -450; yEnd = -250; // Large Desktop
-        } else if (screenSize.width >= 1440) {
-            xStart = 350; yStart = 200; xEnd = -350; yEnd = -200;   // Desktop / Standard
-        } else if (screenSize.width >= 1366) {
-            xStart = 150; yStart = 80; xEnd = -250; yEnd = -80;   // Small Desktop / Laptop
-        } else if (screenSize.width >= 1280) {
-            xStart = 120; yStart = 60; xEnd = -300; yEnd = -60;   // Laptop / Notebook
-        } else {
-            xStart = 100; yStart = 50; xEnd = -250; yEnd = -50;   // Small Laptop / Netbook
-        }
+    // Initial states
+    gsap.set(rocket, { xPercent: xStart, yPercent: yStart });
+    gsap.set([leftText, rightText, button], { opacity: 0, y: 50 });
 
-        // Initial states
-        gsap.set(rocket, { xPercent: xStart, yPercent: yStart });
-        gsap.set([leftText, rightText, button], { opacity: 0, y: 50 });
+    const tl = gsap.timeline({
+        scrollTrigger: {
+            trigger: section,
+            start: "top top",
+            end: "+=3000",
+            scrub: 2,
+            pin: true,
+            anticipatePin: 1,
+            // markers: true,
+        },
+    });
 
-        const tl = gsap.timeline({
-            scrollTrigger: {
-                trigger: section,
-                start: "top top",
-                // end: "bottom top",
-                end: "+=2000",
-                scrub: 2,
-                pin: true,
-                anticipatePin: 1,
-                // markers: true,
-            },
-        });
-
-        // Sequential animations with increased duration and delay
-        tl.to(leftText, {
+    // Animate rocket first
+    tl.to(rocket, {
+        xPercent: xEnd,
+        yPercent: yEnd,
+        duration: 100,
+        ease: "none",
+    })
+        .to(leftText, {
             opacity: 1,
             y: 0,
-            duration: 10, // Increased duration for slower animation
+            duration: 10,
             ease: "power2.out",
         })
-            .to(rightText, {
-                opacity: 1,
-                y: 0,
-                duration: 10,
-                ease: "power2.out",
-                delay: 8, // Increased delay to ensure left text completes
-            })
-            .to(button, {
-                opacity: 1,
-                y: 0,
-                duration: 10,
-                ease: "power2.out",
-                delay: 8, // Increased delay to ensure right text completes
-            })
-            .to(rocket, {
-                xPercent: xEnd,
-                yPercent: yEnd,
-                ease: "none",
-                duration: 100, //  Further increased duration for slower rocket animation
-                delay: 8, // Increased delay to ensure button completes
-            });
+        .to(rightText, {
+            opacity: 1,
+            y: 0,
+            duration: 10,
+            ease: "power2.out",
+        })
+        .to(button, {
+            opacity: 1,
+            y: 0,
+            duration: 10,
+            ease: "power2.out",
+        });
 
-        return () => {
-            if (tl.scrollTrigger) tl.scrollTrigger.kill();
-            tl.kill();
-        };
-    }, [screenSize]);
+    return () => {
+        if (tl.scrollTrigger) tl.scrollTrigger.kill();
+        tl.kill();
+    };
+}, [screenSize]);
+
 
     return (
-        <section
+     <section
             ref={sectionRef}
             className="hero-sec relative py-32 overflow-hidden h-[100vh] navigate-second-sec"
             style={{ backgroundColor: "#000" }}
