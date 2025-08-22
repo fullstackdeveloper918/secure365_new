@@ -45,7 +45,7 @@ export default function BeforeAfterResults() {
   return (
     <section className="relative before-after-sec" ref={sectionRef}>
       <div className="container mx-auto px-4">
-        <h2 className="text-3xl md:text-4xl font-bold text-center text-white bf-result-head relative">
+        <h2 className="text-3xl md:text-4xl font-semibold text-center text-white bf-result-head relative">
           Before vs After Results
         </h2>
         {/* <p className="text-white text-lg text-center mb-4">Average improvement across all clients: +187% in key metrics</p> */}
@@ -57,7 +57,7 @@ export default function BeforeAfterResults() {
             ref={(el) => setCardRef(el, 0)}
           >
             <div className="bg-red-100 p-4 text-center bg-off-bg">
-              <h3 className="font-bold text-red-800 mb-0">BEFORE</h3>
+              <h3 className="font-semibold text-red-800 mb-0">BEFORE</h3>
             </div>
             <div className="p-6 space-y-6">
               {[
@@ -88,7 +88,7 @@ export default function BeforeAfterResults() {
             ref={(el) => setCardRef(el, 1)}
           >
             <div className="bg-emerald-100 p-4 text-center bg-off-bg">
-              <h3 className="font-bold text-lg text-emerald-800 mb-0">AFTER</h3>
+              <h3 className="font-semibold text-lg text-emerald-800 mb-0">AFTER</h3>
             </div>
             <div className="p-6 space-y-6">
               {[

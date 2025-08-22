@@ -17,8 +17,8 @@ export default function TextScrollAnimation() {
     "Speed",
     "Retention",
     "Conversion",
-    "Satisfaction",
     "Engagement",
+    "Satisfaction",
   ];
 
   useEffect(() => {
@@ -137,22 +137,23 @@ export default function TextScrollAnimation() {
     <div className="bg-black text-white">
       <section
         ref={containerRef}
-        className="h-screen flex flex-col items-center justify-center bg-black relative overflow-hidden"
+        className="h-screen flex flex-col items-center justify-center bg-black relative overflow-hidden result-matter-sec"
       >
+        <div className="result-top-overlay"></div>
         {/* Canvas background */}
-        <canvas
+        {/* <canvas
           id="galaxyCanvas"
           ref={canvasRef}
           className="absolute top-0 left-0 w-full h-full"
-        ></canvas>
-        {/* <video
-          src="/Dark-blue-sky.mp4"
+        ></canvas> */}
+        <video
+          src="/space-earth.mp4"
           className="absolute top-0 left-0 w-full h-full object-cover object-top"
           autoPlay
           muted
           loop
           playsInline
-        ></video> */}
+        ></video>
         <div className="overlay-box absolute top-0 left-0 w-full h-full"></div>
 
         <h1 className="text-white text-2xl font-medium relative z-10 mb-4">

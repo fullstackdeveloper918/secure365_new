@@ -36,7 +36,7 @@ const SecurityStakeholders = () => {
       ref={sectionRef}
     >
       <div className="container mx-auto px-4">
-        <h2 className="font-bold text-center sec-stake-head text-[#01aaeb]">
+        <h2 className="font-semibold text-center sec-stake-head text-[#01aaeb]">
           Security for Every Stakeholder
         </h2>
         <p className="text-white sec-stake-para text-center">Our multi-layered security approach ensures that stakeholders including administrators, developers, clients, and end-users are protected at every touchpoint.</p>
@@ -49,7 +49,7 @@ const SecurityStakeholders = () => {
               className="rounded-lg shadow-lg overflow-hidden stake-inn-card"
             >
               <div className="bg-slate-800 p-3 p-md-4 text-white">
-                <h3 className="font-bold mb-0 stake-card-title">{title}</h3>
+                <h3 className="font-semibold mb-0 stake-card-title">{title}</h3>
               </div>
               <div className="p-6 stake-inner-contBox">
                 <div className="flex flex-col gap-4 stake-list-box">

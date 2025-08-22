@@ -16,7 +16,7 @@ const PricingCards = () => {
   return (
     <div className="relative pricing-card-sec">
       <h2
-        className="price-top-head text-white text-center text-uppercase fw-bold"
+        className="price-top-head text-white text-center text-uppercase fw-semibold"
         data-aos="fade-up"
       >
         Pricing tiers

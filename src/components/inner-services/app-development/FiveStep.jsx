@@ -43,7 +43,7 @@ const FiveStepSprint = () => {
     gsap.utils.toArray(".step").forEach((step) => {
       gsap.fromTo(
         step,
-        { opacity: 0, y: 100 },
+        { opacity:1, y: 0 },
         {
           opacity: 1,
           y: 0,
@@ -51,7 +51,7 @@ const FiveStepSprint = () => {
           ease: "power2.out",
           scrollTrigger: {
             trigger: step,
-            start: "top 85%",
+            start: "top 0%",
             toggleActions: "play none none reverse",
           },
         }
@@ -129,6 +129,8 @@ const FiveStepSprint = () => {
   }, []);
 
   return (
+    <>
+ 
     <div className="relative bg-black text-white overflow-x-hidden">
       <section ref={sectionRef} className="relative z-10 bg-black overflow-hidden step-5-sec">
         {/* Canvas restricted to section */}
@@ -146,7 +148,7 @@ const FiveStepSprint = () => {
           />
           {/* Content */}
           <div className="relative z-10 py-20 container mx-auto px-4">
-            <h2 className="step-5-head font-bold text-center mb-4 text-[#01aaeb]">
+            <h2 className="step-5-head font-semibold text-center mb-4 text-[#01aaeb]">
               Our 5-Step Build Sprint
             </h2>
             <p className="text-white mb-16 text-center mx-auto step-5-para">
@@ -159,18 +161,20 @@ const FiveStepSprint = () => {
               {steps.map((step, idx) => (
                 <div
                   key={idx}
-                  className={`step p-6 rounded-lg shadow-lg ${step.colSpan || ""}`}
+                  className={`step card-5-time translate-none p-6 rounded-lg shadow-lg ${step.colSpan || ""}`}
                   style={{
                     backgroundColor: "rgba(255, 255, 255, 0.05)",
                     backdropFilter: "blur(5px)",
                     border: "1px solid rgba(255, 255, 255, 0.1)",
                     transition: "all 0.3s ease",
+                    opacity:"1 !important",
+                    transform:"translate(0,0) !important;"
                   }}
                 >
                   <div className="text-[#01aaeb] text-3xl mb-4">
                     <i className={step.icon}></i>
                   </div>
-                  <h3 className="text-xl font-bold text-white mb-2">
+                  <h3 className="text-xl font-semibold text-white mb-2">
                     {step.title}
                   </h3>
                   <p className="text-gray-300">{step.text}</p>
@@ -181,6 +185,7 @@ const FiveStepSprint = () => {
         </div>
       </section>
     </div>
+    </>
   );
 };
 

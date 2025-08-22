@@ -7010,7 +7010,7 @@ section.cyber-serv-sec .cb-btn-prc {
   top: 0;
   width: 100%;
   height: 100%;
-  background: #00000085;
+  background: #000000db;
 }
 
 .book-call-paraTxt {
@@ -7279,6 +7279,20 @@ div#singleSerivce .cn-contactform-input textarea {
 .our-service-outer-box {
   padding: 80px 0 !important;
 }
+.our-service-outer-box .tp-service-4-item {
+    padding: 30px !important;
+    background-color: rgb(4 175 238 / 15%) !important;
+    border-radius: 25px;
+    height: fit-content;
+    min-height: 400px;
+}
+.tp-service-4-area.our-service-outer-box .swiper.swiper-container .swiper-slide.swiper-slide-active .tp-service-4-item {
+    background: rgb(0 177 246 / 50%) !important;
+}
+div#singleSerivce .conatct-col {
+    background: transparent;
+}
+
 
 .our-work-serv-sec {
   background: linear-gradient(180deg, #000000, #171a1f);
@@ -8022,7 +8036,7 @@ div#singleSerivce .cn-contactform-input textarea {
   }
 
   .reach-cont {
-    padding: 60px 0;
+    padding: 60px 0 !important;
   }
 
   .reach-cont .conatct-col.ab-about-category-title-box {
@@ -8102,7 +8116,7 @@ div#singleSerivce .cn-contactform-input textarea {
   }
 
   .threat-sec {
-    padding: 60px 0 50px;
+    padding: 10px 0 50px;
   }
 
   .threat-sec .threat-i-txt {
@@ -9730,6 +9744,52 @@ z
 }
 
 /* End */
+
+.result-matter-sec::before{
+ position: absolute;
+    content: "";
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: #00000090;
+    z-index: 1;
+}
+.result-top-overlay{
+   position: absolute;
+    content: "";
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 80px;
+    background: linear-gradient(360deg, #04071400, #000000);
+    z-index: 1;
+}
+.result-matter-sec::after{
+ position: absolute;
+    content: "";
+    left: 0;
+    bottom: -1px;
+    width: 100%;
+    height: 80px;
+    background: linear-gradient(180deg, #04071400, #000000);
+    z-index: 1;
+}
+.serv-detail-ban.innnerServices::after {
+    position: absolute;
+    content: '';
+    left: 0;
+    bottom: -1px;
+    width: 100%;
+    height: 70px;
+    background: linear-gradient(180deg, #04071400, #000000);
+}
+
+
+
+
+
+
 .navigate-second-sec::before{
   position: absolute;
     content: "";
@@ -9987,6 +10047,9 @@ footer.footer {
 
 
 @media screen and (max-width:1480px){
+  div#singleSerivce .contact-container {
+    max-width: 94% !important;
+}
   section.our-services-sec {
     padding: 120px 20px;
 }
@@ -10102,6 +10165,9 @@ div#header-container .menu-link-call-action nav.clapat-nav-wrapper ul.flexnav {
 }
 
 @media screen and (max-width:1100px){
+  div#singleSerivce .conatct-col .cn-contactform-wrap {
+    margin-left: 0px;
+}
 
 div#header-container .menu-link-call-action nav.clapat-nav-wrapper ul.flexnav li a {
     font-size: 16px;
@@ -10379,9 +10445,83 @@ section.why-hero-section .container {
     font-size: 18px;
     max-width: 680px;
 }
+.step-5-para {
+    max-width: 95%;
+    margin-bottom: 35px !important;
+}
+.step-5-sec {
+    padding: 80px 0;
+}
+.core-web-head{
+  font-size: 32px;
+}
+.sec-stake-para {
+    max-width: 95%;
+    margin: 10px auto 50px;
+    font-size: 18px;
+}
 }
 
 @media screen and (max-width:767px){
+  .sec-stake-para {
+    max-width: 95%;
+    margin: 10px auto 50px;
+    font-size: 16px;
+}
+  .core-web-ict{
+    flex-direction: column;
+    gap: 12px;
+  }
+  .core-web-vit-sec {
+    padding: 60px 0;
+}
+div#singleSerivce .reach-inner-box .innerDivConatct p {
+    color: #fff !important;
+    line-height: 24px;
+     margin-top: 6px;
+    font-size: 14px;
+}
+  .core-web-ict p{
+    line-height: normal;
+  }
+  .vital-card-box h3 {
+    font-size: 18px;
+    line-height: normal;
+}
+  .step-5-sec {
+    padding: 60px 0;
+}
+   .our-service-outer-box .tp-service-4-title-wrap {
+    margin-bottom: 25px !important;
+}
+  .our-service-outer-box {
+    padding: 60px 0 !important;
+}
+  .our-work-serv-sec h2{
+    font-size: 32px;
+  }
+  .our-work-serv-sec h2 {
+    font-size: 32px;
+    margin-bottom: 55px;
+}
+  .step-5-head {
+    font-size: 30px;
+    margin-bottom: 15px !important;
+}
+div#singleSerivce .conatct-col.col-xl-7.contactForm {
+    order: 2;
+    padding: 0 0px !important;
+    text-align: center;
+}
+  div#singleSerivce .conatct-col {
+    padding: 20px 0px;
+}
+div#singleSerivce .reach-cont .contactHeading h2 {
+    color: #fff !important;
+    font-size: 32px;
+    line-height: normal;
+    margin-bottom: 10px;
+}
 .cta-sec h2 {
     font-size: 32px;
     line-height: 44px;
@@ -10571,9 +10711,17 @@ div#header-container a.ajax-link{
 .our-services-sec {
     padding: 60px 0px;
 }
+.contact-banner .sv-hero-title {
+    font-size: 30px !important;
+    margin-top: 10px;
+    transform: translate(0,0) !important;
+}
 }
 
 @media screen and (max-width:575px){
+  .threat-head {
+    font-size: 20px;
+}
     .secureway-sec h2 {
     font-size: 28px;
 }
