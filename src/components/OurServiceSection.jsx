@@ -81,7 +81,7 @@ export default function AchievementsSection({ achievementCards }) {
           />
         </div>
 
-        <div className="relative z-10 container mx-auto px-6">
+        <div className="relative z-10 container mx-auto px-6 what-make-gradient">
           <div className="flex gap-5 items-start justify-between what-make-outer-box">
             <motion.div
               className="what-make-heading-left-box"
@@ -199,7 +199,7 @@ export default function AchievementsSection({ achievementCards }) {
       />
 
       {/* Sections container */}
-      <div ref={sectionsRef} className="relative z-10">
+      <div ref={sectionsRef} className="relative">
         {/* Achievements Section */}
         <section className="min-h-screen flex items-center justify-center relative  our-services-sec">
           <motion.div
@@ -275,30 +275,30 @@ export default function AchievementsSection({ achievementCards }) {
               </motion.div>
 
               {/* Navigation Buttons */}
-              <div className="mt-20">
+              <div className="flex justify-end gap-3 slider-nav-btns">
                 <button
                   onClick={() =>
                     setAchievementsSlide((s) => Math.max(0, s - 1))
                   }
                   disabled={achievementsSlide === 0}
-                  className="absolute right-20 bottom-0 mt-10 w-10 h-10 rounded-full bg-white/10 border border-white/20 text-white hover:bg-white/20 disabled:opacity-40"
+                  className="w-10 h-10 rounded-full bg-white/10 border border-white/20 text-white hover:bg-white/20 disabled:opacity-40"
                   aria-label="Previous achievements slide"
                 >
                   <ChevronLeft className="w-5 h-5 mx-auto" />
                 </button>
-              </div>
-              <button
+                <button
                 onClick={() =>
                   setAchievementsSlide((s) =>
                     Math.min(achievementCards.length - 4, s + 1)
                   )
                 }
                 disabled={achievementsSlide >= achievementCards.length - 4}
-                className="absolute right-5 bottom-0 mt-10 w-10 h-10 rounded-full bg-white/10 border border-white/20 text-white hover:bg-white/20 disabled:opacity-40"
+                className="w-10 h-10 rounded-full bg-white/10 border border-white/20 text-white hover:bg-white/20 disabled:opacity-40"
                 aria-label="Next achievements slide"
               >
                 <ChevronRight className="w-5 h-5 mx-auto" />
               </button>
+              </div>
             </div>
           </motion.div>
         </section>
@@ -306,7 +306,7 @@ export default function AchievementsSection({ achievementCards }) {
         {/* Milestones Reached Section */}
         <section
           ref={sectionRef}
-          className="arrieved-destination min-h-screen pt-[120px] flex flex-col items-center bg-[#02050f] justify-center relative  px-14 pb-12 w-full"
+          className="arrieved-destination min-h-screen flex flex-col items-center bg-[#02050f] justify-center relative w-full"
         >
           {/* Text animation */}
           <motion.div
@@ -322,8 +322,9 @@ export default function AchievementsSection({ achievementCards }) {
 
       
 <div className="relative w-full max-w-full shadow-lg">
+  <div className="container">
   <video
-    className="w-full h-full object-cover rounded-none"
+    className="w-full h-full object-cover rounded-lg"
     autoPlay
     muted
     loop
@@ -331,6 +332,7 @@ export default function AchievementsSection({ achievementCards }) {
     src="/space-earth.mp4"
     type="video/mp4"
   />
+  </div>
 </div>
 
         </section>

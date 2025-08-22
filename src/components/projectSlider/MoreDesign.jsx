@@ -117,7 +117,7 @@ const MoreDesign = () => {
         <div
           key={index}
           ref={(el) => (floatingRefs.current[index] = el)}
-          className="absolute flex flex-col items-center cursor-pointer group z-10"
+          className="absolute flex flex-col items-center cursor-pointer group z-10 hover-proj-box"
           style={{ top: item.top, left: item.left }}
           onMouseEnter={() =>
             setActive({ image: item.image, top: item.top, left: item.left })

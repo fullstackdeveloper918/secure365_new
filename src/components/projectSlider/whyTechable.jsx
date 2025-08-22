@@ -51,6 +51,7 @@ const WhyTechable = () => {
     min-height: 80vh;
     padding: 100px 20px 100px;
     box-sizing: border-box;
+    background:#000;
   }
 
   .why-hero-section .container {
@@ -58,7 +59,7 @@ const WhyTechable = () => {
     align-items: center;
     gap: 50px;
     max-width: 1440px;
-    margin-bottom: 80px;
+    margin-bottom: 50px;
     justify-content: center;
   }
 
@@ -68,7 +69,7 @@ const WhyTechable = () => {
 
   .why-hero-section .content-left h1 {
     font-size: 44px;
-    color: #363636;
+    color: #fff;
     line-height: 1.2;
     margin-bottom: 20px;
     opacity: 1 !important;
@@ -107,6 +108,17 @@ const WhyTechable = () => {
     border: 1px solid rgb(215, 220, 224);
     box-shadow: 0 4px 14px rgba(0, 0, 0, 0.04);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+    padding: 40px !important;
+    border: 1px solid #303030 !important;
+    backdrop-filter: blur(95px);
+    background: rgb(202 202 202 / 13%);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-radius: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0 8px 32px rgb(0 0 0 / 10%), inset 0 1px 0 rgb(52 52 52), inset 0 -1px 0 rgba(255, 255, 255, 0.1), inset 0 0 20px 10px rgb(26 26 26);
+    position: relative;
+    overflow: hidden;
   }
 
   .why-hero-section .card-box:hover {
@@ -121,11 +133,12 @@ const WhyTechable = () => {
     max-width: 60%;
     line-height: 1.4;
     font-weight: 600;
+    color:#3eaced;
   }
 
   .why-hero-section .card-box p {
     font-size: 1.2em;
-    color: #555;
+    color: #d3d3d3ff;
     margin-bottom: 0px;
     line-height: 1.5;
   }

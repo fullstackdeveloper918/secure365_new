@@ -13,8 +13,8 @@ const images = [
 
 const GallerySection = () => (
   <section className="gallery-sec">
-    <h2 className="font-semibold text-center text-gray-800 relative">
-      Our Work in Action
+    <h2 className="font-semibold text-center text-white relative">
+      Our Work Methodology
     </h2>
     <div className="container">
     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">

@@ -28,8 +28,8 @@ const TypingEffect = ({ text }) => {
 
 const AnimationHeader = () => {
   // const [hoveredText, setHoveredText] = useState(null);
-  const [activeItem, setActiveItem] = useState(null); 
-  const [scrolled, setScrolled] = useState(false); 
+  const [activeItem, setActiveItem] = useState(null); // Track the active menu item
+  const [scrolled, setScrolled] = useState(false); // Track if the page has been scrolled
   const [active, setActive] = useState(false);
   const [hoveredItem, setHoveredItem] = useState(null);
   const [isDesktop, setIsDesktop] = useState(false);

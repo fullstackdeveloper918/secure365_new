@@ -43,7 +43,7 @@ const items = [
 
 const SecureWay = () => (
   <section className="bg-gray-100 secureway-sec">
-    <h2 className="text-3xl font-semibold mb-8 text-gray-800 text-center">
+    <h2 className="text-3xl font-semibold mb-8 text-white text-center">
       Website Creation, The Secure365 Way
     </h2>
 <div className="container">
