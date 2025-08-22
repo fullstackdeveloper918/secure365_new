@@ -9,7 +9,7 @@ import Link from "next/link";
 
 gsap.registerPlugin(ScrollTrigger);
 
-export default function AchievementsSection({ achievementCards }) {
+export default function AchievementsSection({ achievementCards, serviceList }) {
   const [achievementsSlide, setAchievementsSlide] = useState(0);
   const containerRef = useRef(null);
   const videoPinRef = useRef(null);
@@ -17,7 +17,7 @@ export default function AchievementsSection({ achievementCards }) {
   const videoRef = useRef(null);
   const rocketRef = useRef(null);
   const [screenSize, setScreenSize] = useState({ width: 0, height: 0 });
-
+  console.log(serviceList, "serviceList here3");
   useEffect(() => {
     if (videoRef.current) {
       videoRef.current.playbackRate = 2.0;
@@ -37,42 +37,39 @@ export default function AchievementsSection({ achievementCards }) {
     return () => window.removeEventListener("resize", getScreenSize);
   }, []);
 
-
-
   useEffect(() => {
-  const rocket = rocketRef.current;
-  const container = containerRef.current;
-  if (!rocket || !container) return;
+    const rocket = rocketRef.current;
+    const container = containerRef.current;
+    if (!rocket || !container) return;
 
-  // Set initial transform
-  gsap.set(rocket, {
-    transform: screenSize.width > 1024
-      ? "translate3d(71.4451vw, -50.2042vh, 0px) rotate(10.3796deg)"
-      : "translate3d(50vw, -50vh, 0px) rotate(10.3796deg)",
-    scale: screenSize.width > 1024 ? 1 : 0.7,
-    zIndex: 1,
-    autoAlpha: 1,
-  });
+    // Set initial transform
+    gsap.set(rocket, {
+      transform:
+        screenSize.width > 1024
+          ? "translate3d(71.4451vw, -50.2042vh, 0px) rotate(10.3796deg)"
+          : "translate3d(50vw, -50vh, 0px) rotate(10.3796deg)",
+      scale: screenSize.width > 1024 ? 1 : 0.7,
+      zIndex: 10,
+      autoAlpha: 1,
+    });
 
-  // Animate rocket along scroll without pin
-  gsap.to(rocket, {
-    transform: "translate3d(-40.928vw, 32.725vh, 0px) rotate(10.0999deg)",
-    ease: "power1.inOut",
-    scrollTrigger: {
-      trigger: container,
-      start: "top bottom",   // animation starts when container enters viewport
-      end: "bottom top",     // animation ends when container leaves viewport
-      scrub: 0.5,            // smooth progress
-      // markers: true,      // uncomment to debug
-    },
-  });
-
-}, [screenSize]);
-
+    // Animate rocket along scroll without pin
+    gsap.to(rocket, {
+      transform: "translate3d(-40.928vw, 32.725vh, 0px) rotate(10.0999deg)",
+      ease: "power1.inOut",
+      scrollTrigger: {
+        trigger: container,
+        start: "top bottom", // animation starts when container enters viewport
+        end: "bottom top", // animation ends when container leaves viewport
+        scrub: 0.5, // smooth progress
+        // markers: true,      // uncomment to debug
+      },
+    });
+  }, [screenSize]);
 
   return (
-<>
- {/* What Make Us Different Section */}
+    <>
+      {/* What Make Us Different Section */}
       <section className="relative  what-make-different-sec z-20">
         <div className="absolute inset-0">
           <div
@@ -91,15 +88,16 @@ export default function AchievementsSection({ achievementCards }) {
               viewport={{ once: true }}
             >
               <h2 className="what-make-heading font-semibold text-white">
-                What Make
+                {/* What Make
                 <br />
-                Us Different?
+                Us Different? */}
+                {serviceList?.whatMakeUsDifferenceSection?.heading}
               </h2>
               <Link
                 href={"/contact-us"}
                 className="bg-[#00AEEF] rounded-lg hover:bg-[#0099d4] text-white primary-btn-style"
               >
-                Start Your Mission
+                {serviceList?.whatMakeUsDifferenceSection?.button}
               </Link>
             </motion.div>
 
@@ -112,57 +110,97 @@ export default function AchievementsSection({ achievementCards }) {
             >
               <div className="what-make-card-box flex items-start space-x-4 bg-gray-900/30 rounded-lg border border-gray-800 hover:border-[#00AEEF] transition-colors">
                 <div className="flex items-center flex-shrink-0 what-icon-head-txt">
-                  <img src="/Security-icon.svg" alt="security-icon" />
+                  <img
+                    src={
+                      serviceList?.whatMakeUsDifferenceSection?.cards[0]?.icon
+                    }
+                    alt="security-icon"
+                  />
                   <h3 className="text-white mb-0 what-make-card-head font-anta">
-                    Information Security <br /> Solutions
+                    {/* Information Security <br /> Solutions */}
+                    {serviceList?.whatMakeUsDifferenceSection?.cards[0]?.title}
                   </h3>
                 </div>
                 <div>
                   <p className="what-make-para m-0">
-                    Protect your business from threats with advanced security
-                    measures, real-time monitoring, and threat intelligence.
+                    {/* Protect your business from threats with advanced security
+                    measures, real-time monitoring, and threat intelligence. */}
+                    {
+                      serviceList?.whatMakeUsDifferenceSection?.cards[0]
+                        ?.description
+                    }
                   </p>
                 </div>
               </div>
               <div className="what-make-card-box flex items-start space-x-4 bg-gray-900/30 rounded-lg border border-gray-800 hover:border-[#00AEEF] transition-colors">
                 <div className="flex items-center flex-shrink-0 what-icon-head-txt">
-                  <img src="/Solution-icon.svg" alt="security-icon" />
+                  <img
+                    src={
+                      serviceList?.whatMakeUsDifferenceSection?.cards[1]?.icon
+                    }
+                    alt="security-icon"
+                  />
                   <h3 className="text-white mb-0 what-make-card-head font-anta">
-                    Comprehensive <br /> Solutions
+                    {/* Comprehensive <br /> Solutions */}
+                    {serviceList?.whatMakeUsDifferenceSection?.cards[1]?.title}
                   </h3>
                 </div>
                 <div>
                   <p className="what-make-para m-0">
-                    Secure365 is build on years of battling cybercrime, managing
-                    e-commerce platform, and developing technology strategies.
+                    {/* Secure365 is build on years of battling cybercrime, managing
+                    e-commerce platform, and developing technology strategies. */}
+                    {
+                      serviceList?.whatMakeUsDifferenceSection?.cards[1]
+                        ?.description
+                    }
                   </p>
                 </div>
               </div>
               <div className="what-make-card-box flex items-start space-x-4 bg-gray-900/30 rounded-lg border border-gray-800 hover:border-[#00AEEF] transition-colors">
                 <div className="flex items-center flex-shrink-0 what-icon-head-txt">
-                  <img src="/Victim-icon.svg" alt="security-icon" />
+                  <img
+                    src={
+                      serviceList?.whatMakeUsDifferenceSection?.cards[2]?.icon
+                    }
+                    alt="security-icon"
+                  />
                   <h3 className="text-white mb-0 what-make-card-head font-anta">
-                    Victim <br /> Approach
+                    {/* Victim <br /> Approach */}
+                    {serviceList?.whatMakeUsDifferenceSection?.cards[2]?.title}
                   </h3>
                 </div>
                 <div>
                   <p className="what-make-para m-0">
-                    Secure365 is built on years of battling cybercrime, managing
-                    e-commerce platforms, and developing real-world strategies.
+                    {/* Secure365 is built on years of battling cybercrime, managing
+                    e-commerce platforms, and developing real-world strategies. */}
+                    {
+                      serviceList?.whatMakeUsDifferenceSection?.cards[2]
+                        ?.description
+                    }
                   </p>
                 </div>
               </div>
               <div className="what-make-card-box flex items-start space-x-4 bg-gray-900/30 rounded-lg border border-gray-800 hover:border-[#00AEEF] transition-colors">
                 <div className="flex items-center flex-shrink-0 what-icon-head-txt">
-                  <img src="/Protection-icon.svg" alt="security-icon" />
+                  <img
+                    src={
+                      serviceList?.whatMakeUsDifferenceSection?.cards[3]?.icon
+                    }
+                    alt="security-icon"
+                  />
                   <h3 className="text-white mb-0 what-make-card-head font-anta">
-                    Advanced <br /> Protection
+                    {/* Advanced <br /> Protection */}
+                    {serviceList?.whatMakeUsDifferenceSection?.cards[3]?.title}
                   </h3>
                 </div>
                 <div>
                   <p className="what-make-para m-0">
-                    Secure365 provides innovative approaches to combat threats,
-                    ensuring the highest security standards.
+                    {/* Secure365 provides innovative approaches to combat threats,
+                    ensuring the highest security standards. */}
+                    {
+                      serviceList?.whatMakeUsDifferenceSection?.cards[3]
+                        ?.description
+                    }
                   </p>
                 </div>
               </div>
@@ -170,177 +208,178 @@ export default function AchievementsSection({ achievementCards }) {
           </div>
         </div>
 
+        <div ref={containerRef} className="relative ">
+          {/* Video container pinned */}
+          <div className="absolute top-0 left-0 w-full">
+            <video
+              ref={videoRef} // ✅ attach ref here
+              className="w-full h-full object-cover"
+              autoPlay
+              muted
+              loop
+              playsInline
+              src="/space-earth.mp4"
+              type="video/mp4"
+            />
+            <div className="absolute inset-0 bg-black/50" />
+          </div>
 
-    <div ref={containerRef} className="relative ">
-      {/* Video container pinned */}
-     <div className="absolute top-0 left-0 w-full">
-  <video
-    ref={videoRef}   // ✅ attach ref here
-    className="w-full h-full object-cover"
-    autoPlay
-    muted
-    loop
-    playsInline
-    src="/space-earth.mp4"
-    type="video/mp4"
-  />
-  <div className="absolute inset-0 bg-black/50" />
-</div>
+          {/* Rocket image */}
+          <Image
+            ref={rocketRef}
+            src="/images/rocket/R2.png"
+            alt="Rocket"
+            width={900}
+            height={900}
+            className="absolute z-9999"
+            style={{ visibility: "hidden" }}
+          />
 
-      {/* Rocket image */}
-      <Image
-        ref={rocketRef}
-        src="/images/rocket/R2.png"
-        alt="Rocket"
-        width={900}
-        height={900}
-        className="absolute z-9999"
-        style={{ visibility: "hidden" }}
-      />
-
-      {/* Sections container */}
-      <div ref={sectionsRef} className="relative">
-        {/* Achievements Section */}
-        <section className="min-h-screen flex items-center justify-center relative  our-services-sec">
-          <motion.div
-            className="container mx-auto px-6 py-20"
-            initial={{ y: 120, opacity: 0 }}
-            whileInView={{ y: 0, opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8, ease: "easeOut" }}
-          >
-            <motion.h2
-              className="our-service-heading text-white font-semibold"
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8 }}
-            >
-              Our
-              <br />
-              Services
-            </motion.h2>
-
-            <div className="relative ">
+          {/* Sections container */}
+          <div ref={sectionsRef} className="relative">
+            {/* Achievements Section */}
+            <section className="min-h-screen flex items-center justify-center relative  our-services-sec">
               <motion.div
-                className="flex will-change-transform"
-                animate={{ x: `-${achievementsSlide * 25}%` }}
-                transition={{ duration: 0.6, ease: "easeInOut" }}
+                className="container mx-auto px-6 py-20"
+                initial={{ y: 120, opacity: 0 }}
+                whileInView={{ y: 0, opacity: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8, ease: "easeOut" }}
               >
-                {achievementCards.map((card, idx) => (
-                  <div key={idx} className="w-1/4 flex-shrink-0 p-3">
-                    <div className="h-full flex flex-col bg-transparent backdrop-blur-sm border border-gray-700 rounded-lg p-6 py-8 hover:border-[#00AEEF] transition-all duration-300">
-                      {/* Gradient Background */}
-                      <div className="absolute inset-0 bg-gradient-to-r from-[#1A1A1A] via-[#3A4A65] to-[#B2B2B2] opacity-60 rounded-lg"></div>
+                <motion.h2
+                  className="our-service-heading text-white font-semibold"
+                  initial={{ opacity: 0, y: 50 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.8 }}
+                >
+                  {/* Our
+              <br />
+              Services */}
+                  {serviceList?.ourServiceSection?.heading}
+                </motion.h2>
 
-                      {/* Image */}
-                      <div className="flex justify-left mb-4 relative z-10">
-                        <Image
-                          src={card.icon}
-                          alt="service"
-                          width={60}
-                          height={60}
-                          className="rounded-lg"
-                        />
-                      </div>
+                <div className="relative ">
+                  <motion.div
+                    className="flex will-change-transform"
+                    animate={{ x: `-${achievementsSlide * 25}%` }}
+                    transition={{ duration: 0.6, ease: "easeInOut" }}
+                  >
+                    {serviceList?.ourServiceSection?.serviceCards?.map(
+                      (card, idx) => (
+                        <div key={idx} className="w-1/4 flex-shrink-0 p-3">
+                          <div className="h-full flex flex-col bg-transparent backdrop-blur-sm border border-gray-700 rounded-lg p-6 py-8 hover:border-[#00AEEF] transition-all duration-300">
+                            {/* Gradient Background */}
+                            <div className="absolute inset-0 bg-gradient-to-r from-[#1A1A1A] via-[#3A4A65] to-[#B2B2B2] opacity-60 rounded-lg"></div>
 
-                      {/* Title and Subtitle */}
-                      <div className="text-left mb-2 relative z-10">
-                        <span className="text-lg font-semibold text-white">
-                          {card.title}
-                        </span>
-                        <br />
-                        <span className="text-lg font-semibold text-white">
-                          {card.subtitle}
-                        </span>
-                      </div>
+                            {/* Image */}
+                            <div className="flex justify-left mb-4 relative z-10">
+                              <Image
+                                src={card.icon}
+                                alt="service"
+                                width={60}
+                                height={60}
+                                className="rounded-lg"
+                              />
+                            </div>
 
-                      {/* Description */}
-                      <p className="text-gray-400 text-sm mb-4 relative z-10">
-                        {card.desc}
-                      </p>
+                            {/* Title and Subtitle */}
+                            <div className="text-left mb-2 relative z-10">
+                              <span className="text-lg font-semibold text-white">
+                                {card.title}
+                              </span>
+                              <br />
+                              <span className="text-lg font-semibold text-white">
+                                {card.subtitle}
+                              </span>
+                            </div>
 
-                      {/* Button */}
-                      <div className="flex justify-left relative z-10">
-                        <button
-                          className="w-10 h-10 rounded-2 bg-white/10 border border-white/20 text-white hover:bg-white/20 disabled:opacity-40 transition-all duration-300"
-                          aria-label="Next achievements slide"
-                        >
-                          <ArrowUpRight className="w-5 h-5 mx-auto" />
-                        </button>
-                      </div>
-                    </div>
+                            {/* Description */}
+                            <p className="text-gray-400 text-sm mb-4 relative z-10">
+                              {card.desc}
+                            </p>
+
+                            {/* Button */}
+                            <div className="flex justify-left relative z-10">
+                              <button
+                                className="w-10 h-10 rounded-2 bg-white/10 border border-white/20 text-white hover:bg-white/20 disabled:opacity-40 transition-all duration-300"
+                                aria-label="Next achievements slide"
+                              >
+                                <ArrowUpRight className="w-5 h-5 mx-auto" />
+                              </button>
+                            </div>
+                          </div>
+                        </div>
+                      )
+                    )}
+                  </motion.div>
+
+                  {/* Navigation Buttons */}
+                  <div className="flex justify-end gap-3 slider-nav-btns">
+                    <button
+                      onClick={() =>
+                        setAchievementsSlide((s) => Math.max(0, s - 1))
+                      }
+                      disabled={achievementsSlide === 0}
+                      className="w-10 h-10 rounded-full bg-white/10 border border-white/20 text-white hover:bg-white/20 disabled:opacity-40"
+                      aria-label="Previous achievements slide"
+                    >
+                      <ChevronLeft className="w-5 h-5 mx-auto" />
+                    </button>
+                    <button
+                      onClick={() =>
+                        setAchievementsSlide((s) =>
+                          Math.min(achievementCards.length - 4, s + 1)
+                        )
+                      }
+                      disabled={
+                        achievementsSlide >= achievementCards.length - 4
+                      }
+                      className="w-10 h-10 rounded-full bg-white/10 border border-white/20 text-white hover:bg-white/20 disabled:opacity-40"
+                      aria-label="Next achievements slide"
+                    >
+                      <ChevronRight className="w-5 h-5 mx-auto" />
+                    </button>
                   </div>
-                ))}
+                </div>
+              </motion.div>
+            </section>
+
+            {/* Milestones Reached Section */}
+            <section
+              ref={sectionRef}
+              className="arrieved-destination min-h-screen flex flex-col items-center bg-[#02050f] justify-center relative w-full"
+            >
+              {/* Text animation */}
+              <motion.div
+                className="relative z-10 text-center mb-10"
+                initial={{ opacity: 0, y: 100 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 1, ease: "easeOut" }}
+              >
+                <h2 className="text-4xl lg:text-6xl text-white font-semibold mb-8">
+                  {/* You Arrived Your Destination */}
+                  {serviceList.youArrivedYourDestination}
+                </h2>
               </motion.div>
 
-              {/* Navigation Buttons */}
-              <div className="flex justify-end gap-3 slider-nav-btns">
-                <button
-                  onClick={() =>
-                    setAchievementsSlide((s) => Math.max(0, s - 1))
-                  }
-                  disabled={achievementsSlide === 0}
-                  className="w-10 h-10 rounded-full bg-white/10 border border-white/20 text-white hover:bg-white/20 disabled:opacity-40"
-                  aria-label="Previous achievements slide"
-                >
-                  <ChevronLeft className="w-5 h-5 mx-auto" />
-                </button>
-                <button
-                onClick={() =>
-                  setAchievementsSlide((s) =>
-                    Math.min(achievementCards.length - 4, s + 1)
-                  )
-                }
-                disabled={achievementsSlide >= achievementCards.length - 4}
-                className="w-10 h-10 rounded-full bg-white/10 border border-white/20 text-white hover:bg-white/20 disabled:opacity-40"
-                aria-label="Next achievements slide"
-              >
-                <ChevronRight className="w-5 h-5 mx-auto" />
-              </button>
+              <div className="relative w-full max-w-full shadow-lg">
+                <div className="container">
+                  <video
+                    className="w-full h-full object-cover rounded-lg"
+                    autoPlay
+                    muted
+                    loop
+                    playsInline
+                    src="/space-earth.mp4"
+                    type="video/mp4"
+                  />
+                </div>
               </div>
-            </div>
-          </motion.div>
-        </section>
-
-        {/* Milestones Reached Section */}
-        <section
-          ref={sectionRef}
-          className="arrieved-destination min-h-screen flex flex-col items-center bg-[#02050f] justify-center relative w-full"
-        >
-          {/* Text animation */}
-          <motion.div
-            className="relative z-10 text-center mb-10"
-            initial={{ opacity: 0, y: 100 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, ease: "easeOut" }}
-          >
-            <h2 className="text-4xl lg:text-6xl text-white font-semibold mb-8">
-              You Arrived Your Destination
-            </h2>
-          </motion.div>
-
-      
-<div className="relative w-full max-w-full shadow-lg">
-  <div className="container">
-  <video
-    className="w-full h-full object-cover rounded-lg"
-    autoPlay
-    muted
-    loop
-    playsInline
-    src="/space-earth.mp4"
-    type="video/mp4"
-  />
-  </div>
-</div>
-
-        </section>
-      </div>
-    </div>
-
-          </section>
-
+            </section>
+          </div>
+        </div>
+      </section>
     </>
   );
 }

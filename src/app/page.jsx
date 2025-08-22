@@ -34,6 +34,7 @@ import { toast, ToastContainer } from "react-toastify";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Link from "next/link";
+import {ContactFormHome} from "@/components/ContactFormHome"
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -239,7 +240,7 @@ export default function HomePage() {
       />
       <WhySecure365Section
         containerRef={containerRef}
-        serviceList={serviceList}
+        serviceList={serviceList.butWhySecureSection}
         className="relative z-20"
       />
 
@@ -247,13 +248,15 @@ export default function HomePage() {
 
       <AchievementsSection
         achievementCards={serviceCards}
+        serviceList={serviceList}
         className="relative z-20"
       />
 
-      <section className="bg-[#02050f] relative z-20 website-audit-form">
+      <ContactFormHome />
+
+      {/* <section className="bg-[#02050f] relative z-20 website-audit-form">
         <div className="audit-form-box relative">
           <div className="flex flex-col">
-            {/* Left Column */}
             <div className="flex top-audit-head">
               <h2 className="text-5xl md:text-6xl text-white leading-snug mb-0">
                 Wanna A Free <br /> WEBSITE AUDIT?
@@ -290,7 +293,6 @@ export default function HomePage() {
               </div>
             </div>
 
-            {/* Right Column */}
             <form className="flex flex-col gap-4" onSubmit={handleSubmit}>
               <div className="grid sm:grid-cols-2 gap-4">
                 <input
@@ -358,7 +360,7 @@ export default function HomePage() {
             </form>
           </div>
         </div>
-      </section>
+      </section> */}
 
       <FooterFour className="relative z-20" />
     </div>

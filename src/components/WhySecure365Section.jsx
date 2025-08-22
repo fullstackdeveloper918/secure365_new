@@ -15,7 +15,7 @@ export default function WhySecure365Section({ containerRef, serviceList }) {
   const rocketRef = useRef(null);
   const [totalLen, setTotalLen] = useState(1);
   const [screenSize, setScreenSize] = useState({ width: 0, height: 0 });
-
+  console.log(serviceList, "servicelist here2");
   const dashOffset = useMotionValue(1);
   const dotX1 = useMotionValue(0);
   const dotY1 = useMotionValue(0);
@@ -153,20 +153,9 @@ export default function WhySecure365Section({ containerRef, serviceList }) {
       <div className="relative z-10">
         {/* Marquee Heading */}
         <div className="overflow-hidden whitespace-nowrap">
-          {/* <div className="inline-block text-6xl lg:text-9xl animate-marquee">
-                        But, Why Secure365?&nbsp;&nbsp;&nbsp;&nbsp;But, Why Secure365?&nbsp;&nbsp;&nbsp;&nbsp;But,
-                        Why Secure365?&nbsp;&nbsp;&nbsp;&nbsp;But, Why Secure365?
-                    </div> */}
-
-          <div className="inline-block text-6xl lg:text-9xl  animate-marquee">
+          <div className="inline-block text-6xl lg:text-9xl animate-marquee">
             But, Why Secure365? But, Why Secure365?&nbsp;&nbsp;&nbsp;&nbsp;But,
             Why Secure365?&nbsp;&nbsp;&nbsp;&nbsp;But, Why
-            Secure365?&nbsp;&nbsp;&nbsp;&nbsp;But, Why Secure365? But, Why
-            Secure365?&nbsp;&nbsp;&nbsp;&nbsp;But, Why
-            Secure365?&nbsp;&nbsp;&nbsp;&nbsp;But, Why
-            Secure365?&nbsp;&nbsp;&nbsp;&nbsp;But, Why Secure365? But, Why
-            Secure365?&nbsp;&nbsp;&nbsp;&nbsp;But, Why
-            Secure365?&nbsp;&nbsp;&nbsp;&nbsp;But, Why
             Secure365?&nbsp;&nbsp;&nbsp;&nbsp;But, Why Secure365? But, Why
             Secure365?&nbsp;&nbsp;&nbsp;&nbsp;But, Why
             Secure365?&nbsp;&nbsp;&nbsp;&nbsp;But, Why
@@ -264,115 +253,161 @@ export default function WhySecure365Section({ containerRef, serviceList }) {
               style={{ visibility: "hidden" }}
             />
 
-            {/* Content Blocks */}
-            <motion.div
-              initial={{ opacity: 0, x: -50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8, delay: 0.1 }}
-              viewport={{ once: true }}
-              className="absolute flex top-0 max-w-full first-project-del-box"
-            >
-              <div className="relative h-100">
-                <div className="absolute -top-4 -right-8 text-[#00AEEF] text-2xl">
-                  ✦
+            {/* Content Block 1 */}
+            {serviceList?.blocks[0] && (
+              <motion.div
+                initial={{ opacity: 0, x: -50 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.8, delay: 0.1 }}
+                viewport={{ once: true }}
+                className="absolute flex top-0 max-w-full first-project-del-box"
+              >
+                <div className="relative text-left">
+                  <div className="absolute -top-4 -right-8 text-[#00AEEF] text-2xl">
+                    ✦
+                  </div>
+                  <div className="absolute -bottom-4 -left-4 text-[#00AEEF] text-lg">
+                    ✦
+                  </div>
+                  <div className="num-rotate-head font-semibold text-[#00AEEF]">
+                    {serviceList.blocks[0].number}
+                  </div>
+                  <div className="num-rotate-para text-white mb-0">
+                    {serviceList.blocks[0].label}
+                  </div>
                 </div>
-                <div className="absolute -bottom-4 -left-4 text-[#00AEEF] text-lg">
-                  ✦
-                </div>
-                <div className="num-rotate-head font-semibold text-[#00AEEF]">
-                  3200+
-                </div>
-                <div className="num-rotate-para text-white mb-0">
-                  Projects Delivered
-                </div>
-              </div>
-              <div className="project-del-contBox">
-                <p className="text-white">
-                  At Secure 365, we understand that navigating the digital world
-                  can be overwhelming. That's why we've designed our services to
-                  be a one-stop solution, covering everything from cloud
-                  management and IT support to marketing and cybersecurity.
-                  <br />
-                  <br />
-                  Our approach combines expertise, proactive management, and
-                  industry-leading technology to deliver seamless experiences,
-                  minimize risk, and maximize efficiency.
-                </p>
-                <Link
-                  href={"/contact-us"}
-                  className="bg-[#00AEEF] hover:bg-[#0099d4] rounded-lg text-white primary-btn-style"
-                >
-                  Discuss Your Requirement
-                </Link>
-              </div>
-            </motion.div>
+                {serviceList.blocks[0].description && (
+                  <div className="project-del-contBox">
+                    <p className="text-white">{serviceList.blocks[0].description}</p>
+                    {serviceList.blocks[0].button && (
+                      <Link
+                        href={serviceList.blocks[0].button.link}
+                        className="bg-[#00AEEF] hover:bg-[#0099d4] rounded-lg text-white primary-btn-style"
+                      >
+                        {serviceList.blocks[0].button.text}
+                      </Link>
+                    )}
+                  </div>
+                )}
+              </motion.div>
+            )}
 
-            <motion.div
-              initial={{ opacity: 0, x: 50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-              viewport={{ once: true }}
-              className="absolute top-[500px] left-32"
-            >
-              <div className="relative text-left">
-                <div className="absolute -top-6 -left-8 text-[#00AEEF] text-xl">
-                  ✦
+            {/* Content Block 2 */}
+            {serviceList?.blocks[1] && (
+              <motion.div
+                initial={{ opacity: 0, x: 50 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.8, delay: 0.2 }}
+                viewport={{ once: true }}
+                className="absolute top-[500px] left-32"
+              >
+                <div className="relative text-left">
+                  <div className="absolute -top-6 -left-8 text-[#00AEEF] text-xl">
+                    ✦
+                  </div>
+                  <div className="absolute -bottom-2 right-4 text-[#00AEEF] text-lg">
+                    ✦
+                  </div>
+                  <div className="num-rotate-head font-semibold text-[#00AEEF]">
+                    {serviceList.blocks[1].number}
+                  </div>
+                  <div className="num-rotate-para text-white mb-0">
+                    {serviceList.blocks[1].label}
+                  </div>
                 </div>
-                <div className="absolute -bottom-2 right-4 text-[#00AEEF] text-lg">
-                  ✦
-                </div>
-                <div className="num-rotate-head font-semibold text-[#00AEEF]">
-                  100+
-                </div>
-                <div className="num-rotate-para text-white mb-0">Experts</div>
-              </div>
-            </motion.div>
+                {serviceList.blocks[1].description && (
+                  <div className="project-del-contBox">
+                    <p className="text-white">{serviceList.blocks[1].description}</p>
+                    {serviceList.blocks[1].button && (
+                      <Link
+                        href={serviceList.blocks[1].button.link}
+                        className="bg-[#00AEEF] hover:bg-[#0099d4] rounded-lg text-white primary-btn-style"
+                      >
+                        {serviceList.blocks[1].button.text}
+                      </Link>
+                    )}
+                  </div>
+                )}
+              </motion.div>
+            )}
 
-            <motion.div
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.3 }}
-              viewport={{ once: true }}
-              className="absolute top-[800px] right-40 transform -translate-x-1/2"
-            >
-              <div className="relative text-left">
-                <div className="absolute -top-4 -right-12 text-[#00AEEF] text-2xl">
-                  ✦
+            {/* Content Block 3 */}
+            {serviceList?.blocks[2] && (
+              <motion.div
+                initial={{ opacity: 0, y: 50 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.3 }}
+                viewport={{ once: true }}
+                className="absolute top-[800px] right-40 transform -translate-x-1/2"
+              >
+                <div className="relative text-left">
+                  <div className="absolute -top-4 -right-12 text-[#00AEEF] text-2xl">
+                    ✦
+                  </div>
+                  <div className="absolute -bottom-6 -left-8 text-[#00AEEF] text-lg">
+                    ✦
+                  </div>
+                  <div className="num-rotate-head font-semibold text-[#00AEEF]">
+                    {serviceList.blocks[2].number}
+                  </div>
+                  <div className="num-rotate-para text-white mb-0">
+                    {serviceList.blocks[2].label}
+                  </div>
                 </div>
-                <div className="absolute -bottom-6 -left-8 text-[#00AEEF] text-lg">
-                  ✦
-                </div>
-                <div className="num-rotate-head font-semibold text-[#00AEEF]">
-                  13+
-                </div>
-                <div className="num-rotate-para text-white mb-0">
-                  Years & Counting
-                </div>
-              </div>
-            </motion.div>
+                {serviceList.blocks[2].description && (
+                  <div className="project-del-contBox">
+                    <p className="text-white">{serviceList.blocks[2].description}</p>
+                    {serviceList.blocks[2].button && (
+                      <Link
+                        href={serviceList.blocks[2].button.link}
+                        className="bg-[#00AEEF] hover:bg-[#0099d4] rounded-lg text-white primary-btn-style"
+                      >
+                        {serviceList.blocks[2].button.text}
+                      </Link>
+                    )}
+                  </div>
+                )}
+              </motion.div>
+            )}
 
-            <motion.div
-              initial={{ opacity: 0, x: -50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8, delay: 0.4 }}
-              viewport={{ once: true }}
-              className="absolute bottom-0 left-32 transform -translate-x-1/2"
-            >
-              <div className="relative text-left">
-                <div className="absolute -top-2 right-8 text-[#00AEEF] text-xl">
-                  ✦
+            {/* Content Block 4 */}
+            {serviceList?.blocks[3] && (
+              <motion.div
+                initial={{ opacity: 0, x: -50 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.8, delay: 0.4 }}
+                viewport={{ once: true }}
+                className="absolute bottom-0 left-32 transform -translate-x-1/2"
+              >
+                <div className="relative text-left">
+                  <div className="absolute -top-2 right-8 text-[#00AEEF] text-xl">
+                    ✦
+                  </div>
+                  <div className="absolute -bottom-4 -right-4 text-[#00AEEF] text-lg">
+                    ✦
+                  </div>
+                  <div className="num-rotate-head font-semibold text-[#00AEEF]">
+                    {serviceList.blocks[3].number}
+                  </div>
+                  <div className="num-rotate-para text-white mb-0">
+                    {serviceList.blocks[3].label}
+                  </div>
                 </div>
-                <div className="absolute -bottom-4 -right-4 text-[#00AEEF] text-lg">
-                  ✦
-                </div>
-                <div className="num-rotate-head font-semibold text-[#00AEEF]">
-                  32+
-                </div>
-                <div className="num-rotate-para text-white mb-0">
-                  Countries Served
-                </div>
-              </div>
-            </motion.div>
+                {serviceList.blocks[3].description && (
+                  <div className="project-del-contBox">
+                    <p className="text-white">{serviceList.blocks[3].description}</p>
+                    {serviceList.blocks[3].button && (
+                      <Link
+                        href={serviceList.blocks[3].button.link}
+                        className="bg-[#00AEEF] hover:bg-[#0099d4] rounded-lg text-white primary-btn-style"
+                      >
+                        {serviceList.blocks[3].button.text}
+                      </Link>
+                    )}
+                  </div>
+                )}
+              </motion.div>
+            )}
           </div>
         </div>
       </div>

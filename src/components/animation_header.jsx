@@ -37,6 +37,8 @@ const AnimationHeader = () => {
 
   const [serviceList, setServiceList] = useState([]);
 
+
+  console.log(hoveredItem,"hoveredItem checking")
   useEffect(() => {
     const handleResize = () => {
       setIsDesktop(window.innerWidth >= 1025);
