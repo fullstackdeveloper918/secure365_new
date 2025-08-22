@@ -207,7 +207,7 @@ const Page = () => {
                   <div id="hero-styles">
                     <div
                       id="hero-caption"
-                      className="content-full-width parallax-scroll-caption project-top-bg"
+                      className="content-full-width parallax-scroll-caption project-top-bg relative"
                     >
                       {/* <video src="/Futuristic_Tech.mp4" className="Project-ban-vd"></video> */}
                       <video
@@ -217,7 +217,7 @@ const Page = () => {
                         playsInline
                         className="absolute top-0 left-0 w-full h-full object-cover object-top z-0"
                       >
-                        <source src="/Futuristic_Tech.mp4" type="video/mp4" />
+                        <source src="/Space-Future-Project.mp4" type="video/mp4" />
                         Your browser does not support the video tag.
                       </video>
                       <div id="space-animation"></div> {/* Space Animation Here */}

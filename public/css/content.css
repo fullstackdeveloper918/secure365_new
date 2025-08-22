@@ -1065,7 +1065,7 @@ Responsive
 @media only screen and (max-width: 1537px) {
   #hero.has-image #hero-caption {
     padding-top: 130px;
-    padding-bottom: 130px;
+    padding-bottom: 100px !important;
   }
 
   .hero-below-caption #next-project-caption {

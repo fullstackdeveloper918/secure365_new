@@ -9023,6 +9023,16 @@ h1.main-serv-head {
   letter-spacing: -0.1vw !important;
   color: #fff !important;
   text-transform: uppercase;
+  opacity: 1 !important;
+}
+.project-top-bg::after {
+    position: absolute;
+    content: '';
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 50px;
+    background: linear-gradient(180deg, #00000000, #000000d6);
 }
 
 .project-top-heading span {
@@ -9054,7 +9064,7 @@ h1.main-serv-head {
   height: 100%;
   left: 0;
   top: 0;
-  background: #00000090;
+  background: #000000ba;
 }
 
 .project-top-bg {
@@ -9089,14 +9099,17 @@ h1.main-serv-head {
 }
 
 .visual-sec {
-  padding: 80px 40px;
+  padding: 100px 40px;
   height: 75vh;
+  background:#000
 }
 
 .visual-sec h2 {
   font-size: 44px;
   line-height: 56px;
   margin-bottom: 50px;
+  font-weight: 600;
+  color: #fff;
 }
 
 /* styles.css */
@@ -9113,6 +9126,7 @@ h1.main-serv-head {
 
 .secureway-sec {
   padding: 0 0 80px 0;
+  background: #000;
 }
 
 .overlay-box {
@@ -9120,7 +9134,8 @@ h1.main-serv-head {
 }
 
 .gallery-sec {
-  padding: 80px 0;
+  padding: 100px 0;
+  background: #000;
 }
 
 .gallery-sec h2 {
@@ -9576,7 +9591,13 @@ header.clapat-header.classic-menu.invert-header.scrolled div#header-container {
 /* WHat make diffrent section css start */
 
 .what-make-different-sec {
-  padding: 200px 20px;
+  padding: 200px 0px 0px;
+}
+section.our-services-sec {
+    padding: 150px 20px;
+}
+.what-make-gradient {
+    padding-bottom: 200px;
 }
 .what-make-heading {
   font-size: 86px;
@@ -9607,6 +9628,16 @@ header.clapat-header.classic-menu.invert-header.scrolled div#header-container {
   background: linear-gradient(180deg, #ffffff10, #ffffff10);
   backdrop-filter: blur(50px);
   min-height: 161px;
+}
+.what-make-gradient::after{
+   position: absolute;
+  content: "";
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100px;
+  background: linear-gradient(180deg, #02020200, #020202);
+  z-index: 1;
 }
 .what-make-card-box:before {
   border: 1px solid;
@@ -9639,7 +9670,7 @@ header.clapat-header.classic-menu.invert-header.scrolled div#header-container {
 .what-make-outer-box .what-make-card-box-inner {
   width: 57%;
 }
-.what-make-different-sec::after {
+/* .what-make-different-sec::after {
   position: absolute;
   content: "";
   left: 0;
@@ -9648,7 +9679,7 @@ header.clapat-header.classic-menu.invert-header.scrolled div#header-container {
   height: 200px;
   background: linear-gradient(180deg, #02020200, #020202);
   z-index: 1;
-}
+} */
 .hero-sec::after {
     position: absolute;
     content: "";
@@ -9661,7 +9692,7 @@ header.clapat-header.classic-menu.invert-header.scrolled div#header-container {
 }
 
 /* End */
-
+z
 /* our service section css start */
 
 .our-services-sec {
@@ -9675,7 +9706,6 @@ header.clapat-header.classic-menu.invert-header.scrolled div#header-container {
   width: 100%;
   height: 200px;
   background: linear-gradient(360deg, #02020200, #020202);
-  z-index: 1;
 }
 
 .our-services-sec::after {
@@ -9684,9 +9714,12 @@ header.clapat-header.classic-menu.invert-header.scrolled div#header-container {
   left: 0;
   bottom: 0;
   width: 100%;
-  height: 200px;
+  height: 150px;
   background: linear-gradient(180deg, #02020200, #020202);
   z-index: 1;
+}
+.slider-nav-btns{
+  margin-top: 60px;
 }
 
 
@@ -9708,7 +9741,7 @@ header.clapat-header.classic-menu.invert-header.scrolled div#header-container {
     z-index: 1;
 }
 .arrieved-destination{
-  padding: 144px 0px 100px 0px;
+  padding: 200px 0px 100px 0px;
 }
 .destination-head {
     font-size: 86px;
@@ -9721,7 +9754,7 @@ header.clapat-header.classic-menu.invert-header.scrolled div#header-container {
   left: 0;
   top: 0;
   width: 100%;
-  height: 200px;
+  height: 100px;
   background: linear-gradient(360deg, #02020200, #020202);
   z-index: 1;
 }
@@ -9954,6 +9987,18 @@ footer.footer {
 
 
 @media screen and (max-width:1480px){
+  section.our-services-sec {
+    padding: 120px 20px;
+}
+.arrieved-destination {
+    padding: 120px 0px 60px 0px;
+}
+section.our-services-sec {
+    padding: 120px 20px;
+}
+  .what-make-gradient {
+    padding-bottom: 100px !important;
+}
   .global-primary-btn{
   padding: 18px 30px;
   font-size: 18px;
@@ -10074,6 +10119,23 @@ div#header-container .menu-link-call-action nav.clapat-nav-wrapper ul.flexnav li
 }
 
 @media screen and (max-width:991px){
+  .project-top-heading span {
+    text-align: center;
+    justify-content: center !important;
+    display: flex;
+}
+.project-top-para {
+    max-width: 100%;
+}
+.project-top-para span {
+    text-align: center !important;
+    font-size: 16px;
+    line-height: 26px;
+}
+.project-top-heading span {
+    font-size: 40px;
+    line-height: normal;
+}
   .global-primary-btn {
     padding: 16px 30px;
     font-size: 18px;
@@ -10260,9 +10322,132 @@ div#header-container .icon-wrap.parallax-wrap .button-icon.parallax-element {
         font-size: 18px;
         line-height: normal;
 }
+.project-top-heading {
+    margin-bottom: 10px !important;
+}
+.project-top-bg {
+    height: 600px !important;
+}
+.why-hero-section h1 {
+    font-size: 40px !important;
+    max-width: 100% !important;
+}
+.why-hero-section .content-left {
+    width: 100% !important;
+    display: inline-block;
+}
+section.why-hero-section .container {
+    gap: 0px !important;
+}
+.more-design-content h2 {
+    font-size: 36px;
+    line-height: 48px;
+}
+.more-design-content p {
+    font-size: 18px;
+}
+.visual-sec h2 {
+    font-size: 40px;
+    line-height: 50px;
+    margin-bottom: 40px;
+}
+.visual-sec {
+    padding: 80px 20px;
+    height: 100%;
+    background: #000;
+}
+.secureway-sec h2 {
+    font-size: 36px;
+}
+.gallery-sec h2 {
+    font-size: 38px;
+    line-height: 46px;
+    margin-bottom: 60px;
+}
+.gallery-sec {
+    padding: 80px 0;
+}
+  .cta-sec {
+    padding: 80px 15px;
+}
+.cta-sec h2 {
+    font-size: 40px;
+    line-height: 50px;
+    margin-bottom: 15px;
+}
+.cta-sec p {
+    font-size: 18px;
+    max-width: 680px;
+}
 }
 
 @media screen and (max-width:767px){
+.cta-sec h2 {
+    font-size: 32px;
+    line-height: 44px;
+    margin-bottom: 10px;
+}
+.cta-sec button {
+    padding: 16px 34px;
+    font-size: 16px;
+    font-weight: 400;
+    border: 2px solid #fff;
+    margin-top: 0px !important;
+}
+.cta-sec p {
+    font-size: 16px;
+    max-width: 680px;
+}
+  .gallery-sec {
+    padding: 80px 0;
+}
+  .gallery-sec h2 {
+    font-size: 32px;
+    line-height: 44px;
+    margin-bottom: 60px;
+}
+  .secureway-sec h2 {
+    font-size: 30px;
+}
+  .visual-sec {
+    padding: 60px 20px;
+}
+  .visual-sec h2 {
+    font-size: 32px;
+    line-height: 44px;
+    margin-bottom: 25px;
+    font-weight: 600;
+    color: #fff;
+}
+  .more-design-content h2 {
+    font-size: 28px;
+    line-height: 36px;
+    margin-bottom: 15px;
+}
+  .hover-proj-box{
+    display: none;
+  }
+  .more-design-sec {
+    padding: 80px 20px !important;
+    min-height: 100% !important;
+    position: relative !important;
+}
+  section.jsx-48dd8608d863ed90.why-hero-section {
+    padding: 60px 20px;
+}
+  .why-hero-section h1 {
+    font-size: 28px !important;
+    max-width: 100% !important;
+}
+.why-hero-section .card-box h3 {
+    font-size: 20px;
+    margin-bottom: 10px;
+    max-width: 100%;
+}
+  .project-top-heading span {
+    font-size: 32px;
+    line-height: normal;
+  }
     .global-primary-btn {
     padding: 16px 30px;
     font-size: 16px;
@@ -10389,6 +10574,9 @@ div#header-container a.ajax-link{
 }
 
 @media screen and (max-width:575px){
+    .secureway-sec h2 {
+    font-size: 28px;
+}
   .global-primary-btn {
     padding: 14px 30px;
     font-size: 16px;
