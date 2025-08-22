@@ -198,9 +198,9 @@ const AnimationHeader = () => {
                     </Link>
 
                     {/* Show submenu on hover */}
-                    {item === "Service" &&
+                    {item === "Our Services" &&
                       isDesktop &&
-                      hoveredItem === "Service" && (
+                      hoveredItem === "Our Services" && (
                         <div className="sub-menu">
                           {serviceList?.home_page_service_section_loop_data?.map(
                             (service, index) => (
