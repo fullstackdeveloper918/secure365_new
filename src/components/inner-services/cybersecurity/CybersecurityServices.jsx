@@ -3,6 +3,7 @@ import { useEffect, useRef } from "react";
 import { Shield, Lock, FileCheck } from "lucide-react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import Link from "next/link";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -131,12 +132,12 @@ export default function CybersecurityServices() {
                   {service.price}
                 </div>
                 <p className="text-sm text-slate-500 mb-0">{service.priceNote}</p>
-                <button
+                <Link href={"/contact-us"}
                   className={`mt-4 w-full px-4 py-2 rounded-md text-white font-semibold cb-btn-prc ${service.buttonStyle || "bg-slate-800 hover:bg-slate-900"
                     }`}
                 >
                   {service.buttonText}
-                </button>
+                </Link>
               </div>
             </div>
           ))}

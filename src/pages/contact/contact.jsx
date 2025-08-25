@@ -35,7 +35,7 @@ const ContactMain = ({ contactData }) => {
     <Wrapper>
       {/* header area start */}
       {/* <HeaderEleven /> */}
-      <AnimationHeader />
+      {/* <AnimationHeader /> */}
 
       {/* header area end */}
 

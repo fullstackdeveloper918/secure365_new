@@ -7,7 +7,7 @@ export const metadata = {
   title: "Secure 365 - About us page",
 };
 
-const  AboutUsPage = async() => {
+const AboutUsPage = async () => {
   const data = await fetch(
     `${config.APP_URL}/secure-plugin/v1/about`,
     {
@@ -25,11 +25,11 @@ const  AboutUsPage = async() => {
   const bannerResponse = await bannerData.json();
 
   return (<>
-    <AnimationHeader/>
+    {/* <AnimationHeader/> */}
     <div className="about_usClass">
-      <AboutUsMain aboutResponse={aboutResponse} bannerResponse={bannerResponse}/>
+      <AboutUsMain aboutResponse={aboutResponse} bannerResponse={bannerResponse} />
     </div>
-    </>
+  </>
   );
 };
 

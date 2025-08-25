@@ -3,6 +3,7 @@ import React, { useEffect } from "react";
 import { UilCheck } from "@iconscout/react-unicons";
 import AOS from "aos";
 import "aos/dist/aos.css";
+import Link from "next/link";
 
 const PricingCards = () => {
   useEffect(() => {
@@ -101,9 +102,9 @@ const PricingCards = () => {
               </ul>
             </div>
 
-            <button className="text-white px-6 py-3 rounded-pill transition w-full price-btn">
+            <Link href={"/contact-us"} className="text-white px-6 py-3 rounded-pill transition w-full price-btn">
               Choose this plan
-            </button>
+            </Link>
           </article>
         ))}
       </section>

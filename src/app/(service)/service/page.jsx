@@ -29,7 +29,7 @@ const ServicePage = async () => {
 
   return (
     <>
-      <AnimationHeader />
+      {/* <AnimationHeader /> */}
       <ServiceMain
         serviceData={serviceData}
         serviceBannerData={serviceBannerData}

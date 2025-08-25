@@ -4,9 +4,9 @@ import Link from "next/link";
 import { Rocket } from "lucide-react";
 // internal imports
 import shape from '@/assets/img/home-03/about/ab-shape-img.png';
-import { ArrowBg, RightArrowTwo,FirstBracket, FirstBracketTwo } from "../svg";
+import { ArrowBg, RightArrowTwo, FirstBracket, FirstBracketTwo } from "../svg";
 
-export default function AboutThree({aboutResponse}) {
+export default function AboutThree({ aboutResponse }) {
 
   return (
     <div className="tp-about-3-area our-story">
@@ -19,14 +19,14 @@ export default function AboutThree({aboutResponse}) {
                   <FirstBracket />
                 </span> */}
                 <span className="tp-subtitle-text tp_text_invert p-0 text-[#009dd6] fw-bold">
-              {/* {aboutResponse?.data?.about_our_story_section_heading} */}Our <span>Story</span>
+                  {/* {aboutResponse?.data?.about_our_story_section_heading} */}Our <span>Story</span>
                 </span>
                 {/* <span>
                   <FirstBracketTwo />
                 </span> */}
               </span>
               <h2 className="tp-section-title-90 tp_text_invert tp_fade_bottom our-story-head text-uppercase">
-             {aboutResponse?.data?.about_our_story_section_experienced_heading}
+                {aboutResponse?.data?.about_our_story_section_experienced_heading}
                 {/* <span>
                  
                   <br />{aboutResponse?.data?.about_our_story_experienced_heading_second}
@@ -38,20 +38,20 @@ export default function AboutThree({aboutResponse}) {
         <div className="row align-items-center">
           <div className="col-xl-6 col-lg-6 col-md-4">
             <div className=" about-img story-img">
-            <Image src="/images/about-us.png"  alt="shape" width={500} height={300} style={{ width: "auto", height: "auto" }} 
-/>
+              <Image src="/images/about-us.png" alt="shape" width={500} height={300} style={{ width: "auto", height: "auto" }}
+              />
             </div>
           </div>
           <div className="col-xl-6 col-lg-6 col-md-8">
             <div className="tp-about-3-content story-content-box">
               <h4>
-                 {aboutResponse?.data?.about_our_story_experienced_heading_second}
-                </h4>
+                {aboutResponse?.data?.about_our_story_experienced_heading_second}
+              </h4>
               <p className="mb-0 tp_fade_bottom">
-             {aboutResponse?.data?.about_our_story_section_paragraph}
+                {aboutResponse?.data?.about_our_story_section_paragraph}
               </p>
               <p className="mb-45 tp_fade_bottom">
-            {aboutResponse?.data?.about_our_story_section_paragraph_second}
+                {aboutResponse?.data?.about_our_story_section_paragraph_second}
               </p>
               {/* <div className="btn_sec flex gap-3 flex-wrap text-align-center">
                       <Link href="/contact-us" className="BtnTwo btnWrapper rounded-pill">
@@ -72,7 +72,7 @@ export default function AboutThree({aboutResponse}) {
                     </span>
                     </Link>
               </div> */}
-               {/* <div className="cta-project-btn service-all-btn">
+              {/* <div className="cta-project-btn service-all-btn">
                             <button className="relative z-[99] bannerbtn flex items-center justify-content-center justify-content-lg-start w-full">
                               <Link className="header-button ajax-link" href="/contact-us">
                                 <div className="button-icon-link right white-hovBtn">
@@ -90,9 +90,9 @@ export default function AboutThree({aboutResponse}) {
                               </Link>
                             </button>
                 </div> */}
-                <Link href={"/contact-us"} className="bg-[#00AEEF] hover:bg-[#0099d4] text-white rounded-lg global-primary-btn">
-                          Learn More
-                </Link>
+              <Link href={"/contact-us"} className="bg-[#00AEEF] hover:bg-[#0099d4] text-white rounded-lg global-primary-btn">
+                Learn More
+              </Link>
             </div>
           </div>
         </div>

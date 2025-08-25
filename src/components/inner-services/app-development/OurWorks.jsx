@@ -47,21 +47,21 @@ export default function WorkShowcase() {
       title: "HealthPlus Mobile App",
       description:
         "HIPAA-compliant telehealth platform with video consultations and prescription management.",
-      href: "/case-studies/healthplus",
+      href: "/contact-us",
       image: "../../assets/img/inner-service/service/HealthPlus-Mobile-App.jpg",
     },
     {
       title: "FinTech Dashboard",
       description:
         "Real-time financial analytics platform with secure transaction processing and reporting.",
-      href: "/case-studies/fintech",
+      href: "/contact-us",
       image: "../../assets/img/inner-service/service/FinTech-Dashboard.jpg",
     },
     {
       title: "E-commerce Platform",
       description:
         "Scalable e-commerce solution with inventory management and payment processing.",
-      href: "/case-studies/ecommerce",
+      href: "/contact-us",
       image: "../../assets/img/inner-service/service/E-commerce-Platform.jpg",
     },
   ];
@@ -95,29 +95,29 @@ export default function WorkShowcase() {
 
         
       `}</style>
-    
-    <section className="relative bg-white our-work-serv-sec">
-      <div className="container mx-auto px-4">
-        <h2
-          className="text-white font-semibold text-center relative our-work-head-txt"
-          data-aos="fade-up"
-        >
-          Our Work
-        </h2>
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-12 our-work-sec-inner">
-          {projects.map((project, index) => (
-  <WorkCard
-    key={index}
-    {...project}
-    data-aos="fade-up"
-    data-aos-delay={index * 100}
-    data-aos-offset="120"
-  />
-))}
-        </div>
+      <section className="relative bg-white our-work-serv-sec">
+        <div className="container mx-auto px-4">
+          <h2
+            className="text-white font-semibold text-center relative our-work-head-txt"
+            data-aos="fade-up"
+          >
+            Our Work
+          </h2>
 
-        {/* <div className="text-center" data-aos="fade-up" data-aos-delay="500">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-12 our-work-sec-inner">
+            {projects.map((project, index) => (
+              <WorkCard
+                key={index}
+                {...project}
+                data-aos="fade-up"
+                data-aos-delay={index * 100}
+                data-aos-offset="120"
+              />
+            ))}
+          </div>
+
+          {/* <div className="text-center" data-aos="fade-up" data-aos-delay="500">
           <Link
             href="/case-studies"
             className="text-[#393939] fw-semibold fs-6 px-4 py-3 border rounded-pill inline-block hover:text-black"
@@ -127,7 +127,7 @@ export default function WorkShowcase() {
           </Link>
         </div> */}
 
-        {/* <div className="cta-project-btn service-all-btn" data-aos="fade-up" >
+          {/* <div className="cta-project-btn service-all-btn" data-aos="fade-up" >
                     <button className="relative z-[99] bannerbtn mt-14 mx-auto flex items-center justify-center">
                       <Link className="header-button ajax-link" href="/case-studies">
                         <div className="button-icon-link right">
@@ -145,13 +145,13 @@ export default function WorkShowcase() {
                       </Link>
                     </button>
                   </div> */}
-                  <div className="text-center">
-                <Link href={"/contact-us"} className="bg-[#00AEEF] hover:bg-[#0099d4] text-white rounded-lg global-primary-btn z-10 mt-4">
-                          View All Case Studies
-                </Link>
-                  </div>
-      </div>
-    </section>
+          <div className="text-center">
+            <Link href={"/contact-us"} className="bg-[#00AEEF] hover:bg-[#0099d4] text-white rounded-lg global-primary-btn z-10 mt-4">
+              View All Case Studies
+            </Link>
+          </div>
+        </div>
+      </section>
     </>
   );
 }

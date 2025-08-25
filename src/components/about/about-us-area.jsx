@@ -8,13 +8,13 @@ export default function AboutUsArea({ aboutResponse }) {
   console.log(aboutResponse, "aboutResponse")
 
   const images = [
-  "/images/about-us.png",
-  "/images/Ab-Card2.jpg"
-];
+    "/images/about-us.png",
+    "/images/Ab-Card2.jpg"
+  ];
   const images2 = [
-  "/images/Ab-Card3.jpg",
-  "/images/Ab-Card4.jpg"
-];
+    "/images/Ab-Card3.jpg",
+    "/images/Ab-Card4.jpg"
+  ];
 
   return (
     <div className="ab-about-area ab-about-mt z-index-5 our-core-sec relative overflow-hidden bg-black">
@@ -66,30 +66,30 @@ export default function AboutUsArea({ aboutResponse }) {
                   <div className="row">
                     <div className="ab-about-category-list category-space-1 tp_fade_bottom">
                       <ul className="md:flex gap-4 ms-0 core-value-cards">
-                       {aboutResponse &&
-                        aboutResponse?.data?.about_page_customer_approach_data?.map((item, index) => (
-                          <React.Fragment key={index}>
-                            <li>
-                              <img className="core-val-img" src={images[index] || "/images/default.png"} alt={`Image ${index + 1}`} />
-                              <div className="core-content-box">
-                                <h3 className="h5-title">{item?.about_page_customer_first_approach}</h3>
-                                <p className="mb-0">{item?.about_page_customer_integrity_transparency}</p>
-                              </div>
-                            </li>
-                          </React.Fragment>
-                        ))}
-                                            {aboutResponse &&
-                        aboutResponse?.data?.about_page_security_responsibility_data?.map((item, index) => (
-                          <React.Fragment key={index}>
-                            <li>
-                              <img className="core-val-img" src={images2[index] || "/images/default.png"} alt={`Image ${index + 1}`} />
-                              <div className="core-content-box">
-                                <h3 className="h5-title">{item?.about_page_security_heading}</h3>
-                                <p className="mb-0">{item?.about_page_security_paragraph}</p>
-                              </div>
-                            </li>
-                          </React.Fragment>
-                        ))}
+                        {aboutResponse &&
+                          aboutResponse?.data?.about_page_customer_approach_data?.map((item, index) => (
+                            <React.Fragment key={index}>
+                              <li>
+                                <img className="core-val-img" src={images[index] || "/images/default.png"} alt={`Image ${index + 1}`} />
+                                <div className="core-content-box">
+                                  <h3 className="h5-title">{item?.about_page_customer_first_approach}</h3>
+                                  <p className="mb-0">{item?.about_page_customer_integrity_transparency}</p>
+                                </div>
+                              </li>
+                            </React.Fragment>
+                          ))}
+                        {aboutResponse &&
+                          aboutResponse?.data?.about_page_security_responsibility_data?.map((item, index) => (
+                            <React.Fragment key={index}>
+                              <li>
+                                <img className="core-val-img" src={images2[index] || "/images/default.png"} alt={`Image ${index + 1}`} />
+                                <div className="core-content-box">
+                                  <h3 className="h5-title">{item?.about_page_security_heading}</h3>
+                                  <p className="mb-0">{item?.about_page_security_paragraph}</p>
+                                </div>
+                              </li>
+                            </React.Fragment>
+                          ))}
 
 
                         {/* {aboutResponse &&
@@ -127,10 +127,10 @@ export default function AboutUsArea({ aboutResponse }) {
                         </button>
                       </div> */}
                       <div className="text-center">
-                      <Link href={"/contact-us"} className="bg-[#00AEEF] hover:bg-[#0099d4] text-white rounded-lg global-primary-btn">
-                         Learn More
-                </Link>
-                </div>
+                        <Link href={"/contact-us"} className="bg-[#00AEEF] hover:bg-[#0099d4] text-white rounded-lg global-primary-btn">
+                          Learn More
+                        </Link>
+                      </div>
                     </div>
                   </div>
                 </div>

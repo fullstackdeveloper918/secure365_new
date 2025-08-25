@@ -20,9 +20,9 @@ const FaqPage = async () => {
   const data = await response.json();
   const whyChooseData = data?.data;
   return (<>
-    <AnimationHeader/>
-  <WhyChooseUs whyChooseData={whyChooseData} />
-</>
+    {/* <AnimationHeader/> */}
+    <WhyChooseUs whyChooseData={whyChooseData} />
+  </>
   )
 };
 

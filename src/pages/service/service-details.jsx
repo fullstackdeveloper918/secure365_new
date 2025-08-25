@@ -39,7 +39,7 @@ const ServiceDetailsMain = ({ serviceBannerData }) => {
 
   return (
     <Wrapper>
-      <AnimationHeader />
+      {/* <AnimationHeader /> */}
 
       {/* <CardStackingSection />
       <div className="h-[500px]"></div> */}
