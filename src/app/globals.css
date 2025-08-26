@@ -435,6 +435,9 @@ ins {
   display: inline-block;
   border-radius: 2px;
 }
+.arrieved-destination > div {
+  will-change: transform;
+}
 
 .light-content mark,
 .light-content ins,
@@ -3758,6 +3761,10 @@ p .link-text {
 }
 
 
+#navigate-section{
+  padding-top: 90px !important;
+}
+
 /*--------------------------------------------------
 07. Responsive
 ---------------------------------------------------*/
@@ -3825,6 +3832,7 @@ p .link-text {
   .main-secure-banner .main-banner-heading {
     font-size: 58px !important;
     line-height: 120%;
+    text-align: left !important;
   }
   .navigate-heading {
     font-size: 56px !important;

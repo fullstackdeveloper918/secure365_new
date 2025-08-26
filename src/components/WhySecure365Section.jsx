@@ -96,44 +96,43 @@ export default function WhySecure365Section({ containerRef, serviceList }) {
   }, [scrollYProgress]);
 
   // Rocket animation
+  
   useEffect(() => {
-    const rocket = rocketRef.current;
-    if (!rocket || !containerRef.current) return;
+  const rocket = rocketRef.current;
+  const container = containerRef.current;
+  if (!rocket || !container) return;
 
-    gsap.set(rocket, {
-      x: -1000,
-      y: 200,
-      scale: screenSize.width > 1024 ? 1 : 0.7,
-      autoAlpha: 0,
-    });
+  // Initial position: top-left of the section (or just above)
+  gsap.set(rocket, {
+    x: -600,
+    y: -500,
+    scale: screenSize.width > 1024 ? 1 : 0.7,
+    autoAlpha: 1, // visible from start
+  });
 
-    const tl = gsap.timeline({
-      scrollTrigger: {
-        trigger: containerRef.current,
-        start: "top bottom",
-        end: "bottom+=1500 top",
-        scrub: 2,
-      },
-    });
+  const tl = gsap.timeline({
+    scrollTrigger: {
+      trigger: container,
+      start: "top top", // when top of section hits top of viewport
+      end: "bottom top", // until bottom of section hits top of viewport
+      scrub: true, // rocket follows scroll exactly
+    },
+  });
 
-    tl.to(rocket, { autoAlpha: 1, duration: 0.2 }, 0.1);
+  // Move rocket diagonally from top-left to bottom-right
+  tl.to(rocket, {
+    x: container.offsetWidth - rocket.offsetWidth, // move to right edge
+    y: container.offsetHeight - rocket.offsetHeight, // move to bottom edge
+    rotation: 10, // optional rotation
+    ease: "none",
+  });
 
-    tl.to(
-      rocket,
-      {
-        x: 8000,
-        y: 4100,
-        rotation: 5,
-        ease: "power1.inOut",
-      },
-      0.2
-    );
+  return () => {
+    tl.scrollTrigger?.kill();
+    tl.kill();
+  };
+}, [screenSize]);
 
-    return () => {
-      tl.scrollTrigger?.kill();
-      tl.kill();
-    };
-  }, [screenSize]);
 
   console.log("service list on whysecure", serviceList);
 
