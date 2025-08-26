@@ -60,7 +60,7 @@ useEffect(() => {
   });
 
   tlRocket.to(rocket, {
-    x: -1666.86,
+    x: -2466.86,
     y: 158.37,
     rotate: -40,
     ease: "power1.inOut",
@@ -76,7 +76,7 @@ useEffect(() => {
   return (
     <section
       ref={sectionRef}
-      className="relative h-screen overflow-hidden"
+      className="relative h-screen navigate-second-sec"
       style={{ backgroundColor: "#000" }}
     >
       {/* Background */}
@@ -100,7 +100,7 @@ useEffect(() => {
           </div>
           <div>
             {/* Rocket image */}
-            <div className="relative h-60 w-full overflow-visible">
+            <div className="relative h-60 w-full overflow-visible fst-rocket-wrap">
               <Image
                 ref={rocketRef}
                 src="/images/rocket/R3.png"
@@ -112,10 +112,10 @@ useEffect(() => {
               />
             </div>
             {/* Text paragraph and button */}
-            <div className="space-y-4 relative bottom-[0px]">
+            <div className="space-y-4 relative bottom-[0px] navigate-bottom-wrapper">
               <p
                 ref={rightTextRef}
-                className="text-lg lg:text-xl max-w-[80%] text-gray-300 leading-relaxed mb-0"
+                className="text-lg lg:text-xl max-w-[80%] text-gray-300 leading-relaxed mb-0 navigate-para-txt"
               >
                 {serviceList.home_page_challenge_section_paragraph}
               </p>

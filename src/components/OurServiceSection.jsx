@@ -267,7 +267,7 @@ export default function AchievementsSection({ achievementCards, serviceList }) {
                   >
                     {serviceList?.ourServiceSection?.serviceCards?.map(
                       (card, idx) => (
-                        <div key={idx} className="w-1/4 flex-shrink-0 p-3">
+                        <div key={idx} className="w-1/4 flex-shrink-0 p-3 service-card-inner">
                           <div className="h-full flex flex-col bg-transparent backdrop-blur-sm border border-gray-700 rounded-lg p-6 py-8 hover:border-[#00AEEF] transition-all duration-300">
                             {/* Gradient Background */}
                             <div className="absolute inset-0 bg-gradient-to-r from-[#1A1A1A] via-[#3A4A65] to-[#B2B2B2] opacity-60 rounded-lg"></div>

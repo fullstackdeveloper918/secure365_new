@@ -8522,6 +8522,9 @@ div#singleSerivce .conatct-col {
 }
 
 @media screen and (max-width: 575px) {
+  .service-card-inner{
+    width: 100% !important;
+  }
   .bf-result-head {
     font-size: 28px !important;
   }
@@ -10055,6 +10058,18 @@ footer.footer {
 
 
 @media screen and (max-width:1480px){
+  .project-del-contBox p {
+    font-size: 18px;
+    margin-bottom: 40px;
+}
+  .navigate-para-txt{
+    font-size: 18px !important;
+    max-width: 95% !important;
+  }
+  .fst-rocket-wrap {
+    top: 240px;
+    right: -300px;
+}
   div#singleSerivce .contact-container {
     max-width: 94% !important;
 }
@@ -10193,6 +10208,10 @@ div#header-container .menu-link-call-action nav.clapat-nav-wrapper ul.flexnav li
 }
 
 @media screen and (max-width:991px){
+  #navigate-section {
+    padding-top: 0px !important;
+}
+
   .project-top-heading span {
     text-align: center;
     justify-content: center !important;
@@ -10221,11 +10240,11 @@ div#header-container .menu-link-call-action nav.clapat-nav-wrapper ul.flexnav li
     max-width: 200px !important;
   }
 .ban-inner-wrapper{
-  flex-direction: column;
+  flex-direction: column !important;
   height: 100% !important;
         align-items: center;
         justify-content: center;
-        gap: 20px;
+        gap: 15px !important;
 }
 .main-secure-banner .main-head-banner-box {
     padding-bottom: 0px;
@@ -10368,6 +10387,7 @@ div#header-container .menu-link-call-action nav.clapat-nav-wrapper ul.flexnav li
 .main-secure-banner .main-banner-heading {
     font-size: 48px !important;
     line-height: 120%;
+    text-align: center !important;
 }
 div#header-container .icon-wrap.parallax-wrap .button-icon.parallax-element {
     width: 20px !important;
@@ -10471,6 +10491,14 @@ section.why-hero-section .container {
 }
 
 @media screen and (max-width:767px){
+  #navigate-section {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+  .navigate-bottom-wrapper{
+    text-align: center !important;
+  }
   .sec-stake-para {
     max-width: 95%;
     margin: 10px auto 50px;
@@ -10704,7 +10732,12 @@ div#header-container a.ajax-link{
     text-align: center;
 }
 .navigate-second-sec {
-    padding: 60px 0px 30px 0px !important;
+    padding: 60px 0px 60px 0px !important;
+    height: 100%;
+}
+.navigate-para-txt {
+    font-size: 16px !important;
+    max-width: 100% !important;
 }
 #content-responsive {
     max-width: 100%;
@@ -10727,6 +10760,9 @@ div#header-container a.ajax-link{
 }
 
 @media screen and (max-width:575px){
+  .ban-inner-wrapper{
+    gap: 12px !important;
+}
   .threat-head {
     font-size: 20px;
 }
