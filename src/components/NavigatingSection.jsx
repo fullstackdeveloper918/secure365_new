@@ -1,12 +1,10 @@
 "use client";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Image from "next/image";
 import Link from "next/link";
-
 gsap.registerPlugin(ScrollTrigger);
-
 const NavigatingSection = ({ serviceList }) => {
   const sectionRef = useRef(null);
   const rocketRef = useRef(null);
@@ -14,59 +12,66 @@ const NavigatingSection = ({ serviceList }) => {
   const rightTextRef = useRef(null);
   const buttonRef = useRef(null);
 
-  useEffect(() => {
-    const section = sectionRef.current;
-    const rocket = rocketRef.current;
-    const leftText = leftTextRef.current;
-    const rightText = rightTextRef.current;
-    const button = buttonRef.current;
+useEffect(() => {
+  const section = sectionRef.current;
+  const rocket = rocketRef.current;
+  const leftText = leftTextRef.current;
+  const rightText = rightTextRef.current;
+  const button = buttonRef.current;
 
-    if (!section || !rocket || !leftText || !rightText || !button) return;
+  if (!section || !rocket || !leftText || !rightText || !button) return;
 
-    // Start and End positions
-    const xStart = 233.58;
-    const yStart = -504.942;
-    const xEnd = -1666.86;
-    const yEnd = 158.37;
+  // Rocket initial position
+  gsap.set(rocket, { x: 233.58, y: -504.942, rotate: -45, opacity: 1 });
 
-    // Set rocket initial position and rotation
-    gsap.set(rocket, {
-      x: xStart,
-      y: yStart,
-      opacity: 1,
-      rotate: -45,
-    });
+  // Text and button initial state (below + invisible)
+  gsap.set([leftText, rightText, button], { opacity: 0, y: 150 });
 
-    // Hide texts and button initially
-    gsap.set([leftText, rightText, button], { opacity: 0, y: 50 });
+  // ===== Timeline for left text animation (appears first) =====
+  const tlText = gsap.timeline({
+    scrollTrigger: {
+      trigger: section,
+      start: "top 60%",
+      end: "top 30%",
+      scrub: false, // text appears normally
+    },
+  });
 
-    const tl = gsap.timeline({
-      scrollTrigger: {
-        trigger: section,
-        start: "-10% top",
-        end: "+=3000",
-        scrub: 2,
-        pin: true,
-        anticipatePin: 1,
-      },
-    });
+  // Left text appears
+  tlText.to(leftText, { opacity: 1, y: 0, duration: 1, ease: "power2.out" });
 
-    // Animate rocket along the path and then show text/button
-    tl.to(rocket, {
-      x: xEnd,
-      y: yEnd,
-      duration: 2,
-      ease: "power1.inOut",
-    })
-      .to(leftText, { opacity: 1, y: 0, duration: 1, ease: "power2.out" })
-      .to(rightText, { opacity: 1, y: 0, duration: 1, ease: "power2.out" })
-      .to(button, { opacity: 1, y: 0, duration: 1, ease: "power2.out" });
+  // Right text appears smoothly after left text
+  tlText.to(
+    rightText,
+    { opacity: 1, y: 0, duration: 1, ease: "power2.out" }
+  );
 
-    return () => {
-      if (tl.scrollTrigger) tl.scrollTrigger.kill();
-      tl.kill();
-    };
-  }, []);
+  // Button appears after right text
+  tlText.to(button, { opacity: 1, y: 0, duration: 1, ease: "power2.out" });
+
+  // ===== Timeline for rocket (scroll-driven) =====
+  const tlRocket = gsap.timeline({
+    scrollTrigger: {
+      trigger: section,
+      start: "top 60%",
+      end: "bottom top",
+      scrub: 3, // slow rocket movement
+    },
+  });
+
+  tlRocket.to(rocket, {
+    x: -1666.86,
+    y: 158.37,
+    rotate: -40,
+    ease: "power1.inOut",
+  });
+
+  return () => {
+    ScrollTrigger.getAll().forEach(t => t.kill());
+  };
+}, []);
+
+
 
   return (
     <section
@@ -82,9 +87,8 @@ const NavigatingSection = ({ serviceList }) => {
         />
         <div className="absolute inset-0 bg-black/40" />
       </div>
-
       {/* Content */}
-      <div className="relative z-10 container mx-auto px-6 pt-[90px]">
+      <div className="relative z-10 container mx-auto h-full px-6 " id="navigate-section">
         <div className="grid lg:grid-cols-2 gap-12 items-end relative navigate-box-iner">
           <div className="z-20">
             <h2
@@ -94,7 +98,6 @@ const NavigatingSection = ({ serviceList }) => {
               {serviceList.home_page_challenge_section_challenge}
             </h2>
           </div>
-
           <div>
             {/* Rocket image */}
             <div className="relative h-60 w-full overflow-visible">
@@ -108,7 +111,6 @@ const NavigatingSection = ({ serviceList }) => {
                 style={{ transform: "rotate(-45deg)" }}
               />
             </div>
-
             {/* Text paragraph and button */}
             <div className="space-y-4 relative bottom-[0px]">
               <p
@@ -120,7 +122,7 @@ const NavigatingSection = ({ serviceList }) => {
               <Link
                 ref={buttonRef}
                 href={"/contact-us"}
-                className="bg-[#00AEEF] hover:bg-[#0099d4] text-white rounded-lg navigate-contact-btn inline-block px-6 py-3"
+                className="bg-[#00AEEF] hover:bg-[#0099D4] text-white rounded-lg navigate-contact-btn inline-block px-6 py-3"
               >
                 Contact Us
               </Link>
@@ -131,5 +133,17 @@ const NavigatingSection = ({ serviceList }) => {
     </section>
   );
 };
-
 export default NavigatingSection;
+
+
+
+
+
+
+
+
+
+
+
+
+
