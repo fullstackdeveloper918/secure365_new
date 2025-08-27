@@ -6,7 +6,14 @@ import Link from "next/link";
 import { motion, useInView } from "framer-motion";
 import { Rocket } from "lucide-react";
 
-let text = "Ready to Transform Your Business?";
+const Ready_to_Transform_Your_Business = 
+{
+  title: "Ready to Transform Your Business?",
+  desc: " Book a discovery call today and learn how our integrated services can drive growth for your business.",
+  button: "Book a Discovery Call"
+}
+
+// let text = "Ready to Transform Your Business?";
 export const FourthSection = () => {
   useEffect(() => {
     AOS.init({ duration: 1000, once: false });
@@ -58,18 +65,20 @@ export const FourthSection = () => {
           animate={isInView ? "visible" : "hidden"}
           className=" ready-head-txt text-center sm:text-4xl text-white z-[99] font-semibold tracking-tighter md:text-6xl md:leading-[4rem] flex flex-wrap justify-center xl:px-64"
         >
-         {text}
+         {Ready_to_Transform_Your_Business.title}
         </h2>
 
         <motion.p
           data-aos="fade-up"
           className="text-gray-50 mt-3 text-center book-call-paraTxt"
         >
-          Book a discovery call today and learn how our integrated services can
-          drive growth for your business.
+          {/* Book a discovery call today and learn how our integrated services can
+          drive growth for your business. */}
+          {Ready_to_Transform_Your_Business.desc}
         </motion.p>
            <Link href={"/contact-us"} className="bg-[#00AEEF] hover:bg-[#0099d4] text-white rounded-lg global-primary-btn z-10 mt-4">
-                          Book a Discovery Call
+                          {/* Book a Discovery Call */}
+                          {Ready_to_Transform_Your_Business.button}
                 </Link>
       </div>
 

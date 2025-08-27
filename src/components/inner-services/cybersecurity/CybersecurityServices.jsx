@@ -6,7 +6,12 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const services = [
+
+
+export const Cybersecurity_Services =
+{
+  title: "Cybersecurity Services",
+  services : [
   {
     icon: <Shield className="h-6 w-6 text-slate-700" />,
     iconBg: "bg-slate-100",
@@ -33,10 +38,9 @@ const services = [
     buttonText: "Get Started",
     buttonStyle: "bg-[#01aaeb] hover:bg-[#01aaebcf]",
     features: [
-      "All Lite Scan features",
+      "Includes Lite Scan features",
       "24/7 security monitoring",
       "Real-time threat detection & response",
-      "Security incident management",
       "Monthly security reports",
     ],
   },
@@ -46,17 +50,17 @@ const services = [
     title: "Compliance Bundles",
     desc: "Regulatory compliance for regulated industries",
     price: "Custom",
-    priceNote: "Based on requirements",
+    priceNote: "Based on your needs",
     buttonText: "Contact Sales",
     features: [
-      "All 24/7 Security features",
+      "Includes 24/7 Security Ops",
       "Compliance gap assessment",
       "Policy & procedure development",
-      "Compliance documentation",
       "Audit preparation & support",
     ],
   },
-];
+]
+}
 
 export default function CybersecurityServices() {
   const sectionRef = useRef(null);
@@ -97,11 +101,12 @@ export default function CybersecurityServices() {
     <section className="cyber-serv-sec relative bg-white" ref={sectionRef}>
       <div className="container mx-auto px-4">
         <h2 className="font-bold text-center mb-12 cyber-sec-head-txt">
-          Cybersecurity Services
+          {/* Cybersecurity Services */}
+          {Cybersecurity_Services.title}
         </h2>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 cybersec-serv-outer">
-          {services.map((service, index) => (
+          {Cybersecurity_Services?.services?.map((service, index) => (
             <div
               key={index}
               ref={(el) => setCardRef(el, index)}

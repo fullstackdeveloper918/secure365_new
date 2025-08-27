@@ -15,6 +15,29 @@ export default function BeforeAfterResults() {
       cardsRef.current[index] = el;
     }
   };
+ const Before_vs_After_Results =
+{
+  title: "Before vs After Results",
+  before:"BEFORE",
+  para:" Average improvement across all clients:",
+  para2:"+187%",
+  para3:"in key metrics",
+  beforeData: [
+                ["Page Load Speed", "5.2s", "30%"],
+                ["Mobile Responsiveness", "Poor", "20%"],
+                ["Conversion Rate", "1.2%", "12%"],
+                ["SEO Ranking", "Page 3+", "15%"],
+              ],
+            
+  after:"AFTER",
+  afterData: [
+                ["Page Load Speed", "0.8s", "95%"],
+                ["Mobile Responsiveness", "Excellent", "98%"],
+                ["Conversion Rate", "4.8%", "85%"],
+                ["SEO Ranking", "Top 5", "90%"],
+              ],
+      }
+
 
   useEffect(() => {
     const timeout = setTimeout(() => {
@@ -46,7 +69,8 @@ export default function BeforeAfterResults() {
     <section className="relative before-after-sec" ref={sectionRef}>
       <div className="container mx-auto px-4">
         <h2 className="text-3xl md:text-4xl font-semibold text-center text-white bf-result-head relative">
-          Before vs After Results
+          {/* Before vs After Results */}
+          {Before_vs_After_Results.title}
         </h2>
         {/* <p className="text-white text-lg text-center mb-4">Average improvement across all clients: +187% in key metrics</p> */}
 
@@ -57,15 +81,10 @@ export default function BeforeAfterResults() {
             ref={(el) => setCardRef(el, 0)}
           >
             <div className="bg-red-100 p-4 text-center bg-off-bg">
-              <h3 className="font-semibold text-red-800 mb-0">BEFORE</h3>
+              <h3 className="font-semibold text-red-800 mb-0">{Before_vs_After_Results.before}</h3>
             </div>
             <div className="p-6 space-y-6">
-              {[
-                ["Page Load Speed", "5.2s", "30%"],
-                ["Mobile Responsiveness", "Poor", "20%"],
-                ["Conversion Rate", "1.2%", "12%"],
-                ["SEO Ranking", "Page 3+", "15%"],
-              ].map(([label, value, width], i) => (
+              {Before_vs_After_Results?.beforeData?.map(([label, value, width], i) => (
                 <div key={i}>
                   <div className="flex justify-between mb-2">
                     <span className="points-txt-before text-white">{label}</span>
@@ -88,15 +107,10 @@ export default function BeforeAfterResults() {
             ref={(el) => setCardRef(el, 1)}
           >
             <div className="bg-emerald-100 p-4 text-center bg-off-bg">
-              <h3 className="font-semibold text-lg text-emerald-800 mb-0">AFTER</h3>
+              <h3 className="font-semibold text-lg text-emerald-800 mb-0">{Before_vs_After_Results.after}</h3>
             </div>
             <div className="p-6 space-y-6">
-              {[
-                ["Page Load Speed", "0.8s", "95%"],
-                ["Mobile Responsiveness", "Excellent", "98%"],
-                ["Conversion Rate", "4.8%", "85%"],
-                ["SEO Ranking", "Top 5", "90%"],
-              ].map(([label, value, width], i) => (
+              {Before_vs_After_Results?.afterData?.map(([label, value, width], i) => (
                 <div key={i}>
                   <div className="flex justify-between mb-2">
                     <span className="points-txt-before text-white">{label}</span>
@@ -121,8 +135,8 @@ export default function BeforeAfterResults() {
         >
           <div className="inline-block bg-emerald-100 px-6 py-3 rounded-lg">
             <p className="text-lg font-medium text-emerald-800 mb-0">
-              Average improvement across all clients:{" "}
-              <span className="font-bold">+187%</span> in key metrics
+              {Before_vs_After_Results.para}{" "}
+              <span className="font-bold">{Before_vs_After_Results.para2}</span> {Before_vs_After_Results.para3}
             </p>
           </div>
         </div>

@@ -42,7 +42,11 @@ export default function WorkShowcase() {
     });
   }, []);
 
-  const projects = [
+ const Our_work =
+{
+  title: "Our Work",
+  button:"View All Case Studies",
+  projects : [
     {
       title: "HealthPlus Mobile App",
       description:
@@ -64,7 +68,10 @@ export default function WorkShowcase() {
       href: "/case-studies/ecommerce",
       image: "../../assets/img/inner-service/service/E-commerce-Platform.jpg",
     },
-  ];
+  ]
+}
+
+  
 
   return (
     <>
@@ -102,11 +109,12 @@ export default function WorkShowcase() {
           className="text-white font-semibold text-center relative our-work-head-txt"
           data-aos="fade-up"
         >
-          Our Work
+          {/* Our Work */}
+          {Our_work.title}
         </h2>
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-12 our-work-sec-inner">
-          {projects.map((project, index) => (
+          {Our_work?.projects?.map((project, index) => (
   <WorkCard
     key={index}
     {...project}
@@ -147,7 +155,8 @@ export default function WorkShowcase() {
                   </div> */}
                   <div className="text-center">
                 <Link href={"/contact-us"} className="bg-[#00AEEF] hover:bg-[#0099d4] text-white rounded-lg global-primary-btn z-10 mt-4">
-                          View All Case Studies
+                          {/* View All Case Studies */}
+                          {Our_work.button}
                 </Link>
                   </div>
       </div>

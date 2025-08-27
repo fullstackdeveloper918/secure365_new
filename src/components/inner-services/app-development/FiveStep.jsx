@@ -9,35 +9,41 @@ const FiveStepSprint = () => {
   const sectionRef = useRef(null);
   const stars = useRef([]);
 
-  const steps = [
+const Our_5_Step_Build_Sprint =
+{
+  title: "Our 5-Step Build Sprint",
+  subtitle: "A Streamlined Process. A Powerful Outcome.",
+  description: "Our site design and development process is lean, fast, and transparent — delivering polished, high-converting sites on time and on budget.",
+    steps : [
     {
       icon: "fas fa-search",
       title: "1. Discovery",
-      text: "We dive deep into your business goals, user needs, and technical requirements to create a solid foundation.",
+      text: "Deep dive into your brand, goals, and competitive landscape.",
     },
     {
       icon: "fas fa-pencil-ruler",
       title: "2. Design",
-      text: "We create wireframes, prototypes, and user flows that ensure an intuitive and engaging user experience.",
+      text: "Wireframes → UI Concepts → Prototypes with UX flows.",
     },
     {
       icon: "fas fa-code",
       title: "3. Development",
-      text: "Our engineers build your application using modern technologies and best practices for performance and scalability.",
+      text: "Clean code. Fast loading. Built for scalability & SEO.",
     },
     {
       icon: "fas fa-bug",
       title: "4. Testing",
-      text: "Rigorous quality assurance and user testing ensure your application is bug-free and user-friendly.",
+      text: "Rigorous QA across browsers, devices, and screen sizes.",
       colSpan: "md:col-span-1",
     },
     {
       icon: "fas fa-rocket",
       title: "5. Launch & Growth",
-      text: "We deploy your application and provide ongoing support, maintenance, and feature enhancements.",
+      text: " Your site goes live — and we keep supporting its growth.",
       colSpan: "md:col-span-2",
     },
-  ];
+  ]
+}
 
   useEffect(() => {
     gsap.utils.toArray(".step").forEach((step) => {
@@ -149,16 +155,18 @@ const FiveStepSprint = () => {
           {/* Content */}
           <div className="relative z-10 py-20 container mx-auto px-4">
             <h2 className="step-5-head font-semibold text-center mb-4 text-[#01aaeb]">
-              Our 5-Step Build Sprint
+              {/* Our 5-Step Build Sprint */}
+              {Our_5_Step_Build_Sprint.title}
             </h2>
             <p className="text-white mb-16 text-center mx-auto step-5-para">
-              From idea to impact, our streamlined 5-step process transforms your
+              {/* From idea to impact, our streamlined 5-step process transforms your
               vision into a powerful digital product. Each phase is thoughtfully
               designed to ensure clarity, quality, and measurable growth — setting
-              the stage for long-term success.
+              the stage for long-term success. */}
+              {Our_5_Step_Build_Sprint.description}
             </p>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              {steps.map((step, idx) => (
+              {Our_5_Step_Build_Sprint?.steps?.map((step, idx) => (
                 <div
                   key={idx}
                   className={`step card-5-time translate-none p-6 rounded-lg shadow-lg ${step.colSpan || ""}`}

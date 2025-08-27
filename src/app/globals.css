@@ -5732,6 +5732,11 @@ section#real-estate-section
 
 /* Service Page css start here */
 
+.inner-serv-banpara {
+    max-width: 60%;
+    line-height: 28px;
+}
+
 .sv-hero-area.sv-hero-ptb.bann-p-block {
   background-image: url(https://images8.alphacoders.com/286/thumb-1920-286855.jpg);
   /* background-image: url('https://img.freepik.com/free-photo/business-person-futuristic-business-environment_23-2150970215.jpg?t=st=1747806629~exp=1747810229~hmac=a45281949df2995df1280ab80e7ac177fa7031179c2c5b25ccfa2d2bf3c100d0&w=1380'); */
@@ -10208,6 +10213,9 @@ div#header-container .menu-link-call-action nav.clapat-nav-wrapper ul.flexnav li
 }
 
 @media screen and (max-width:991px){
+  .inner-serv-banpara {
+    max-width: 70%;
+}
   #navigate-section {
     padding-top: 0px !important;
 }
@@ -10491,6 +10499,10 @@ section.why-hero-section .container {
 }
 
 @media screen and (max-width:767px){
+  .inner-serv-banpara {
+    max-width: 90%;
+    line-height: 26px;
+}
   #navigate-section {
     display: flex;
     align-items: center;
@@ -10760,6 +10772,9 @@ div#header-container a.ajax-link{
 }
 
 @media screen and (max-width:575px){
+  .inner-serv-banpara {
+    max-width: 98%;
+}
   .ban-inner-wrapper{
     gap: 12px !important;
 }

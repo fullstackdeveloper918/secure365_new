@@ -4,29 +4,35 @@ import { MessageSquare, TrendingUp, Workflow } from "lucide-react";
 import AOS from "aos";
 import "aos/dist/aos.css";
 
-const useCases = [
+
+
+const High_ROI_AI_Use_Cases =
+{
+  title: "High-ROI AI Use Cases",
+useCases : [
   {
     icon: <MessageSquare className="h-6 w-6 text-[#009DD6]" />,
     title: "AI Chatbots",
-    pain: "Hours spent answering the same customer questions",
-    gain: "24/7 intelligent support that learns from every interaction",
-    roi: "300%",
+    pain: "Eliminate repetitive tasks with our 24/7 AI chatbots that learn with every conversation — transforming customer support.",
+    gain: "",
+    roi: "300%+",
   },
   {
     icon: <TrendingUp className="h-6 w-6 text-[#009DD6]" />,
     title: "Predictive Analytics",
-    pain: "Reactive decision-making based on outdated data",
-    gain: "Proactive insights that forecast trends and opportunities",
-    roi: "250%",
+    pain: " Forecast trends, predict demand, and make smarter decisions using powerful AI analytics.",
+    gain: "",
+    roi: "250%+",
   },
   {
     icon: <Workflow className="h-6 w-6 text-[#009DD6]" />,
     title: "Workflow Orchestration",
-    pain: "Manual processes with high error rates",
-    gain: "Automated workflows that reduce errors by 95%",
-    roi: "400%",
+    pain: "Automate multi-step business processes — from CRM updates to report generation — and reduce errors by up to 95%.",
+    gain: "",
+    roi: "400%+",
   },
-];
+]
+};
 
 const UseCaseCard = ({ icon, title, pain, gain, roi, index }) => (
   <div
@@ -71,9 +77,9 @@ export default function HighROIUseCases() {
   return (
     <section className="bg-white use-case-section">
       <div className="container mx-auto px-4">
-        <h2 className="font-bold text-center mb-12 text-[#01aaeb] use-head" data-aos="fade-up">High-ROI AI Use Cases</h2>
+        <h2 className="font-semibold text-center mb-12 text-[#01aaeb] use-head" data-aos="fade-up">{High_ROI_AI_Use_Cases.title}</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 highRoi-Card-inner">
-          {useCases.map((useCase, index) => (
+          {High_ROI_AI_Use_Cases?.useCases?.map((useCase, index) => (
             <UseCaseCard key={index} {...useCase} index={index} />
           ))}
         </div>

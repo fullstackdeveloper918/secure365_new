@@ -156,13 +156,13 @@ export default function ServiceDetailsArea({ serviceBannerData }) {
           <div className="row">
             <div className="col-xl-12">
               <div className="service-details__title-box mb-10">
-                <h2 className="sv-hero-title tp-char-animation mb-4">
+                <h2 className="sv-hero-title tp-char-animation mb-3">
                   {serviceBannerData?.title1}{" "}
                   <span className="blueColor">
                     {serviceBannerData?.subtitle}
                   </span>
                 </h2>
-                <span className="service-details__subtitle tp-char-animation text-white mb-4 inline-block">
+                <span className="service-details__subtitle tp-char-animation text-white mb-2 inline-block inner-serv-banpara">
                   {serviceBannerData?.description1}
                 </span>
                 <div className="d-block py-3 md:mt-3">

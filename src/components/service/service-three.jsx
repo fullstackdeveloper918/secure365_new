@@ -45,45 +45,52 @@ const slider_setting = {
     },
   },
 };
-// service data
-const service_data = [
+
+export const Service_data =
+{
+  title: "Our Services Include",
+  subtitle: "Core Services Tailored for Businesses Like Yours",
+ service_data : [
   {
     id: 1,
     icon: sv_1,
     title: "Cloud Migration & Setup",
-    subtitle: "Secure365 is built on years of battling cybercrime, managing e-commerce platforms, and developing technology strategies that work in real-world scenarios.",
+    subtitle: "Migrate securely to AWS, Azure, or GCP — optimized for performance and compliance.",
   },
   {
     id: 2,
     icon: sv_2,
     title: "Server Configuration & Optimization",
-    subtitle: "Secure365 is built on years of battling cybercrime, managing e-commerce platforms, and developing technology strategies that work in real-world scenarios.",
+    subtitle: "Configure and optimize Linux, Windows, or cloud servers for speed, uptime, and security.",
   },
   {
     id: 3,
     icon: sv_3,
     title: "Data Security & Backup Solutions",
-    subtitle: "Secure365 is built on years of battling cybercrime, managing e-commerce platforms, and developing technology strategies that work in real-world scenarios.",
+    subtitle: "Automated backups, encrypted data pipelines, and disaster recovery systems built for peace of mind.",
   },
   {
     id: 4,
     icon: sv_4,
-    title: "Hybrid Cloud & On-Premises Solutions",
-    subtitle: "Secure365 is built on years of battling cybercrime, managing e-commerce platforms, and developing technology strategies that work in real-world scenarios.",
+    title: "Predictive Analytics & Business Intelligence",
+    subtitle: "Tailored dashboards and AI analysis for smarter decisions and deeper insights.",
   },
   {
     id: 5,
     icon: sv_5,
-    title: "Performance Monitoring & 24/7 Support",
-    subtitle: "Secure365 is built on years of battling cybercrime, managing e-commerce platforms, and developing technology strategies that work in real-world scenarios.",
+    title: "Custom API & AI Integrations",
+    subtitle: "Sync apps and systems — CRMs, ERPs, websites — with bespoke APIs and intelligent automations.",
   },
   {
     id: 6,
     icon: sv_6,
-    title: "Disaster Recovery Planning",
-    subtitle: "Secure365 is built on years of battling cybercrime, managing e-commerce platforms, and developing technology strategies that work in real-world scenarios.",
+    title: "AI Automation via n8n & Make.com",
+    subtitle: "Design custom workflows with no‑code/low‑code automations for tools like CRMs, Slack, and email.",
   },
-];
+]
+}
+
+
 export default function ServiceThree({serviceBannerData}) {
   console.log("serviceBannerData",serviceBannerData)
   return (
@@ -98,7 +105,8 @@ export default function ServiceThree({serviceBannerData}) {
             <div className="col-12">
               <div className="tp-service-4-title-box tp_fade_bottom">
                 <h2 className="tp-service-4-title text-white text-center mb-2">
-                Our Services Include
+                {/* Our Services Include */}
+                {Service_data.title}
                 </h2>
               </div>
             </div>
@@ -119,7 +127,7 @@ export default function ServiceThree({serviceBannerData}) {
           {...slider_setting}
           className="swiper-container tp-service-4-slider-active"
         >
-          {service_data && service_data?.map((item,index) => (
+          {Service_data?.service_data && Service_data?.service_data?.map((item,index) => (
             <SwiperSlide key={index}>
               <div
                 className="tp-service-4-item"

@@ -11,6 +11,32 @@ export default function WebVitalsBenchmarks() {
   const cardsRef = useRef([]);
   const noteRef = useRef(null);
 
+const Core_Web_Vitals =
+{
+  title: "Core Web Vitals",
+  para: "Google now uses Core Web Vitals as a ranking factor for search results",
+   stats : [
+    {
+      icon: <Zap className="h-8 w-8 text-emerald-600" />,
+      title: "Largest Contentful Paint",
+      value: "0.9s",
+      note: "(Google recommends under 2.5s)",
+    },
+    {
+      icon: <LineChart className="h-8 w-8 text-emerald-600" />,
+      title: "Cumulative Layout Shift",
+      value: "0.02",
+      note: "(Google recommends under 0.1)",
+    },
+    {
+      icon: <Smartphone className="h-8 w-8 text-emerald-600" />,
+      title: "First Input Delay",
+      value: "12ms",
+      note: "(Google recommends under 100ms)",
+    },
+  ]
+}
+
   useEffect(() => {
     const ctx = gsap.context(() => {
       const tl = gsap.timeline({
@@ -42,26 +68,6 @@ export default function WebVitalsBenchmarks() {
     return () => ctx.revert();
   }, []);
 
-  const stats = [
-    {
-      icon: <Zap className="h-8 w-8 text-emerald-600" />,
-      title: "Largest Contentful Paint",
-      value: "0.9s",
-      note: "(Google recommends under 2.5s)",
-    },
-    {
-      icon: <LineChart className="h-8 w-8 text-emerald-600" />,
-      title: "Cumulative Layout Shift",
-      value: "0.02",
-      note: "(Google recommends under 0.1)",
-    },
-    {
-      icon: <Smartphone className="h-8 w-8 text-emerald-600" />,
-      title: "First Input Delay",
-      value: "12ms",
-      note: "(Google recommends under 100ms)",
-    },
-  ];
 
   return (
     <section
@@ -70,11 +76,12 @@ export default function WebVitalsBenchmarks() {
     >
       <div className="container mx-auto px-4">
         <h2 className="font-semibold text-center core-web-head relative">
-          Core Web Vitals
+          {/* Core Web Vitals */}
+          {Core_Web_Vitals.title}
         </h2>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {stats.map((stat, index) => (
+          {Core_Web_Vitals?.stats?.map((stat, index) => (
             <div
               key={index}
               ref={(el) => (cardsRef.current[index] = el)}
@@ -100,8 +107,9 @@ export default function WebVitalsBenchmarks() {
             <div className="flex items-center justify-center core-web-ict">
               <Search className="h-5 w-5 text-emerald-600 mr-2" />
               <p className="font-medium mb-0">
-                Google now uses Core Web Vitals as a ranking factor for search
-                results
+                {/* Google now uses Core Web Vitals as a ranking factor for search
+                results */}
+                {Core_Web_Vitals.para}
               </p>
             </div>
           </div>

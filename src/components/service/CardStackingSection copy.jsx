@@ -3,19 +3,26 @@
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+// import {Benefits_of_Choosing} from "@/serviceData/InnerService"
 
-// Card data
-const cards = [
+
+
+const Benefits_of_Choosing =
+{
+  title: "Why Brands Choose Secure365 for Site Design & Development",
+  subtitle: "Secure365788",
+  para: "We blend visual creativity with backend efficiency — every website we build is fast, secure, mobile-first, and optimized to drive measurable results.",
+cards : [
   {
     id: 1,
     title: "Enhanced Security",
     description:
-      "We create and tell stories that connect with people and convey your brand's message in a clear, authentic way. Our creative, artistic thinkers immerse into the DNA of your brand to conceptualize and shape visual content that achieves your objectives and resonates within your target audience.",
+      "Your website is your digital front door — and we build it like a fortress.",
     listItems: [
-      "Data Encryption",
+      "Enterprise-grade Data Encryption",
       "Multi-Factor Authentication (MFA)",
-      "Real-Time Threat Detection",
-      "Regular Security Audits",
+      "Continuous Real-Time Threat Detection",
+      "Proactive Security Audits",
     ],
     bgImage: "/Astro1.jpg?height=450&width=1300",
   },
@@ -23,29 +30,30 @@ const cards = [
     id: 2,
     title: "Scalability & Flexibility",
     description:
-      "We create and tell stories that connect with people and convey your brand's message in a clear, authentic way. Our creative, artistic thinkers immerse into the DNA of your brand to conceptualize and shape visual content that achieves your objectives and resonates within your target audience.",
+      "Built to grow with you. Whether you’re adding new products, locations, or services — your site won’t slow you down.",
     listItems: [
-      "Data Encryption",
-      "Multi-Factor Authentication (MFA) ",
-      "Real-Time Threat Detection",
-      "Regular Security Audits",
+      "Modular development frameworks",
+      "Scalable content architecture ",
+      "SEO-first structure & schema markup",
+      "Easy CMS control for non-tech users",
     ],
     bgImage: "/Astro2.jpg?height=450&width=1300",
   },
   {
     id: 3,
-    title: "Improved Performance",
+    title: "Optimized for Performance",
     description:
-      "We create and tell stories that connect with people and convey your brand's message in a clear, authentic way. Our creative, artistic thinkers immerse into the DNA of your brand to conceptualize and shape visual content that achieves your objectives and resonates within your target audience.",
+      "Performance isn’t a feature — it’s a foundation.",
     listItems: [
-      "Data Encryption",
-      "Multi-Factor Authentication (MFA)",
-      "Real-Time Threat Detection",
-      "Regular Security Audits",
+      "90+ Google Lighthouse scores",
+      "Built-in technical SEO",
+      "Cloud-native infrastructure",
+      "Image optimization, caching, & CDN-ready",
     ],
     bgImage: "/Astro3.jpg?height=450&width=1300",
   },
-];
+]
+}
 
 export default function CardStackingSection() {
   const cardsRef = useRef([]);
@@ -178,17 +186,19 @@ export default function CardStackingSection() {
               ref={headerRef}
               className="text-center text-[48px] font-semibold text-white mb-[120px] sticky top-5"
             >
-              Benefits of Choosing{" "}
-              <span className="text-[#009dd6]">Secure365</span>
+              {/* Benefits of Choosing{" "} */}
+              {Benefits_of_Choosing.title}
+              <span className="text-[#009dd6]">{Benefits_of_Choosing.subtitle}</span>
               <p className="benefitPara text-[#f9f9f9d6] text-lg w-full mt-3 mb-12 mx-auto">
-                Secure365 offers robust, 24/7 protection with advanced threat
+                {/* Secure365 offers robust, 24/7 protection with advanced threat
                 detection to keep your data safe. Enjoy peace of mind with
                 reliable security solutions tailored for businesses of all
-                sizes.
+                sizes. */}
+                {Benefits_of_Choosing.para}
               </p>
             </h2>
             <div className="max-w-[1300px] mx-auto flex flex-col gap-80 mainCard">
-              {cards.map((card, index) => (
+              {Benefits_of_Choosing?.cards?.map((card, index) => (
                 <div
                   key={card.id}
                   ref={(el) => (cardsRef.current[index] = el)}

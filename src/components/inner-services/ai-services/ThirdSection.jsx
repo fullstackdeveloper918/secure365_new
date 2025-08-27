@@ -13,16 +13,12 @@ const PricingCards = () => {
     });
   }, []);
 
-  return (
-    <div className="relative pricing-card-sec">
-      <h2
-        className="price-top-head text-white text-center text-uppercase fw-semibold"
-        data-aos="fade-up"
-      >
-        Pricing tiers
-      </h2>
-      <section className="container relative mx-auto px-4 py-10 grid grid-cols-1 lg:grid-cols-3 gap-8 md:gap-8 pricing-serv-tier">
-        {[
+
+   const Pricing_Tier =
+{
+  title: "Plans That Power Every Stage of Growth",
+  intro:"All plans include Automated Workflows, Secure Infrastructure, and Daily AI Enhancements.",
+ PricingTier : [
           {
             price: "0",
             label: "Free plan",
@@ -41,11 +37,10 @@ const PricingCards = () => {
             title: "Professional",
             icon: "/assets/img/inner-service/service/Professional-icon.png",
             features: [
-              "100 user reques",
-              "Unlimited downloads",
-              "Unlock all features from our site",
-              "Daily content updates",
-              "Fully editable files",
+              "Best for SMBs — full feature access",
+              "unlimited runs",
+              "and priority support",
+              
             ],
           },
           {
@@ -54,14 +49,27 @@ const PricingCards = () => {
             title: "Enterprise",
             icon: "/assets/img/inner-service/service/Enterprise-icon.png",
             features: [
-              "Unlimited user request",
-              "Unlimited downloads",
-              "Unlock all features from our site",
-              "Daily content updates",
-              "Fully editable files",
+              "Tailored AI workflows",
+              "custom integrations",
+              "and dedicated onboarding",
             ],
           },
-        ].map((card, index) => (
+        ]
+
+      }
+
+  return (
+    <div className="relative pricing-card-sec">
+      <h2
+        className="price-top-head text-white text-center text-uppercase fw-semibold"
+        data-aos="fade-up"
+      >
+        {/* Pricing tiers */}
+        {Pricing_Tier.title}
+      </h2>
+      
+      <section className="container relative mx-auto px-4 py-10 grid grid-cols-1 lg:grid-cols-3 gap-8 md:gap-8 pricing-serv-tier">
+        {Pricing_Tier?.PricingTier?.map((card, index) => (
           <article
             key={index}
             className="bg-white rounded-lg shadow-md flex flex-col items-center text-center price-serv-card"
