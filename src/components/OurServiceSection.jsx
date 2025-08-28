@@ -15,9 +15,10 @@ export default function AchievementsSection({ achievementCards, serviceList }) {
   const videoPinRef = useRef(null);
   const sectionsRef = useRef(null);
   const videoRef = useRef(null);
-  const rocketRef = useRef(null);
   const [screenSize, setScreenSize] = useState({ width: 0, height: 0 });
-  console.log(serviceList, "serviceList here3");
+   const [showSection, setShowSection] = useState(false);
+  const [count, setCount] = useState(0);
+
   useEffect(() => {
     if (videoRef.current) {
       videoRef.current.playbackRate = 2.0;
@@ -25,6 +26,7 @@ export default function AchievementsSection({ achievementCards, serviceList }) {
   }, []);
 
   const sectionRef = useRef(null);
+  const animateRef = useRef(null);
 
   // Screen size for responsive rocket
   const getScreenSize = () => {
@@ -37,35 +39,16 @@ export default function AchievementsSection({ achievementCards, serviceList }) {
     return () => window.removeEventListener("resize", getScreenSize);
   }, []);
 
-  useEffect(() => {
-    const rocket = rocketRef.current;
-    const container = containerRef.current;
-    if (!rocket || !container) return;
 
-    // Set initial transform
-    gsap.set(rocket, {
-      transform:
-        screenSize.width > 1024
-          ? "translate3d(71.4451vw, -50.2042vh, 0px) rotate(10.3796deg)"
-          : "translate3d(50vw, -50vh, 0px) rotate(10.3796deg)",
-      scale: screenSize.width > 1024 ? 1 : 0.7,
-      zIndex: 10,
-      autoAlpha: 1,
-    });
+   useEffect(() => {
+    const timer = setTimeout(() => {
+      setShowSection(true);
+    }, 6000);
+    return () => clearTimeout(timer);
+  }, []);
 
-    // Animate rocket along scroll without pin
-    gsap.to(rocket, {
-      transform: "translate3d(-40.928vw, 32.725vh, 0px) rotate(10.0999deg)",
-      ease: "power1.inOut",
-      scrollTrigger: {
-        trigger: container,
-        start: "top bottom", // animation starts when container enters viewport
-        end: "bottom top", // animation ends when container leaves viewport
-        scrub: 0.5, // smooth progress
-        // markers: true,      // uncomment to debug
-      },
-    });
-  }, [screenSize]);
+  // Counter animation 0 → 100
+ 
 
   return (
     <>
@@ -224,17 +207,7 @@ export default function AchievementsSection({ achievementCards, serviceList }) {
             <div className="absolute inset-0 bg-black/50" />
           </div>
 
-          {/* Rocket image */}
-          <Image
-            ref={rocketRef}
-            src="/images/rocket/R2.png"
-            alt="Rocket"
-            width={900}
-            height={900}
-            className="absolute z-9999"
-            style={{ visibility: "hidden" }}
-          />
-
+        
           {/* Sections container */}
           <div ref={sectionsRef} className="relative">
             {/* Achievements Section */}
@@ -346,37 +319,28 @@ export default function AchievementsSection({ achievementCards, serviceList }) {
             </section>
 
             {/* Milestones Reached Section */}
-            <section
-              ref={sectionRef}
-              className="arrieved-destination min-h-screen flex flex-col items-center bg-[#02050f] justify-center relative w-full"
-            >
-              {/* Text animation */}
-              <motion.div
-                className="relative z-10 text-center mb-10"
-                initial={{ opacity: 0, y: 100 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 1, ease: "easeOut" }}
-              >
-                <h2 className="text-4xl lg:text-6xl text-white font-semibold mb-8">
-                  {/* You Arrived Your Destination */}
-                  {serviceList.youArrivedYourDestination}
-                </h2>
-              </motion.div>
+<section
+      ref={animateRef}
+      className={`arrieved-destination min-h-screen flex flex-col items-center bg-[#02050f] justify-center  ${!showSection ? 'hidden' : 'relative'}  w-full overflow-hidden`}
+    >
+      <motion.h2
+        className="text-4xl lg:text-6xl text-white font-semibold mb-8"
+        initial={{ y: -200, scale: 0.8, opacity: 0 }}
+        whileInView={{ y: -50, scale: 2, opacity: 1 }}
+        viewport={{ once: true, amount: 0.5 }} // trigger when 50% in view
+        transition={{ duration: 1, ease: [0.25, 1, 0.5, 1] }}
+        onAnimationComplete={() => {
+          // hide the section after animation finishes
+          setTimeout(() => {
+            setShowSection(false);
+          }, 0); // optional small delay if you want
+        }}
+      >
+        {serviceList.youArrivedYourDestination}
+      </motion.h2>
+    </section>
 
-              <div className="relative w-full max-w-full shadow-lg">
-                <div className="container">
-                  <video
-                    className="w-full h-full object-cover rounded-lg"
-                    autoPlay
-                    muted
-                    loop
-                    playsInline
-                    src="/space-earth.mp4"
-                    type="video/mp4"
-                  />
-                </div>
-              </div>
-            </section>
+
           </div>
         </div>
       </section>

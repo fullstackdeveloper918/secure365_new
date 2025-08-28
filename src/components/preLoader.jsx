@@ -1,41 +1,46 @@
-import React, { useState, useEffect } from "react";
-import ScrambleSequence from "./ScrambleTextLoad";
+"use client";
 
-const TEXTS = [
-  "Brewing some cool things",
-  "Hang tight, magic is happening",
-  "Loading your adventure",
-  "Loading ... ",
-];
+import { useState, useEffect } from "react";
+import "../app/preloader.css";
 
-const PreLoader = () => {
+export default function Preloader({ onComplete }) {
+  const [progress, setProgress] = useState(0);
   const [hide, setHide] = useState(false);
-  const [currentIndex, setCurrentIndex] = useState(0);
 
-  const handleNext = () => {
-    if (currentIndex < TEXTS.length - 1) {
-      setCurrentIndex((prev) => prev + 1);
-    } else {
-      // All texts shown, hide loader
-      setTimeout(() => {
-        setHide(true);
-      }, 1500);
+  useEffect(() => {
+ const interval = setInterval(() => {
+  setProgress(prev => {
+    if (prev >= 100) {
+      clearInterval(interval);
+      setHide(true);
+      setTimeout(() => onComplete && onComplete(), 1000);
+      return 100;
     }
-  };
+    return prev + 1; // smaller increment
+  });
+}, 70); // keep interval
+
+    return () => clearInterval(interval);
+  }, [onComplete]);
 
   return (
-    <div
-      className={`pre-load-main transition-opacity duration-500 ${
-        hide ? "opacity-0 pointer-events-none" : "opacity-100"
-      }`}
-    >
-      <ScrambleSequence
-        text={TEXTS[currentIndex]}
-        onComplete={handleNext}
-        className="text-white font-bold text-1xl text-center"
-      />
+    <div className={`preloader ${hide ? "preloader-hide" : ""}`}>
+      {/* Stars */}
+      <div className="stars stars-layer1"></div>
+      <div className="stars stars-layer2"></div>
+      <div className="stars stars-layer3"></div>
+
+      {/* Content */}
+      <div className="preloader-content">
+        <h1>Your Experience is Loading</h1>
+        <div className="fancy-progress-bar">
+          <div
+            className="fancy-progress-fill"
+            style={{ width: `${progress}%` }}
+          />
+        </div>
+        <span className="progress-text">{progress}%</span>
+      </div>
     </div>
   );
-};
-
-export default PreLoader;
+}

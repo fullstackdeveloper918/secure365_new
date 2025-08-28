@@ -95,44 +95,8 @@ export default function WhySecure365Section({ containerRef, serviceList }) {
     return () => unsub();
   }, [scrollYProgress]);
 
-  // Rocket animation
   
-  useEffect(() => {
-  const rocket = rocketRef.current;
-  const container = containerRef.current;
-  if (!rocket || !container) return;
-
-  // Initial position: top-left of the section (or just above)
-  gsap.set(rocket, {
-    x: -600,
-    y: -500,
-    scale: screenSize.width > 1024 ? 1 : 0.7,
-    autoAlpha: 1, // visible from start
-  });
-
-  const tl = gsap.timeline({
-    scrollTrigger: {
-      trigger: container,
-      start: "top top", // when top of section hits top of viewport
-      end: "bottom top", // until bottom of section hits top of viewport
-      scrub: true, // rocket follows scroll exactly
-    },
-  });
-
-  // Move rocket diagonally from top-left to bottom-right
-  tl.to(rocket, {
-    x: container.offsetWidth - rocket.offsetWidth, // move to right edge
-    y: container.offsetHeight - rocket.offsetHeight, // move to bottom edge
-    rotation: 10, // optional rotation
-    ease: "none",
-  });
-
-  return () => {
-    tl.scrollTrigger?.kill();
-    tl.kill();
-  };
-}, [screenSize]);
-
+  
 
   console.log("service list on whysecure", serviceList);
 
@@ -241,17 +205,7 @@ export default function WhySecure365Section({ containerRef, serviceList }) {
               ))}
             </svg>
 
-            {/* Rocket */}
-            <Image
-              ref={rocketRef}
-              src="/images/rocket/R1.png"
-              alt="Rocket"
-              width={900}
-              height={900}
-              className="absolute z-9999"
-              style={{ visibility: "hidden" }}
-            />
-
+      
             {/* Content Block 1 */}
             {serviceList?.blocks[0] && (
               <motion.div

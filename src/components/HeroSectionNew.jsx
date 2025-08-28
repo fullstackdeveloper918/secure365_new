@@ -1,222 +1,228 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import {
+  motion,
+  AnimatePresence,
+  useScroll,
+  useTransform,
+} from "framer-motion";
+import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { motion } from "framer-motion";
-
-gsap.registerPlugin(ScrollTrigger);
 
 export default function HeroSection({ serviceList }) {
-  const sectionRef = useRef(null);
-  const leftTextRef = useRef(null);
-  const rightTextRef = useRef(null);
-  const buttonRef = useRef(null);
-  const topImgRef = useRef(null);
-  const bgImgRef = useRef(null);
-  const canvasRef = useRef(null);
+  const [videoStarted, setVideoStarted] = useState(false);
+  const [showLeftText, setShowLeftText] = useState(false);
+  const [showRightText, setShowRightText] = useState(false);
+  const [showButton, setShowButton] = useState(false);
+  const [imageVisible, setImageVisible] = useState(true);
 
-  const [bgZIndex, setBgZIndex] = useState(2000);
+  const videoRef = useRef(null);
+  const sectionRef = useRef(null);
+
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start start", "end start"],
+  });
+
+  // Scale image from 1 to 3 based on scroll progress (0 to 0.5 scroll progress)
+  const imageScale = useTransform(scrollYProgress, [0, 0.5], [1, 3]);
+
+  // Track when scaling animation completes
+  const [scalingComplete, setScalingComplete] = useState(false);
 
   useEffect(() => {
-    if (!sectionRef.current) return;
-
-    // GSAP ScrollTrigger Timeline
-    const tl = gsap.timeline({
-      scrollTrigger: {
-        trigger: sectionRef.current,
-        start: "top top",
-        end: "+=1500",
-        scrub: 1.5,
-        pin: true,
-      },
+    const unsubscribe = scrollYProgress.on("change", (latest) => {
+      if (latest >= 0.1 && !scalingComplete) {
+        setScalingComplete(true);
+      }
     });
 
-    // Hide text & button initially
-    gsap.set([leftTextRef.current, rightTextRef.current, buttonRef.current], {
-      opacity: 0,
-      y: 150,
-    });
+    return () => unsubscribe();
+  }, [scrollYProgress, scalingComplete]);
 
-    // Top image scale → z-index to 0 after scaling
-    tl.to(
-      topImgRef.current,
-      {
-        scale: 3.5,
-        ease: "power1.inOut",
-        duration: 3,
-        onComplete: () => {
-          gsap.set(topImgRef.current, { zIndex: 0 });
-        },
-      },
-      0
-    );
+  useEffect(() => {
+    if (scalingComplete && imageVisible) {
+      // Start fading out the image after scaling completes
+      setTimeout(() => {
+        setImageVisible(false);
+      }, []); // Small delay before fade starts
+    }
+  }, [scalingComplete, imageVisible]);
 
-    // Background image slight scale
-    tl.to(bgImgRef.current, { scale: 1.2, ease: "power1.inOut", duration: 3 }, 0);
+  useEffect(() => {
+    if (!imageVisible && !videoStarted) {
+      const video = videoRef.current;
+      if (video) {
+        console.log("[v0] Attempting to play video");
+        const playPromise = video.play();
 
-    // Text & button animation sequentially
-    tl.to(leftTextRef.current, { opacity: 1, y: 0, duration: 3, ease: "power1.out" }, 0.2);
-    tl.to(rightTextRef.current, { opacity: 1, y: 0, duration: 3, ease: "power1.out" }, 0.6);
-    tl.to(buttonRef.current, { opacity: 1, y: 0, duration: 3, ease: "power1.out" }, 0.8);
+        if (playPromise !== undefined) {
+          playPromise
+            .then(() => {
+              console.log("[v0] Video started playing successfully");
+              setVideoStarted(true);
 
-    return () => {
-      tl.scrollTrigger?.kill();
-      tl.kill();
-    };
+              // Sequential text animations after video starts
+              setTimeout(() => {
+                setShowLeftText(true);
+              }, 500); // Left text after 0.5s
+              setTimeout(() => {
+                setShowRightText(true);
+              }, 1500); // Right text after 1.5s
+              setTimeout(() => {
+                setShowButton(true);
+              }, 2500); // Button after 2.5s
+            })
+            .catch((error) => {
+              console.log("[v0] Video play failed:", error);
+              // If autoplay fails, still show the text animations
+              setVideoStarted(true);
+              setTimeout(() => setShowLeftText(true), 500);
+              setTimeout(() => setShowRightText(true), 1500);
+              setTimeout(() => setShowButton(true), 2500);
+            });
+        }
+      }
+    }
+  }, [imageVisible, videoStarted]);
+
+  useEffect(() => {
+    const video = videoRef.current;
+    if (video) {
+          video.playbackRate = 0.8; // 0.5 = half speed, 2.0 = double speed
+
+      video.onloadedmetadata = () => {
+        console.log("[v0] Video metadata loaded");
+        video.currentTime = 0;
+      };
+
+      video.oncanplay = () => {
+        console.log("[v0] Video can start playing");
+      };
+
+      video.onerror = (e) => {
+        console.log("[v0] Video error:", e);
+      };
+    }
   }, []);
 
-
-
-  useEffect(() => {
-  const canvas = canvasRef.current;
-  const ctx = canvas.getContext("2d");
-
-  // Set initial size
-  canvas.width = window.innerWidth;
-  canvas.height = window.innerHeight;
-
-  const handleResize = () => {
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
-  };
-  window.addEventListener("resize", handleResize);
-
-  // Create stars
-  const stars = Array.from({ length: 200 }, () => ({
-    x: Math.random() * canvas.width,
-    y: Math.random() * canvas.height,
-    r: Math.random() * 1.5 + 0.5,
-    opacity: Math.random(),
-    delta:
-      (Math.random() * 0.03 + 0.01) * (Math.random() < 0.5 ? 1 : -1), // blink speed
-  }));
-
-  // Fog animation variables
-  let fogX = canvas.width * 0.7; // start at right side
-  let fogY = 0;
-  const fogSpeedX = 0.1; // slow horizontal drift
-  const fogSpeedY = 0.05; // vertical drift
-
-  function animate() {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-    // ---- Draw stars everywhere ----
-    stars.forEach((s) => {
-      s.opacity += s.delta;
-      if (s.opacity > 1) {
-        s.opacity = 1;
-        s.delta = -s.delta;
-      }
-      if (s.opacity < 0.2) {
-        s.opacity = 0.2;
-        s.delta = -s.delta;
-      }
-
-      ctx.beginPath();
-      ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
-      ctx.fillStyle = `rgba(255,255,255,${s.opacity})`;
-      ctx.fill();
-    });
-
-    // ---- Draw fog only on right side ----
-    const fogGradient = ctx.createLinearGradient(
-      canvas.width * 0.7, fogY, // start fade around 70% width
-      canvas.width, canvas.height
-    );
-
-    fogGradient.addColorStop(0, "rgba(255,255,255,0)");   // transparent blend
-    fogGradient.addColorStop(1, "rgba(255,255,255,0.15)"); // soft fog
-
-    ctx.fillStyle = fogGradient;
-    ctx.fillRect(canvas.width * 0.7, 0, canvas.width * 0.3, canvas.height);
-
-    // Move fog (gentle drift)
-    fogX += fogSpeedX;
-    fogY += fogSpeedY;
-
-    if (fogY > canvas.height) fogY = -canvas.height;
-
-    requestAnimationFrame(animate);
-  }
-
-  animate();
-
-  return () => {
-    window.removeEventListener("resize", handleResize);
-  };
-}, []);
-
-
   return (
-<>
-     {/* Top Image */}
-      <div ref={topImgRef} className="fixed inset-0 z-[2000]">
-        <img src="/hero2.png" className="w-full h-full object-cover" />
-      </div>
     <section
       ref={sectionRef}
-      className={`hero-sec relative min-h-[100vh] flex items-center overflow-hidden main-secure-banner `}
-    //   style={{ zIndex: bgZIndex }}
+      className="hero-sec relative min-h-[100vh] flex items-center main-secure-banner z-0 overflow-hidden"
     >
-      {/* Background Image */}
-      <div ref={bgImgRef} className="fixed inset-0 overflow-hidden">
-        <img src="/hero_019.jpg" className="w-full h-full object-cover" />
-        <canvas ref={canvasRef} className="absolute inset-0 pointer-events-none" />
-        <div className="absolute inset-0 bg-black/50" />
+      <div className="absolute inset-0 w-full h-[100vh] z-0">
+       <video
+  {...(videoStarted ? { autoPlay: true, loop: true } : {})}
+  ref={videoRef}
+  className="w-full h-full object-cover"
+  src="/hero-banner-video.mp4"
+  muted
+  playsInline
+/>
+
       </div>
 
-     
+      <AnimatePresence>
+        {imageVisible && (
+          <div className="absolute inset-0 flex items-center justify-center z-5">
+            <motion.img
+              src="/hero2.png"
+              alt="Airplane window view"
+              className="w-full h-full object-cover"
+              style={{
+                scale: imageScale,
+                transformOrigin: "center center",
+                willChange: "transform",
+                position: "absolute",
+              }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.8, ease: "easeOut" }}
+            />
+          </div>
+        )}
+      </AnimatePresence>
 
-      {/* Pinned Content */}
-      <div className="relative z-20 w-full sticky top-0 min-h-screen flex items-center justify-center">
-        <div className="container mx-auto px-6 relative">
-          <div className="flex flex-col md:flex-row gap-4 items-end justify-between min-h-screen ban-inner-wrapper md:text-left">
-            {/* Left Heading */}
+      {/* <div className="absolute inset-0 bg-black/50 z-6" /> */}
+
+      <div className="relative z-4 w-full ">
+        <div className="container mx-auto px-6">
+          <div className="flex gap-12 items-end min-h-screen ban-inner-wrapper">
             <div className="main-head-banner-box">
-              <h1
-                ref={leftTextRef}
-                className="main-banner-heading text-white font-semibold mb-0 text-4xl md:text-6xl leading-tight"
-              >
-                {serviceList?.home_advanced_it_and_cyber_security_first_heading}
-                <br />
-                {serviceList?.home_advanced_it_and_cyber_security_second}
-                <br />
-                <span className="text-[#00AEEF]">
-                  {serviceList?.home_advanced_it_and_cyber_security_third}
-                </span>
-              </h1>
+              <AnimatePresence>
+                {showLeftText && (
+                  <motion.h1
+                    initial={{ y: 50, opacity: 0 }} // start lower
+                    animate={{ y: 0, opacity: 1 }} // move up to position
+                    transition={{ duration: 1, ease: "easeOut" }}
+                    className="main-banner-heading text-white font-semibold mb-0 relative z-10"
+                  >
+                    {
+                      serviceList.home_advanced_it_and_cyber_security_first_heading
+                    }
+                    <br />
+                    {serviceList.home_advanced_it_and_cyber_security_second}
+                    <br />
+                    <span>
+                      {serviceList.home_advanced_it_and_cyber_security_third}
+                    </span>
+                  </motion.h1>
+                )}
+              </AnimatePresence>
             </div>
 
-            {/* Right Side */}
-            <div ref={rightTextRef} className="space-y-8 ban-content-box">
-              <div className="space-y-6 main-banner-para-box">
-                <p className="main-banner-paraTxt text-white mb-0">
-                  {serviceList?.home_advanced_it_and_cyber_security_paragraph}
-                </p>
-
-                <div ref={buttonRef}>
-                  <Link
-                    href={"/contact-us"}
-                    className="bg-[#00AEEF] hover:bg-[#0099d4] text-white rounded-lg start-mission-btn inline-block px-8 py-3 font-semibold transition-colors duration-300"
+            <div className="space-y-8 ban-content-box">
+              {/* Right text */}
+              <AnimatePresence>
+                {showRightText && (
+                  <motion.div
+                    initial={{ y: 50, opacity: 0 }} // start lower
+                    animate={{ y: 0, opacity: 1 }} // move up to position
+                    transition={{ duration: 1, ease: "easeOut" }}
+                    className="space-y-6 main-banner-para-box relative z-10 p-0 m-0"
                   >
-                    {serviceList?.home_advanced_it_and_cyber_security_fourth}
-                  </Link>
-                </div>
+                    <p className="main-banner-paraTxt text-white mb-0">
+                      {
+                        serviceList.home_advanced_it_and_cyber_security_paragraph
+                      }
+                    </p>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+
+              {/* Reserve space for button */}
+              <div className="relative z-10 min-h-[56px] flex items-center">
+                <AnimatePresence>
+                  {showButton && (
+                    <motion.div
+                      initial={{ y: 80, opacity: 0 }}
+                      animate={{ y: 0, opacity: 1 }}
+                      transition={{ duration: 0.8, ease: "easeOut" }}
+                    >
+                      <Link
+                        href={"/contact-us"}
+                        className="bg-[#00AEEF] hover:bg-[#0099d4] text-white rounded-lg start-mission-btn"
+                      >
+                        {serviceList.home_advanced_it_and_cyber_security_fourth}
+                      </Link>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
               </div>
             </div>
           </div>
 
-          {/* Scroll Down Button */}
-          <div className="absolute z-30 scroll-down-button transform">
+          <div className="absolute z-10 scroll-down-button">
             <motion.div
               animate={{ y: [0, 10, 0] }}
               transition={{ duration: 2, repeat: Number.POSITIVE_INFINITY }}
-              className="flex items-center text-white/70 cursor-pointer hover:text-white transition-colors"
-              onClick={() =>
-                window.scrollTo({ top: window.innerHeight, behavior: "smooth" })
-              }
+              className="flex items-center text-white/70 cursor-pointer"
+              onClick={() => {
+                window.scrollTo({
+                  top: window.innerHeight,
+                  behavior: "smooth",
+                });
+              }}
             >
               <img
                 src="/Scroll-down-icon.svg"
@@ -229,6 +235,5 @@ export default function HeroSection({ serviceList }) {
         </div>
       </div>
     </section>
-    </>
   );
 }
