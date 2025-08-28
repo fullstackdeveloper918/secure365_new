@@ -41,7 +41,7 @@ export const ContactFormHome = () => {
       <section className="bg-[#02050f] relative z-20 website-audit-form" data-aos="zoom-in">
         <div className="audit-form-box relative">
           <div className="flex flex-col">
-            {/* Left Column */}
+
             <div className="flex top-audit-head">
               <h2 className="text-5xl md:text-6xl text-white leading-snug mb-0">
                 Wanna A Free <br /> WEBSITE AUDIT?
