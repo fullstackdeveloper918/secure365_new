@@ -11,18 +11,18 @@ const logos = [
   "/brand-8.png"
 ];
 
-const BrandLogos = () => {
+const BrandLogos = ({ serviceData }) => {
   return (
     <section className="logo-brand-service bg-black">
-    <div className="container">
-    <div className="serv-logo-outerBox">  
-      {logos.map((logo, index) => (
-        <div className="serv-img-box" key={index}>
-          <img src={logo} alt={`Brand ${index + 1}`} />
+      <div className="container">
+        <div className="serv-logo-outerBox">
+          {serviceData?.data?.service_logo_slider_data?.map((logo, index) => (
+            <div className="serv-img-box" key={index}>
+              <img src={logo.service_logo_slider_image} alt={`Brand ${index + 1}`} />
+            </div>
+          ))}
         </div>
-      ))}
       </div>
-    </div>
     </section>
   );
 };

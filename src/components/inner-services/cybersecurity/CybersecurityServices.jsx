@@ -3,6 +3,7 @@ import { useEffect, useRef } from "react";
 import { Shield, Lock, FileCheck } from "lucide-react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import Link from "next/link";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -11,55 +12,55 @@ gsap.registerPlugin(ScrollTrigger);
 export const Cybersecurity_Services =
 {
   title: "Cybersecurity Services",
-  services : [
-  {
-    icon: <Shield className="h-6 w-6 text-slate-700" />,
-    iconBg: "bg-slate-100",
-    title: "Lite Security Scan",
-    desc: "Essential protection for small businesses",
-    price: "$999",
-    priceNote: "One-time assessment",
-    buttonText: "Get Started",
-    features: [
-      "Vulnerability assessment",
-      "Security configuration review",
-      "Basic threat detection",
-      "Remediation recommendations",
-    ],
-  },
-  {
-    icon: <Lock className="h-6 w-6 text-[#01abeb]" />,
-    iconBg: "bg-slate-100",
-    cardStyle: "border-emerald-200 shadow-lg",
-    title: "24/7 Security Operations",
-    desc: "Continuous protection for growing businesses",
-    price: "$1,999",
-    priceNote: "Monthly subscription",
-    buttonText: "Get Started",
-    buttonStyle: "bg-[#01aaeb] hover:bg-[#01aaebcf]",
-    features: [
-      "Includes Lite Scan features",
-      "24/7 security monitoring",
-      "Real-time threat detection & response",
-      "Monthly security reports",
-    ],
-  },
-  {
-    icon: <FileCheck className="h-6 w-6 text-slate-700" />,
-    iconBg: "bg-slate-100",
-    title: "Compliance Bundles",
-    desc: "Regulatory compliance for regulated industries",
-    price: "Custom",
-    priceNote: "Based on your needs",
-    buttonText: "Contact Sales",
-    features: [
-      "Includes 24/7 Security Ops",
-      "Compliance gap assessment",
-      "Policy & procedure development",
-      "Audit preparation & support",
-    ],
-  },
-]
+  services: [
+    {
+      icon: <Shield className="h-6 w-6 text-slate-700" />,
+      iconBg: "bg-slate-100",
+      title: "Lite Security Scan",
+      desc: "Essential protection for small businesses",
+      price: "$999",
+      priceNote: "One-time assessment",
+      buttonText: "Get Started",
+      features: [
+        "Vulnerability assessment",
+        "Security configuration review",
+        "Basic threat detection",
+        "Remediation recommendations",
+      ],
+    },
+    {
+      icon: <Lock className="h-6 w-6 text-[#01abeb]" />,
+      iconBg: "bg-slate-100",
+      cardStyle: "border-emerald-200 shadow-lg",
+      title: "24/7 Security Operations",
+      desc: "Continuous protection for growing businesses",
+      price: "$1,999",
+      priceNote: "Monthly subscription",
+      buttonText: "Get Started",
+      buttonStyle: "bg-[#01aaeb] hover:bg-[#01aaebcf]",
+      features: [
+        "Includes Lite Scan features",
+        "24/7 security monitoring",
+        "Real-time threat detection & response",
+        "Monthly security reports",
+      ],
+    },
+    {
+      icon: <FileCheck className="h-6 w-6 text-slate-700" />,
+      iconBg: "bg-slate-100",
+      title: "Compliance Bundles",
+      desc: "Regulatory compliance for regulated industries",
+      price: "Custom",
+      priceNote: "Based on your needs",
+      buttonText: "Contact Sales",
+      features: [
+        "Includes 24/7 Security Ops",
+        "Compliance gap assessment",
+        "Policy & procedure development",
+        "Audit preparation & support",
+      ],
+    },
+  ]
 }
 
 export default function CybersecurityServices() {
@@ -136,17 +137,24 @@ export default function CybersecurityServices() {
                   {service.price}
                 </div>
                 <p className="text-sm text-slate-500 mb-0">{service.priceNote}</p>
-                <button
+                {/* <button
                   className={`mt-4 w-full px-4 py-2 rounded-md text-white font-semibold cb-btn-prc ${service.buttonStyle || "bg-slate-800 hover:bg-slate-900"
                     }`}
                 >
                   {service.buttonText}
-                </button>
+                </button> */}
+                <Link href={"/contact-us"}
+                  className={`mt-4 w-full px-4 py-2 rounded-md text-white font-semibold cb-btn-prc ${service.buttonStyle || "bg-slate-800 hover:bg-slate-900"
+                    }`}
+                >
+                  {service.buttonText}
+                </Link>
               </div>
             </div>
+            // </div>
           ))}
         </div>
       </div>
-    </section>
+    </section >
   );
 }

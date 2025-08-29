@@ -55,9 +55,9 @@ const AboutUsMain = ({ aboutResponse, bannerResponse }) => {
 
             <FunFactOne aboutResponse={aboutResponse} />
 
-            <BrandFive />
+            <BrandFive aboutResponse={aboutResponse} />
             <div className="ab-award-style why-choose-sec">
-              <AboutWork />
+              <AboutWork aboutResponse={aboutResponse} />
             </div>
           </main>
           <FooterFour />

@@ -25,11 +25,11 @@ const ServicePage = async () => {
   const serviceData = await data.json();
   const serviceBannerData = await bannerData.json();
 
-  console.log("serviceData", serviceData);
+  console.log("serviceData here", serviceData);
 
   return (
     <>
-      <AnimationHeader />
+      {/* <AnimationHeader /> */}
       <ServiceMain
         serviceData={serviceData}
         serviceBannerData={serviceBannerData}

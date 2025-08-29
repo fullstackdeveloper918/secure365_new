@@ -1,7 +1,7 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
-import shape from '@/assets/img/inner-about/about/shape-1.png';
+import shape from "@/assets/img/inner-about/about/shape-1.png";
 import { Rocket } from "lucide-react";
 
 const work_data = [
@@ -30,7 +30,7 @@ const work_data = [
     text: "Secure365 is built on years of battling cybercrime, managing e-commerce platforms, and developing technology strategies that work in real-world scenarios.",
   },
 ];
-export default function AboutWork() {
+export default function AboutWork({ aboutResponse }: any) {
   return (
     <div className="ab-2-work-area">
       <div className="container">
@@ -38,7 +38,11 @@ export default function AboutWork() {
           <div className="col-xl-12 col-lg-5">
             <div className="ab-2-work-title-box p-relative text-left w-full">
               <h2 className="ab-2-work-title tp_title_anim text-left why-choose-top-head">
-              Why Choose <span className="blueColor">Secure365?</span>
+                {/* Why Choose <span className="blueColor">Secure365?</span> */}
+                {aboutResponse?.data?.about_our_core_hi}{" "}
+                <span className="blueColor">
+                  {aboutResponse?.data?.about_our_core_something_section}
+                </span>
               </h2>
               {/* <span className="ab-2-work-subtitle tp_title_anim">
                 About My Biography
@@ -52,7 +56,10 @@ export default function AboutWork() {
           </div>
           <div className="col-xl-12 col-lg-7 row pt-20 grid grid-cols-2 gap-5">
             {work_data.map((item) => (
-              <div key={item.id} className="ab-2-work-item tp_fade_bottom col-xl-12 col-lg-12 col-md-12">
+              <div
+                key={item.id}
+                className="ab-2-work-item tp_fade_bottom col-xl-12 col-lg-12 col-md-12"
+              >
                 <div className="sv-service-content">
                   <div className="sv-service-title-box">
                     <span className="sv-service-subtitle">
@@ -89,7 +96,7 @@ export default function AboutWork() {
                     </span>
                     </Link>
                     </div> */}
-                      {/* <div className="cta-project-btn service-all-btn mt-3">
+          {/* <div className="cta-project-btn service-all-btn mt-3">
                                                 <button className="relative z-[99] bannerbtn flex items-center justify-content-center w-full">
                                                   <Link className="header-button ajax-link" href="/contact-us">
                                                     <div className="button-icon-link right white-hovBtn">
@@ -107,11 +114,14 @@ export default function AboutWork() {
                                                   </Link>
                                                 </button>
                                          </div> */}
-                                         <div className="text-center">
-                                         <Link href={"/contact-us"} className="bg-[#00AEEF] hover:bg-[#0099d4] text-white rounded-lg global-primary-btn">
-                          Learn More
-                </Link>
-                </div>
+          <div className="text-center">
+            <Link
+              href={"/why-choose"}
+              className="bg-[#00AEEF] hover:bg-[#0099d4] text-white rounded-lg global-primary-btn"
+            >
+              Learn More
+            </Link>
+          </div>
         </div>
       </div>
     </div>

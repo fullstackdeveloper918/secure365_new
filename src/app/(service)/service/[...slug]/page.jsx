@@ -42,6 +42,7 @@ import { notFound } from "next/navigation";
 
 const ServiceDetailsPage = async ({ params }) => {
   let serviceBannerData = null;
+  let serviceBannerDatas = null;
   // const params = useParams();
   // const slug = params.slug ? params.slug[0] : null;
 
@@ -60,7 +61,7 @@ const ServiceDetailsPage = async ({ params }) => {
 
     if (bannerData.ok) {
       const response = await bannerData.json();
-      serviceBannerData = response?.data;
+      serviceBannerDatas = response?.data;
     }
   } catch (err) {
     console.error("API failed, falling back to local JSON", err);

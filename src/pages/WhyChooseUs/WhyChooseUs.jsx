@@ -51,7 +51,10 @@ const FaqMain = ({ whyChooseData }) => {
             }}
           >
             <main>
-              <div className="tm-hero-area tm-hero-ptb bann-p-block " id="why-choose-bg">
+              <div className="tm-hero-area tm-hero-ptb bann-p-block " id="why-choose-bg" style={{
+                backgroundImage:
+                  `url(${whyChooseData?.why_choose_us_decades_world_image_url})`,
+              }}>
                 <div className="container z-10">
                   <div className="row">
                     <div className="col-xl-12">
@@ -64,9 +67,10 @@ const FaqMain = ({ whyChooseData }) => {
                       </div>
                       <div className="tm-hero-text tp_title_animn why-ban-para">
                         <p className="text-white mb-0">
-                          Expertise, reliability, and a commitment to your
+                          {/* Expertise, reliability, and a commitment to your
                           success—discover why businesses choose Secure365 for
-                          all their IT and security needs
+                          all their IT and security needs */}
+                          {whyChooseData?.why_choose_sets_us_apart_paragraph}
                           <br />
                         </p>
                       </div>
@@ -88,7 +92,7 @@ const FaqMain = ({ whyChooseData }) => {
                           </div>
                           <div className="instropara tp_title_anim">
                             <p className="text-white">
-                              When it comes to choosing an IT partner, you need more
+                              {/* When it comes to choosing an IT partner, you need more
                               than just someone to set up your systems or install a
                               firewall—you need a trusted advisor who understands
                               your business, anticipates your needs, and has the
@@ -96,7 +100,8 @@ const FaqMain = ({ whyChooseData }) => {
                               we bring together years of experience in
                               cybersecurity, IT management, and digital strategy to
                               deliver solutions that are tailored, proactive, and
-                              focused on driving results.
+                              focused on driving results. */}
+                              {whyChooseData?.why_choose_core_strength_main_heading_second}
                             </p>
                           </div>
 
@@ -138,7 +143,7 @@ const FaqMain = ({ whyChooseData }) => {
                               </button>
                             </div> */}
                             <Link href={"/contact-us"} className="bg-[#00AEEF] hover:bg-[#0099d4] text-white rounded-lg global-primary-btn">
-                               Request a Consultation
+                              Request a Consultation
                             </Link>
                           </div>
 
@@ -147,7 +152,8 @@ const FaqMain = ({ whyChooseData }) => {
                         <div className="col-xl-6 col-md-6 col-sm-12">
                           <Image
                             className="rightImage"
-                            src={bannerDiv}
+                            // src={bannerDiv}
+                            src={whyChooseData?.why_choose_sets_us_apart_image_url}
                             alt="shape"
                             width={1920}
                             height={500}
@@ -162,7 +168,8 @@ const FaqMain = ({ whyChooseData }) => {
                         <div className="col-xl-6 col-md-6 col-sm-12">
                           <Image
                             className="rightImage"
-                            src={bannerDiv2}
+                            // src={bannerDiv2}
+                            src={whyChooseData?.our_commitment_section_image_url}
                             alt="shape"
                             width={1920}
                             height={500}
@@ -220,7 +227,7 @@ const FaqMain = ({ whyChooseData }) => {
                               </button>
                             </div> */}
                             <Link href={"/contact-us"} className="bg-[#00AEEF] hover:bg-[#0099d4] text-white rounded-lg global-primary-btn">
-                                     Start With Us
+                              Start With Us
                             </Link>
                           </div>
                         </div>

@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 const CtaSection = () => (
     <section className="text-center cta-sec relative">
         <video
@@ -18,18 +20,22 @@ const CtaSection = () => (
             <source src="/services.mp4" type="video/mp4" />
             Your browser does not support the video tag.
         </video>
-<div className="absolute top-0 left-0 w-full h-full overlay-proj">
+        <div className="absolute top-0 left-0 w-full h-full overlay-proj">
 
-</div>
+        </div>
 
         <h2 className="font-bold text-white z-10 relative">Let’s Build a Safer Web Together</h2>
         <p className="text-white mb-8 mx-auto z-10 relative">
             Whether you're starting from scratch or need to secure your existing website,
             Secure365 is here to help. Let’s build something strong, secure, and scalable — together.
         </p>
-        <button className="rounded-pill transition-all z-10 relative mt-3">
+        {/* <button className="rounded-pill transition-all z-10 relative mt-3">
             Let's Connect
-        </button>
+        </button> */}
+
+        <Link href={"/contact-us"} className="bg-[#00AEEF] rounded-pill transition-all z-10 relative mt-3 hover:bg-[#0099d4] text-white rounded-lg global-primary-btn">
+            Let's Connect
+        </Link>
     </section>
 );
 

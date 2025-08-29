@@ -6,6 +6,8 @@ import Image from "next/image";
 import ScrambleText from "./ScrambleText";
 import { usePathname } from "next/navigation";
 import { config } from "../../config";
+import { ChevronDown } from "lucide-react"; // 👈 import added
+
 // Typing Effect Component
 const TypingEffect = ({ text }) => {
   const [displayedText, setDisplayedText] = useState("");
@@ -13,12 +15,10 @@ const TypingEffect = ({ text }) => {
 
   useEffect(() => {
     if (text && index < text.length) {
-      // Start typing the text one character at a time
       const timer = setTimeout(() => {
         setDisplayedText((prevText) => prevText + text[index]);
         setIndex(index + 1);
-      }, 100); // Typing speed (100ms per letter)
-
+      }, 100);
       return () => clearTimeout(timer);
     }
   }, [text, index]);
@@ -27,27 +27,59 @@ const TypingEffect = ({ text }) => {
 };
 
 const AnimationHeader = () => {
-  // const [hoveredText, setHoveredText] = useState(null);
-  const [activeItem, setActiveItem] = useState(null); // Track the active menu item
-  const [scrolled, setScrolled] = useState(false); // Track if the page has been scrolled
+  const [activeItem, setActiveItem] = useState(null);
+  const [scrolled, setScrolled] = useState(false);
+  const [homePage, setHomePage] = useState(false);
   const [active, setActive] = useState(false);
   const [hoveredItem, setHoveredItem] = useState(null);
   const [isDesktop, setIsDesktop] = useState(false);
+  const [isLightSection, setIsLightSection] = useState(false);
+  const [serviceList, setServiceList] = useState([]);
+  const [isSubmenuOpen, setIsSubmenuOpen] = useState(false); // 👈 for mobile/tablet submenu
+
   const pathname = usePathname();
 
-  const [serviceList, setServiceList] = useState([]);
-
-
-  console.log(hoveredItem,"hoveredItem checking")
   useEffect(() => {
-    const handleResize = () => {
-      setIsDesktop(window.innerWidth >= 1025);
+    if (pathname === "/") return;
+
+    const checkSectionColor = () => {
+      const section = document.querySelector(".white-section");
+      if (!section) return setIsLightSection(false);
+
+      const bgColor = window.getComputedStyle(section).backgroundColor;
+      if (bgColor === "rgb(255, 255, 255)" || bgColor === "#fff") {
+        setIsLightSection(true);
+      } else {
+        setIsLightSection(false);
+      }
     };
 
-    handleResize(); // initial check
+    checkSectionColor();
+    window.addEventListener("scroll", checkSectionColor);
+    window.addEventListener("resize", checkSectionColor);
+
+    return () => {
+      window.removeEventListener("scroll", checkSectionColor);
+      window.removeEventListener("resize", checkSectionColor);
+    };
+  }, [pathname]);
+
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth >= 1025) {
+        setIsDesktop(true);
+        setIsSubmenuOpen(false); // 👈 close mobile submenu when desktop
+      } else {
+        setIsDesktop(false);
+        setIsSubmenuOpen(false); // 👈 also reset when mobile
+      }
+    };
+
+    handleResize();
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
-  }, []);
+  }, [setIsDesktop, setIsSubmenuOpen]);
+
 
   useEffect(() => {
     const fetchData = async () => {
@@ -64,7 +96,6 @@ const AnimationHeader = () => {
         }
 
         const data = await response.json();
-        console.log("data of home page", data);
         setServiceList(data);
       } catch (error) {
         console.error("Error fetching data:", error);
@@ -74,77 +105,45 @@ const AnimationHeader = () => {
     fetchData();
   }, []);
 
-  // Extract the route name after the last '/'
-  const routeName = pathname
-    ? pathname.substring(pathname.lastIndexOf("/") + 1)
-    : "";
-
-  console.log(routeName, "currentRoute");
-
-  const handleMouseEnter = (text) => {
-    // setHoveredText(text); // Set the hovered text to show typing effect
-  };
-
-  const handleMouseLeave = () => {
-    // setHoveredText(null); // Reset the hovered text when hover ends
-  };
-
   const handleClick = (text) => {
-    setActiveItem(text); // Set the clicked item as active
+    setActiveItem(text);
     setActive(false);
   };
 
-  // Detect scroll and add/remove class based on scroll position
   useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY > 50) {
-        // Change the threshold to your preference
         setScrolled(true);
+        setHomePage(true);
       } else {
         setScrolled(false);
+        setHomePage(false);
       }
     };
 
-    // Add scroll event listener
     window.addEventListener("scroll", handleScroll);
-
-    // Cleanup event listener on component unmount
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
 
-  // Define the menu items
-  const menuItems = [
-    // "Home",
-    "About Us",
-    "Our Services",
-    "Why Choose Us",
-    "Contact Us",
-  ];
+  const menuItems = ["About Us", "Our Services", "Our Projects", "Why Choose Us", "Contact Us"];
 
-  const handleClickActive = (active) => {
-    setActive(!active);
-  };
+  const isHomePage = pathname === "/";
 
-  console.log(active, "active enhe");
-  console.log(serviceList, "serviceList");
+  console.log("isSubmenuOpen", isSubmenuOpen); // 👈 for debugging
+
   return (
     <>
-      {/* <div className="word"></div> */}
-
       <header
-        className={`clapat-header classic-menu invert-header ${routeName == "about-us" ||
-          routeName == "contact-us" ||
-          routeName == ""
-          ? ""
-          : "scrolled"
-          } ${scrolled ? "scrolled" : ""}`}
+        className={`clapat-header classic-menu invert-header ${!isHomePage && scrolled ? "scrolled" : homePage ? "backdrop-blur-md" : ""
+          }`}
         data-menucolor="#0c0c0c"
       >
         <div className="header-gradient"></div>
 
         <div id="header-container">
+          {/* Logo */}
           <div id="clapat-logo" className="hide-ball">
             <Link className="ajax-link" href="/">
               <Image
@@ -163,12 +162,9 @@ const AnimationHeader = () => {
               />
             </Link>
           </div>
+
           <div className="menu-link-call-action">
-            <nav
-              className={
-                active ? "clapat-nav-wrapper-show" : "clapat-nav-wrapper"
-              }
-            >
+            <nav className={active ? "clapat-nav-wrapper-show" : "clapat-nav-wrapper"}>
               <ul
                 data-breakpoint="1025"
                 className={active ? "flexnav flexnav-show" : "flexnav"}
@@ -176,30 +172,52 @@ const AnimationHeader = () => {
                 {menuItems.map((item, idx) => (
                   <li
                     key={idx}
-                    className={`menu-timeline link header-link ${activeItem === item ? "active" : ""
+                    className={`menu-timeline link header-link ${activeItem === item ? "active text-[#01b0ec]" : "text-white"
                       }`}
                     onMouseEnter={() => isDesktop && setHoveredItem(item)}
                     onMouseLeave={() => isDesktop && setHoveredItem(null)}
                   >
-                    <Link
-                      className="ajax-link"
-                      href={
-                        item === "Home"
-                          ? "/"
-                          : item === "Why Choose Us"
-                            ? "/why-choose" : item === "Free Audit"
-                              ? "/analyzer"
-                              : item === "Our Services"
-                                ? "/service"
-                                : `/${item.toLowerCase().replace(/\s+/g, "-")}`
-                      }
-                      onClick={() => handleClick(item)}
-                    >
-                      {item}
-                      <ScrambleText text={item} />
-                    </Link>
+                    <div className="flex items-center menuMobile">
+                      <Link
+                        className="ajax-link"
+                        href={
+                          item === "Home"
+                            ? "/"
+                            : item === "Why Choose Us"
+                              ? "/why-choose"
+                              : item === "Free Audit"
+                                ? "/analyzer"
+                                : item === "Our Projects"
+                                  ? "/project"
+                                  // : item === "Web Analyzer"
+                                  //   ? "/web-analyzer"
+                                  : item === "Our Services"
+                                    ? "/service"
+                                    : `/${item.toLowerCase().replace(/\s+/g, "-")}`
+                        }
+                        onClick={() => handleClick(item)}
+                      >
+                        {item}
+                        <ScrambleText text={item} />
+                      </Link>
 
-                    {/* Show submenu on hover */}
+                      {/* 👇 ChevronDown button only for Our Services on mobile/tablet */}
+                      {item === "Our Services" && (
+                        <button
+                          type="button"
+                          className="ml-2"
+                          onClick={() => setIsSubmenuOpen(!isSubmenuOpen)}
+                        >
+                          <ChevronDown
+                            size={20}
+                            className={`transition-transform text-white ${isSubmenuOpen ? "rotate-180" : ""
+                              }`}
+                          />
+                        </button>
+                      )}
+                    </div>
+
+                    {/* Submenu Desktop (hover) */}
                     {item === "Our Services" &&
                       isDesktop &&
                       hoveredItem === "Our Services" && (
@@ -209,9 +227,7 @@ const AnimationHeader = () => {
                               <Link
                                 key={index}
                                 href={`/service/${service.home_page_service_section_loop.substring(
-                                  service.home_page_service_section_loop.lastIndexOf(
-                                    "/"
-                                  ) + 1
+                                  service.home_page_service_section_loop.lastIndexOf("/") + 1
                                 )}`}
                               >
                                 {
@@ -224,8 +240,31 @@ const AnimationHeader = () => {
                           )}
                         </div>
                       )}
+
+                    {/* Submenu Mobile/Tablet (ChevronDown click) */}
+                    {!isDesktop && item === "Our Services" && isSubmenuOpen && (
+                      <div className="sub-menu">
+                        {serviceList?.home_page_service_section_loop_data?.map(
+                          (service, index) => (
+                            <Link
+                              key={index}
+                              href={`/service/${service.home_page_service_section_loop.substring(
+                                service.home_page_service_section_loop.lastIndexOf("/") + 1
+                              )}`}
+                            >
+                              {
+                                service.home_page_service_section_loop.split(
+                                  "/"
+                                )[0]
+                              }
+                            </Link>
+                          )
+                        )}
+                      </div>
+                    )}
                   </li>
                 ))}
+
                 {!isDesktop && (
                   <li className="lets-talk-btn-inner">
                     <Link href="/contact-us" className="let-talk-btn">
@@ -236,6 +275,7 @@ const AnimationHeader = () => {
                 )}
               </ul>
             </nav>
+
             {isDesktop && (
               <div className="lets-talk-btn-inner">
                 <Link href="/contact-us" className="let-talk-btn">
@@ -244,25 +284,9 @@ const AnimationHeader = () => {
                 </Link>
               </div>
             )}
-
-
           </div>
 
-          {/* <Link className="header-button ajax-link" href="/contact-us">
-            <div className="button-icon-link right">
-              <div className="icon-wrap-scale">
-                <div className="icon-wrap parallax-wrap">
-                  <div className="button-icon parallax-element">
-                    <i className="fa-solid fa-arrow-right"></i>
-                  </div>
-                </div>
-              </div>
-              <div className="button-text sticky right ">
-                <span data-hover="Let's Talk">Let's Talk</span>
-              </div>
-            </div>
-          </Link> */}
-
+          {/* Burger Menu */}
           <div className="button-wrap right menu burger-lines d-none mobile-menu">
             <div
               className="icon-wrap parallax-wrap"

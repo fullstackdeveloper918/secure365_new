@@ -18,13 +18,19 @@ import ImagesSlider from "@/components/projectSlider/ImagesSlider";
 import SecureWay from "@/components/projectSlider/SecureWay";
 import GallerySection from "@/components/projectSlider/GallerySection";
 import CtaSection from "@/components/projectSlider/CtaSection";
-
+import ProjectFive from "@/components/project/project-five";
+import WorksSection from "@/components/project/WorksSection";
+import ProjectFour from "@/components/project/project-four";
+import ProjectOne from "@/components/project/project-one";
+import ProjectSix from "@/components/project/project-six";
+import ProjectThree from "@/components/project/project-three";
+import ProjectTwo from "@/components/project/project-two";
+import ClapatSlider from "@/components/sliderProject/sliderProject";
+// import ProjectsCard from "@/components/projects-section/projects-cards";
 gsap.registerPlugin(ScrollTrigger);
-
 const Page = () => {
   const heroRef = useRef(null);
   const mainContentRef = useRef(null);
-
   useEffect(() => {
     // Hero Animation
     gsap.set("#hero-background-layer", {
@@ -34,7 +40,6 @@ const Page = () => {
       transformOrigin: "center top",
       opacity: 0,
     });
-
     const heroTl = gsap.timeline({ delay: 0.2 });
     heroTl
       .to("#hero-background-layer", {
@@ -81,8 +86,6 @@ const Page = () => {
         },
         "-=0.5"
       );
-
-
     // Parallax fade/move on scroll for hero texts
     gsap.to(".hero-title", {
       scrollTrigger: {
@@ -95,7 +98,6 @@ const Page = () => {
       opacity: 0,
       ease: "none",
     });
-
     gsap.to(".hero-subtitle", {
       scrollTrigger: {
         trigger: "#hero",
@@ -107,7 +109,6 @@ const Page = () => {
       opacity: 0,
       ease: "none",
     });
-
     // Parallax Hero Image
     gsap.to("#hero-bg-image", {
       // yPercent: 10,
@@ -119,7 +120,6 @@ const Page = () => {
         scrub: true,
       },
     });
-
     // Parallax Images
     gsap.utils.toArray(".parallax-image").forEach((image) => {
       gsap.fromTo(
@@ -137,7 +137,6 @@ const Page = () => {
         }
       );
     });
-
     // Floating stars (space animation)
     const createStars = () => {
       const container = document.getElementById("space-animation");
@@ -154,13 +153,11 @@ const Page = () => {
       }
     };
     createStars();
-
     ScrollTrigger.refresh();
     return () => {
       ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
     };
   }, []);
-
   return (
     <>
       <style jsx global>{`
@@ -193,13 +190,12 @@ const Page = () => {
           }
         }
       `}</style>
-
       <main>
         <div className="cd-index cd-main-content">
           <div
             id="clapat-page-content"
             className="dark-content"
-            data-bgcolor="#ffffff"
+            data-bgcolor="#FFFFFF"
           >
             <div id="content-scroll">
               <div id="main" className="" ref={mainContentRef}>
@@ -222,16 +218,16 @@ const Page = () => {
                       </video>
                       <div id="space-animation"></div> {/* Space Animation Here */}
                       <div className="container">
-                      <div className="inner">
-                        <h1 className="hero-title caption-timeline project-top-heading">
-                          <span>Transforming a Vision</span>{" "}
-                          <span className="text-[#04aced]">into Reality</span>
-                        </h1>
-                        <div className="hero-subtitle caption-timeline onload-shuffle project-top-para">
-                          <span>
-                           At Secure365, we turn your digital ideas into secure, high-performing websites. From concept to launch, our expert team ensures every line of code aligns with your goals—built to protect, scale, and succeed in today’s online landscape.
-                          </span>
-                        </div>
+                        <div className="inner">
+                          <h1 className="hero-title caption-timeline project-top-heading">
+                            <span>Transforming a Vision</span>{" "}
+                            <span className="text-[#04ACED]">into Reality</span>
+                          </h1>
+                          <div className="hero-subtitle caption-timeline onload-shuffle project-top-para">
+                            <span>
+                              At Secure365, we turn your digital ideas into secure, high-performing websites. From concept to launch, our expert team ensures every line of code aligns with your goals—built to protect, scale, and succeed in today’s online landscape.
+                            </span>
+                          </div>
                         </div>
                       </div>
                       {/* <div id="hero-footer">
@@ -269,7 +265,6 @@ const Page = () => {
                     </div>
                   </div>
                 </div>
-
                 {/* <div
                   id="hero-image-wrapper"
                   className="change-header-color hero-pixels-cover parallax-scroll-image flex flex-col justify-center items-center proj-full-image"
@@ -285,13 +280,11 @@ const Page = () => {
                         backgroundImage:
                           "url('../images/projects/Astronaut-flag-hand.jpg')",
                       }}
-
                     >
                       <img src={('../images/projects/Project-Main-full.jpg')} />
                     </div>
                   </div>
                 </div> */}
-
                 {/* Your existing content here */}
                 <div id="main-content">
                   <div id="main-page-content">
@@ -300,17 +293,20 @@ const Page = () => {
                 </div>
               </div>
             </div>
+            {/* <ProjectThree /> */}
+            <WorksSection />
             <WhyTechable />
-            <MoreDesign />
-            <ImagesSlider />
-             <SecureWay />
-             {/* <CardStackingSection /> */}
+            {/* <MoreDesign /> */}
+            {/* <ProjectFour /> */}
+            {/* <ImagesSlider /> */}
+            <SecureWay />
+            {/* <CardStackingSection /> */}
             <TextScrollAnimation />
-            <GallerySection />
+            {/* <GallerySection /> */}
             <CtaSection />
-            {/* <UniqueSolution />
-            <ProjectSlider />
-            <TechableProject />
+            {/* <UniqueSolution /> */}
+            {/* <ProjectSlider /> */}
+            {/* <TechableProject />
             <AppleTech /> */}
           </div>
         </div>
@@ -318,5 +314,4 @@ const Page = () => {
     </>
   );
 };
-
 export default Page;

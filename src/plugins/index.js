@@ -4,3 +4,4 @@ import { ScrollSmoother } from "gsap/ScrollSmoother";
 export { default as cursorAnimation } from "./tp-cursor";
 export { default as chroma } from "./chroma.min";
 export { default as WebGL } from "./webgl";
+export { ScrollSmoother };

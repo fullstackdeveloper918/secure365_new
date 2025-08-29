@@ -8,7 +8,7 @@ import Link from 'next/link';
 
 gsap.registerPlugin(ScrollTrigger);
 
-const WorksSection = () => {
+const WorksSectioneee = () => {
   const sectionRef = useRef(null);
   const cardsRef = useRef([]);
 
@@ -360,13 +360,7 @@ const WorksSection = () => {
                     </div>
                   </div>
                 </Link>
-                {/* <Link
-                      href="/contact-us"
-                      id="btnTwo"
-                      className="BtnTwo btnWrapper rounded-[50px] text-white px-6 py-3 flex items-center justify-center"
-                    >
-                      Start Your Mission <Rocket className="ml-2 h-5 w-5" />
-                    </Link> */}
+            
               </button>
             </div>
           </div>
@@ -398,4 +392,4 @@ const WorksSection = () => {
   );
 };
 
-export default WorksSection;
+export default WorksSectioneee;

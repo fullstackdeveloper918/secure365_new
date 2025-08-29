@@ -7,7 +7,8 @@ import Phone from "../../../public/images/phonIcon.svg";
 import Email from "../../../public/images/email.svg";
 import timing from "../../../public/images/timing.svg";
 
-export default function ContactTwo() {
+export default function ContactTwo({ contactData }: any) {
+  console.log("contactData", contactData);
   return (
     <div className="cn-contactform-style relative pt-35 lg:pb-35 pb-35 bg-white reach-cont">
       {/* <div className="ab-2-hero-social-wrap d-none d-xxl-block">
@@ -24,15 +25,37 @@ export default function ContactTwo() {
           <div className="conatct-col ab-about-category-title-box p-relative col-xl-5 ">
             <div className="contactHeading">
               <h2>
-                How to <span>Reach Us</span>
+                {/* How to <span>Reach Us</span> */}
+                {contactData?.contact_promise_heading}
               </h2>
               <p>
-                We make it easy for you to get in touch, whether you prefer a
+                {/* We make it easy for you to get in touch, whether you prefer a
                 quick phone call, a detailed email, or scheduling a consultation
-                at a time that works for you.
+                at a time that works for you. */}
+                {contactData?.contact_promise_paragraph}
               </p>
             </div>
             <div className="contactDiv">
+              {contactData?.reach_contact_us_by?.map((item: any, idx: any) => (
+                <div key={idx} className="innerDivConatct">
+                  <span>
+                    <Image
+                      className="PhoeIcon"
+                      src={item.reach_contact_section_image}
+                      alt={item.reach_contact_section_image}
+                      width={50}
+                      height={50}
+                    />
+                  </span>
+                  <div className="Inndericon text-center text-lg-start">
+                    <h2 className="h5-title">{item.reach_contact_us_by}</h2>
+                    <p>{item.reach_contact_us_text}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            {/* <div className="contactDiv">
               <div className="innerDivConatct">
                 <span>
                   <Image className="PhoeIcon" src={Phone} alt="shape" />
@@ -62,7 +85,7 @@ export default function ContactTwo() {
                   </h2>
                 </div>
               </div>
-            </div>
+            </div> */}
           </div>
           <div className="conatct-col col-xl-7 contactForm">
             <div className="cn-contactform-wrap">

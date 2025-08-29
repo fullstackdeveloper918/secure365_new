@@ -14,7 +14,7 @@ export default function AboutFour({ aboutResponse }) {
               {aboutResponse?.data?.about_our_servics_heading}
             </span>
             <span className="text-white head-servTxt">
-              {aboutResponse?.data?.about_we_offer_heading_first} 
+              {aboutResponse?.data?.about_we_offer_heading_first}
               {aboutResponse?.data?.about_we_offer_heading_second}
               <span className="inline-block mx-2 align-middle">
                 <BallRound />
@@ -52,8 +52,8 @@ export default function AboutFour({ aboutResponse }) {
               {aboutResponse?.data?.about_our_service_cybersecurity_paragraph_second}
             </p>
             {/* CTA Button */}
-        <div className="mt-12">
-          {/* <div className="cta-project-btn service-all-btn">
+            <div className="mt-12">
+              {/* <div className="cta-project-btn service-all-btn">
                             <button className="relative z-[99] bannerbtn flex items-center justify-content-center justify-content-lg-start w-full">
                               <Link className="header-button ajax-link" href="/contact-us">
                                 <div className="button-icon-link right">
@@ -71,10 +71,10 @@ export default function AboutFour({ aboutResponse }) {
                               </Link>
                             </button>
                 </div> */}
-                <Link href={"/contact-us"} className="bg-[#00AEEF] hover:bg-[#0099d4] text-white rounded-lg global-primary-btn">
-                          Get Started
-                </Link>
-        </div>
+              <Link href={"/service"} className="bg-[#00AEEF] hover:bg-[#0099d4] text-white rounded-lg global-primary-btn">
+                Get Started
+              </Link>
+            </div>
           </div>
         </div>
 

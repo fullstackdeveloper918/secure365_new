@@ -3,12 +3,12 @@ import Image from "next/image";
 import Link from "next/link";
 
 
-export function ServiceItems({serviceData}) {
-  
+export function ServiceItems({ serviceData }) {
+
   return (
     <div className="row flex-column items-end m-0">
       {/* <div className="col-xxl-3"></div> */}
-      {serviceData && serviceData?.data?.service_why_choose_proactive_data?.map((item,index) => (
+      {serviceData && serviceData?.data?.service_why_choose_proactive_data?.map((item, index) => (
         <div key={index} className="col-xxl-12 col-xl-12 col-lg-12 col-md-12">
           <div className="tp-service-5-item tp_fade_bottom space-1 service-main-trust">
             {/* <div className="tp-service-4-icon">
@@ -19,8 +19,8 @@ export function ServiceItems({serviceData}) {
                 <Link href="/service">{item.service_proactive_loop_image_heading}</Link>
               </h2>
               <p>
-                {/* {item.service_proactive_loop_paragraph} */}
-                Success isn’t just about reacting to challenges — it’s about staying ahead of them. Our Proactive & Preventative approach is built on foresight, planning, and continuous improvement. We believe that identifying potential issues early and addressing them before they grow ensures long-term efficiency, reliability, and peace of mind.
+                {item.service_proactive_loop_paragraph}
+                {/* Success isn’t just about reacting to challenges — it’s about staying ahead of them. Our Proactive & Preventative approach is built on foresight, planning, and continuous improvement. We believe that identifying potential issues early and addressing them before they grow ensures long-term efficiency, reliability, and peace of mind. */}
 
               </p>
             </div>
@@ -51,7 +51,7 @@ export default function ServiceFive() {
           </div>
         </div>
         <div className="tp-service-5-wrap">
-          <ServiceItems/>
+          <ServiceItems />
         </div>
       </div>
     </div>

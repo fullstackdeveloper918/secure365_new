@@ -3,6 +3,7 @@ import React, { useEffect } from "react";
 import { UilCheck } from "@iconscout/react-unicons";
 import AOS from "aos";
 import "aos/dist/aos.css";
+import Link from "next/link";
 
 const PricingCards = () => {
   useEffect(() => {
@@ -14,49 +15,49 @@ const PricingCards = () => {
   }, []);
 
 
-   const Pricing_Tier =
-{
-  title: "Plans That Power Every Stage of Growth",
-  intro:"All plans include Automated Workflows, Secure Infrastructure, and Daily AI Enhancements.",
- PricingTier : [
-          {
-            price: "0",
-            label: "Free plan",
-            title: "Basic",
-            icon: "/assets/img/inner-service/service/Basic-plan-icon-main.png",
-            features: [
-              "3 user request",
-              "10 downloads per day",
-              "Daily content updates",
-              "Fully editable files",
-            ],
-          },
-          {
-            price: "19",
-            label: "Most popular",
-            title: "Professional",
-            icon: "/assets/img/inner-service/service/Professional-icon.png",
-            features: [
-              "Best for SMBs — full feature access",
-              "unlimited runs",
-              "and priority support",
-              
-            ],
-          },
-          {
-            price: "49",
-            label: "For agencies",
-            title: "Enterprise",
-            icon: "/assets/img/inner-service/service/Enterprise-icon.png",
-            features: [
-              "Tailored AI workflows",
-              "custom integrations",
-              "and dedicated onboarding",
-            ],
-          },
-        ]
+  const Pricing_Tier =
+  {
+    title: "Plans That Power Every Stage of Growth",
+    intro: "All plans include Automated Workflows, Secure Infrastructure, and Daily AI Enhancements.",
+    PricingTier: [
+      {
+        price: "0",
+        label: "Free plan",
+        title: "Basic",
+        icon: "/assets/img/inner-service/service/Basic-plan-icon-main.png",
+        features: [
+          "3 user request",
+          "10 downloads per day",
+          "Daily content updates",
+          "Fully editable files",
+        ],
+      },
+      {
+        price: "19",
+        label: "Most popular",
+        title: "Professional",
+        icon: "/assets/img/inner-service/service/Professional-icon.png",
+        features: [
+          "Best for SMBs — full feature access",
+          "unlimited runs",
+          "and priority support",
 
-      }
+        ],
+      },
+      {
+        price: "49",
+        label: "For agencies",
+        title: "Enterprise",
+        icon: "/assets/img/inner-service/service/Enterprise-icon.png",
+        features: [
+          "Tailored AI workflows",
+          "custom integrations",
+          "and dedicated onboarding",
+        ],
+      },
+    ]
+
+  }
 
   return (
     <div className="relative pricing-card-sec">
@@ -67,7 +68,7 @@ const PricingCards = () => {
         {/* Pricing tiers */}
         {Pricing_Tier.title}
       </h2>
-      
+
       <section className="container relative mx-auto px-4 py-10 grid grid-cols-1 lg:grid-cols-3 gap-8 md:gap-8 pricing-serv-tier">
         {Pricing_Tier?.PricingTier?.map((card, index) => (
           <article
@@ -109,9 +110,12 @@ const PricingCards = () => {
               </ul>
             </div>
 
-            <button className="text-white px-6 py-3 rounded-pill transition w-full price-btn">
+            {/* <button className="text-white px-6 py-3 rounded-pill transition w-full price-btn">
               Choose this plan
-            </button>
+            </button> */}
+            <Link href={"/contact-us"} className="text-white px-6 py-3 rounded-pill transition w-full price-btn">
+              Choose this plan
+            </Link>
           </article>
         ))}
       </section>

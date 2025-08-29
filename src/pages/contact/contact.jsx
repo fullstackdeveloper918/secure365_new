@@ -35,7 +35,7 @@ const ContactMain = ({ contactData }) => {
     <Wrapper>
       {/* header area start */}
       {/* <HeaderEleven /> */}
-      <AnimationHeader />
+      {/* <AnimationHeader /> */}
 
       {/* header area end */}
 
@@ -54,12 +54,15 @@ const ContactMain = ({ contactData }) => {
               {/* hero area start */}
 
 
-              <div className="tm-hero-area tm-hero-ptb p-relative bann-p-block contact-banner">
+              <div className="tm-hero-area tm-hero-ptb p-relative bann-p-block contact-banner" style={{
+                backgroundImage:
+                  `url(${contactData?.contact_promise_image_url})`,
+              }}>
                 <div className="container">
                   <div className="row">
                     <div className="col-xl-12">
                       <div className="tm-hero-content">
-                        <span className="tm-hero-subtitle">Secure 365</span>
+                        <span className="tm-hero-subtitle">{contactData?.contact_secure_main_heading}</span>
                         <h1 className="tp-char-animation sv-hero-title contact-ban-head">
                           {contactData?.reach_contact_section_heading}
                         </h1>
@@ -73,7 +76,7 @@ const ContactMain = ({ contactData }) => {
               </div>
 
 
-              <ContactTwo />
+              <ContactTwo contactData={contactData} />
               <ContactLocationTwo contactData={contactData} />
 
               {/* <ContactLocation contactData={contactData} /> */}

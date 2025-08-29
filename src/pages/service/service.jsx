@@ -23,7 +23,8 @@ import BrandLogos from "@/components/service/service-logo"
 
 const ServiceMain = ({ serviceData, serviceBannerData }) => {
   useScrollSmooth();
-  console.log("serviceData", serviceBannerData);
+  console.log("serviceData here", serviceBannerData);
+  console.log("serviceData  2", serviceData);
   useGSAP(() => {
     const timer = setTimeout(() => {
       charAnimation();
@@ -43,7 +44,7 @@ const ServiceMain = ({ serviceData, serviceBannerData }) => {
         <div id="smooth-content">
           <main>
             <ServiceHero serviceBannerData={serviceBannerData} />
-            <BrandLogos />
+            <BrandLogos serviceData={serviceData} />
 
             <div className="tp-service-5-area sv-service-style pb-100 relative serv-main-num-sec">
               <div className="container container-1530 relative">

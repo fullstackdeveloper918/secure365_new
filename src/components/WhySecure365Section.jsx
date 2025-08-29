@@ -108,7 +108,7 @@ export default function WhySecure365Section({ containerRef, serviceList }) {
       {/* Background */}
       <div className="absolute inset-0">
         <div
-          className="w-full h-full bg-cover bg-center bg-no-repeat opacity-30"
+          className="w-full h-full bg-cover bg-center bg-no-repeat"
           style={{ backgroundImage: `url('/images/space-bg-1.png')` }}
         />
       </div>

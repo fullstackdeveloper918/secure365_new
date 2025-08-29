@@ -3,8 +3,6 @@
 import {
   motion,
   AnimatePresence,
-  useScroll,
-  useTransform,
 } from "framer-motion";
 import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
@@ -15,67 +13,87 @@ export default function HeroSection({ serviceList }) {
   const [showRightText, setShowRightText] = useState(false);
   const [showButton, setShowButton] = useState(false);
   const [imageVisible, setImageVisible] = useState(true);
+  const [scrollLocked, setScrollLocked] = useState(true);
+  const [scalingDone, setScalingDone] = useState(false);
 
   const videoRef = useRef(null);
-  const sectionRef = useRef(null);
+  const imageRef = useRef(null);
 
-  const { scrollYProgress } = useScroll({
-    target: sectionRef,
-    offset: ["start start", "end start"],
-  });
-
-  // Scale image from 1 to 3 based on scroll progress (0 to 0.5 scroll progress)
-  const imageScale = useTransform(scrollYProgress, [0, 0.5], [1, 3]);
-
-  // Track when scaling animation completes
-  const [scalingComplete, setScalingComplete] = useState(false);
-
+  // Lock scroll on mount during image scaling phase
   useEffect(() => {
-    const unsubscribe = scrollYProgress.on("change", (latest) => {
-      if (latest >= 0.1 && !scalingComplete) {
-        setScalingComplete(true);
-      }
-    });
+    if (scrollLocked) {
+      const preventScroll = (e) => {
+        e.preventDefault();
+      };
+      document.body.style.overflow = "hidden";
+      window.scrollTo(0, 0);
+      window.addEventListener("wheel", preventScroll, { passive: false });
+      window.addEventListener("touchmove", preventScroll, { passive: false });
 
-    return () => unsubscribe();
-  }, [scrollYProgress, scalingComplete]);
-
-  useEffect(() => {
-    if (scalingComplete && imageVisible) {
-      // Start fading out the image after scaling completes
-      setTimeout(() => {
-        setImageVisible(false);
-      }, []); // Small delay before fade starts
+      return () => {
+        document.body.style.overflow = "";
+        window.removeEventListener("wheel", preventScroll);
+        window.removeEventListener("touchmove", preventScroll);
+      };
     }
-  }, [scalingComplete, imageVisible]);
+  }, [scrollLocked]);
 
+  // Handle the first scroll wheel event for immediate full scaling
+  useEffect(() => {
+    if (!scrollLocked || scalingDone) return;
+
+    const maxDelta = 100; // max pixels scroll to scale image fully
+    const minScale = 1;
+    const maxScale = 3;
+
+    const onWheel = (e) => {
+      if (scalingDone) return;
+
+      if (e.deltaY <= 0) return; // ignore scroll up
+
+      // Calculate scale proportionally from deltaY capped at maxDelta
+      const cappedDelta = Math.min(e.deltaY, maxDelta);
+      const scale =
+        minScale + ((cappedDelta / maxDelta) * (maxScale - minScale));
+
+      if (imageRef.current) {
+        imageRef.current.style.transform = `scale(${scale})`;
+      }
+
+      // If user scrolls enough in this single event, finish scaling
+      if (e.deltaY >= maxDelta) {
+        setScalingDone(true);
+        setScrollLocked(false);
+        setImageVisible(false);
+      }
+    };
+
+    window.addEventListener("wheel", onWheel, { passive: false });
+
+    return () => {
+      window.removeEventListener("wheel", onWheel);
+      if (imageRef.current) {
+        imageRef.current.style.transform = "";
+      }
+    };
+  }, [scrollLocked, scalingDone]);
+
+  // When image faded out, start video and text animations
   useEffect(() => {
     if (!imageVisible && !videoStarted) {
       const video = videoRef.current;
       if (video) {
-        console.log("[v0] Attempting to play video");
         const playPromise = video.play();
 
         if (playPromise !== undefined) {
           playPromise
             .then(() => {
-              console.log("[v0] Video started playing successfully");
               setVideoStarted(true);
-
-              // Sequential text animations after video starts
-              setTimeout(() => {
-                setShowLeftText(true);
-              }, 500); // Left text after 0.5s
-              setTimeout(() => {
-                setShowRightText(true);
-              }, 1500); // Right text after 1.5s
-              setTimeout(() => {
-                setShowButton(true);
-              }, 2500); // Button after 2.5s
+              setTimeout(() => setShowLeftText(true), 500);
+              setTimeout(() => setShowRightText(true), 1500);
+              setTimeout(() => setShowButton(true), 2500);
             })
-            .catch((error) => {
-              console.log("[v0] Video play failed:", error);
-              // If autoplay fails, still show the text animations
+            .catch(() => {
               setVideoStarted(true);
               setTimeout(() => setShowLeftText(true), 500);
               setTimeout(() => setShowRightText(true), 1500);
@@ -86,80 +104,75 @@ export default function HeroSection({ serviceList }) {
     }
   }, [imageVisible, videoStarted]);
 
+  // Setup video playback rate and event handlers once on mount
   useEffect(() => {
     const video = videoRef.current;
     if (video) {
-          video.playbackRate = 0.8; // 0.5 = half speed, 2.0 = double speed
-
+      video.playbackRate = 0.8;
       video.onloadedmetadata = () => {
-        console.log("[v0] Video metadata loaded");
         video.currentTime = 0;
       };
-
-      video.oncanplay = () => {
-        console.log("[v0] Video can start playing");
-      };
-
       video.onerror = (e) => {
-        console.log("[v0] Video error:", e);
+        console.error("Video error:", e);
       };
     }
   }, []);
 
   return (
-    <section
-      ref={sectionRef}
-      className="hero-sec relative min-h-[100vh] flex items-center main-secure-banner z-0 overflow-hidden"
-    >
-      <div className="absolute inset-0 w-full h-[100vh] z-0">
-       <video
-  {...(videoStarted ? { autoPlay: true, loop: true } : {})}
-  ref={videoRef}
-  className="w-full h-full object-cover"
-  src="/hero-banner-video.mp4"
-  muted
-  playsInline
-/>
-
+    <section className="hero-sec relative min-h-[100vh] flex items-center main-secure-banner z-0 overflow-hidden">
+      {/* Background video fixed and full cover */}
+      <div className="absolute inset-0 w-full h-full z-0 pointer-events-none">
+        <video
+          {...(videoStarted ? { autoPlay: true, loop: true } : {})}
+          ref={videoRef}
+          className="w-full h-full object-cover"
+          src="/hero-banner-video.mp4"
+          muted
+          playsInline
+        />
       </div>
 
+      {/* Image overlay */}
       <AnimatePresence>
         {imageVisible && (
-          <div className="absolute inset-0 flex items-center justify-center z-5">
-            <motion.img
+          <motion.div
+            className="absolute inset-0 flex items-center justify-center z-10 pointer-events-none"
+            initial={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+          >
+            <img
+              ref={imageRef}
               src="/hero2.png"
               alt="Airplane window view"
               className="w-full h-full object-cover"
+              draggable={false}
               style={{
-                scale: imageScale,
                 transformOrigin: "center center",
                 willChange: "transform",
                 position: "absolute",
               }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.8, ease: "easeOut" }}
             />
-          </div>
+          </motion.div>
         )}
       </AnimatePresence>
 
-      {/* <div className="absolute inset-0 bg-black/50 z-6" /> */}
-
-      <div className="relative z-4 w-full ">
+      {/* Content container with text and button */}
+      <div className="relative z-20 w-full">
         <div className="container mx-auto px-6">
           <div className="flex gap-12 items-end min-h-screen ban-inner-wrapper">
+            {/* Left Text */}
             <div className="main-head-banner-box">
               <AnimatePresence>
                 {showLeftText && (
                   <motion.h1
-                    initial={{ y: 50, opacity: 0 }} // start lower
-                    animate={{ y: 0, opacity: 1 }} // move up to position
+                    initial={{ y: 50, opacity: 0 }}
+                    animate={{ y: 0, opacity: 1 }}
+                    exit={{ opacity: 0 }}
                     transition={{ duration: 1, ease: "easeOut" }}
-                    className="main-banner-heading text-white font-semibold mb-0 relative z-10"
+                    className="main-banner-heading text-white font-semibold mb-0 relative z-20"
                   >
-                    {
-                      serviceList.home_advanced_it_and_cyber_security_first_heading
-                    }
+                    {serviceList.home_advanced_it_and_cyber_security_first_heading}
                     <br />
                     {serviceList.home_advanced_it_and_cyber_security_second}
                     <br />
@@ -171,37 +184,36 @@ export default function HeroSection({ serviceList }) {
               </AnimatePresence>
             </div>
 
+            {/* Right Text and Button */}
             <div className="space-y-8 ban-content-box">
-              {/* Right text */}
               <AnimatePresence>
                 {showRightText && (
                   <motion.div
-                    initial={{ y: 50, opacity: 0 }} // start lower
-                    animate={{ y: 0, opacity: 1 }} // move up to position
+                    initial={{ y: 50, opacity: 0 }}
+                    animate={{ y: 0, opacity: 1 }}
+                    exit={{ opacity: 0 }}
                     transition={{ duration: 1, ease: "easeOut" }}
-                    className="space-y-6 main-banner-para-box relative z-10 p-0 m-0"
+                    className="space-y-6 main-banner-para-box relative z-20 p-0 m-0"
                   >
                     <p className="main-banner-paraTxt text-white mb-0">
-                      {
-                        serviceList.home_advanced_it_and_cyber_security_paragraph
-                      }
+                      {serviceList.home_advanced_it_and_cyber_security_paragraph}
                     </p>
                   </motion.div>
                 )}
               </AnimatePresence>
 
-              {/* Reserve space for button */}
-              <div className="relative z-10 min-h-[56px] flex items-center">
+              <div className="relative z-20 min-h-[56px] flex items-center">
                 <AnimatePresence>
                   {showButton && (
                     <motion.div
                       initial={{ y: 80, opacity: 0 }}
                       animate={{ y: 0, opacity: 1 }}
+                      exit={{ opacity: 0 }}
                       transition={{ duration: 0.8, ease: "easeOut" }}
                     >
                       <Link
                         href={"/contact-us"}
-                        className="bg-[#00AEEF] hover:bg-[#0099d4] text-white rounded-lg start-mission-btn"
+                        className="bg-[#00AEEF] hover:bg-[#0099d4] text-white rounded-lg start-mission-btn px-6 py-3 inline-block"
                       >
                         {serviceList.home_advanced_it_and_cyber_security_fourth}
                       </Link>
@@ -212,7 +224,8 @@ export default function HeroSection({ serviceList }) {
             </div>
           </div>
 
-          <div className="absolute z-10 scroll-down-button">
+          {/* Scroll down indicator */}
+         <div className="absolute z-10 scroll-down-button">
             <motion.div
               animate={{ y: [0, 10, 0] }}
               transition={{ duration: 2, repeat: Number.POSITIVE_INFINITY }}

@@ -1,6 +1,6 @@
 "use client";
 import { gsap } from "gsap";
-import React from "react";
+import React, { useEffect } from "react";
 import { useGSAP } from "@gsap/react";
 import useScrollSmooth from "@/hooks/use-scroll-smooth";
 import { ScrollSmoother, ScrollTrigger, SplitText } from "@/plugins";
@@ -23,8 +23,10 @@ import { servicePanel } from "@/utils/panel-animation";
 import { FourthSection } from "../../components/inner-services/ai-services/FourthSection";
 import ContactTwo from "@/components/contact/contact-two";
 import CardStackingSection from "@/components/service/CardStackingSection";
+import { config } from "../../../config";
 
 const ServiceDetailsMain = ({ serviceBannerData }) => {
+  const [contactData, setContactData] = React.useState(null);
   useScrollSmooth();
   console.log("serviceBannerDatadd", serviceBannerData);
   useGSAP(() => {
@@ -37,9 +39,34 @@ const ServiceDetailsMain = ({ serviceBannerData }) => {
     return () => clearTimeout(timer);
   });
 
+
+
+
+  useEffect(() => {
+    const fetchContactData = async () => {
+      try {
+        const response = await fetch(`${config.APP_URL}/secure-plugin/v1/contact`, {
+          cache: "no-store",
+        });
+        const data = await response.json();
+        // const contactData = data?.data;
+        setContactData(data?.data);
+
+        // Handle the contactData as needed, e.g., updating state
+        console.log(contactData);
+      } catch (error) {
+        console.error('Error fetching contact data:', error);
+      }
+    };
+
+    fetchContactData();
+  }, []);
+
+
+
   return (
     <Wrapper>
-      <AnimationHeader />
+      {/* <AnimationHeader /> */}
 
       {/* <CardStackingSection />
       <div className="h-[500px]"></div> */}
@@ -59,7 +86,7 @@ const ServiceDetailsMain = ({ serviceBannerData }) => {
               className="bg-[#009dd610] singleSerivce mt-[0px]"
               id="singleSerivce"
             >
-              <ContactTwo />
+              <ContactTwo contactData={contactData} />
             </div>
 
             <div

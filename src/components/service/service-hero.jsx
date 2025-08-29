@@ -43,7 +43,11 @@ export default function ServiceHero({ serviceBannerData }) {
           left: 0,
         }}
       >
-        <source src="/Astronaut-space.mp4" type="video/mp4" />
+        {/* <source src="/Astronaut-space.mp4" type="video/mp4" /> */}
+        <source
+          src={serviceBannerData?.pages?.banner_data?.banner_image?.url}
+          type="video/mp4"
+        />
         Your browser does not support the video tag.
       </video>
       <div className="overlay-serv-main"></div>
