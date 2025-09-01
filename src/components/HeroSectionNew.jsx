@@ -225,7 +225,7 @@ export default function HeroSection({ serviceList }) {
           </div>
 
           {/* Scroll down indicator */}
-         <div className="absolute z-10 scroll-down-button">
+          <div className="absolute z-10 scroll-down-button">
             <motion.div
               animate={{ y: [0, 10, 0] }}
               transition={{ duration: 2, repeat: Number.POSITIVE_INFINITY }}

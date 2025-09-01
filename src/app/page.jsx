@@ -1,260 +1,263 @@
-  "use client";
+"use client";
 
-  import { motion, useScroll, useMotionValue } from "framer-motion";
-  import {
-    Shield,
-    Lock,
-    Eye,
-    Users,
-    ArrowRight,
-    CheckCircle,
-    AlertTriangle,
-    HelpCircle,
-    Globe,
-    Headphones,
-    Zap,
-    Menu,
-    Mouse,
-    ChevronLeft,
-    ChevronRight,
-    Mail,
-    Phone,
-    MapPin,
-  } from "lucide-react";
-  import { Button } from "@/components/ui/button";
-  import { Card, CardContent } from "@/components/ui/card";
-  import FooterFour from "@/layouts/footers/footer-four";
-  import { useState, useRef, useEffect } from "react";
-  import NavigatingSection from "@/components/NavigatingSection";
-  import AchievementsSection from "@/components/OurServiceSection";
-  import WhySecure365Section from "@/components/WhySecure365Section";
-  import HeroSection from "@/components/HeroSectionNew";
-  import { config } from "../../config";
-  import { toast, ToastContainer } from "react-toastify";
-  import gsap from "gsap";
-  import { ScrollTrigger } from "gsap/ScrollTrigger";
-  import Link from "next/link";
-  import {ContactFormHome} from "@/components/ContactFormHome"
+import { motion, useScroll, useMotionValue } from "framer-motion";
+import {
+  Shield,
+  Lock,
+  Eye,
+  Users,
+  ArrowRight,
+  CheckCircle,
+  AlertTriangle,
+  HelpCircle,
+  Globe,
+  Headphones,
+  Zap,
+  Menu,
+  Mouse,
+  ChevronLeft,
+  ChevronRight,
+  Mail,
+  Phone,
+  MapPin,
+} from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/card";
+import FooterFour from "@/layouts/footers/footer-four";
+import { useState, useRef, useEffect } from "react";
+import NavigatingSection from "@/components/NavigatingSection";
+import AchievementsSection from "@/components/OurServiceSection";
+import WhySecure365Section from "@/components/WhySecure365Section";
+import HeroSection from "@/components/HeroSectionNew";
+import { config } from "../../config";
+import { toast, ToastContainer } from "react-toastify";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import Link from "next/link";
+import { ContactFormHome } from "@/components/ContactFormHome"
+import EarthSection from "@/components/EarthSection";
 
-  gsap.registerPlugin(ScrollTrigger);
+gsap.registerPlugin(ScrollTrigger);
 
-  export default function HomePage() {
-    const [currentServiceSlide, setCurrentServiceSlide] = useState(0);
-    const [servicesSlide, setServicesSlide] = useState(0);
-    const containerRef = useRef(null);
-    const rocketRef = useRef(null);
-    const [serviceList, setServiceList] = useState([]);
-    const [formData, setFormData] = useState({
-      name: "",
-      email: "",
-      jobTitle: "",
-      howDidYouFindUs: "",
-      website: "",
+export default function HomePage() {
+  const [currentServiceSlide, setCurrentServiceSlide] = useState(0);
+  const [servicesSlide, setServicesSlide] = useState(0);
+  const containerRef = useRef(null);
+  const rocketRef = useRef(null);
+  const [serviceList, setServiceList] = useState([]);
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    jobTitle: "",
+    howDidYouFindUs: "",
+    website: "",
+  });
+  const [copied, setCopied] = useState(false);
+  const email = "Secure@gmail.com";
+
+  const copyToClipboard = () => {
+    navigator.clipboard.writeText(email).then(() => {
+      setCopied(true);
+      toast.success("Copied Successfully.");
+      setTimeout(() => setCopied(false), 2000);
     });
-    const [copied, setCopied] = useState(false);
-    const email = "Secure@gmail.com";
+  };
 
-    const copyToClipboard = () => {
-      navigator.clipboard.writeText(email).then(() => {
-        setCopied(true);
-        toast.success("Copied Successfully.");
-        setTimeout(() => setCopied(false), 2000);
-      });
-    };
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({
+      ...formData,
+      [name]: value,
+    });
+  };
 
-    const handleChange = (e) => {
-      const { name, value } = e.target;
-      setFormData({
-        ...formData,
-        [name]: value,
-      });
-    };
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    localStorage.setItem("formData", JSON.stringify(formData));
+    alert("Form submitted and data saved to localStorage.");
+  };
 
-    const handleSubmit = (e) => {
-      e.preventDefault();
-      localStorage.setItem("formData", JSON.stringify(formData));
-      alert("Form submitted and data saved to localStorage.");
-    };
-
-    useEffect(() => {
-      const fetchData = async () => {
-        try {
-          const response = await fetch(
-            `${config.APP_URL}/secure-plugin/v1/home`,
-            {
-              cache: "no-store",
-            }
-          );
-
-          if (!response.ok) {
-            throw new Error(`HTTP error! status: ${response.status}`);
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch(
+          `${config.APP_URL}/secure-plugin/v1/home`,
+          {
+            cache: "no-store",
           }
+        );
 
-          const data = await response.json();
-          console.log("data of home page2222", data);
-          setServiceList(data);
-        } catch (error) {
-          console.error("Error fetching data:", error);
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
         }
-      };
 
-      fetchData();
-    }, []);
+        const data = await response.json();
+        console.log("data of home page2222", data);
+        setServiceList(data);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
 
-    useEffect(() => {
-      const handleScroll = () => {
-        if (rocketRef.current) {
-          const scrollPosition = window.scrollY;
-          const windowHeight = window.innerHeight;
-          const maxScroll = document.documentElement.scrollHeight - windowHeight;
-          const moveDistance = (scrollPosition / maxScroll) * -200;
-          rocketRef.current.style.transform = `translateX(${moveDistance}vw) translateY(-50%)`;
-        }
-      };
+    fetchData();
+  }, []);
 
-      window.addEventListener("scroll", handleScroll);
-      return () => window.removeEventListener("scroll", handleScroll);
-    }, []);
+  useEffect(() => {
+    const handleScroll = () => {
+      if (rocketRef.current) {
+        const scrollPosition = window.scrollY;
+        const windowHeight = window.innerHeight;
+        const maxScroll = document.documentElement.scrollHeight - windowHeight;
+        const moveDistance = (scrollPosition / maxScroll) * -200;
+        rocketRef.current.style.transform = `translateX(${moveDistance}vw) translateY(-50%)`;
+      }
+    };
 
-    const services = [
-      [
-        {
-          icon: <Shield className="w-8 h-8" />,
-          title: "Cyber Security",
-          desc: "Advanced threat protection and monitoring",
-        },
-        {
-          icon: <Lock className="w-8 h-8" />,
-          title: "Data Protection",
-          desc: "Secure data management and encryption",
-        },
-        {
-          icon: <Eye className="w-8 h-8" />,
-          title: "24/7 Monitoring",
-          desc: "Round-the-clock system surveillance",
-        },
-        {
-          icon: <Users className="w-8 h-8" />,
-          title: "Expert Consulting",
-          desc: "Professional security guidance",
-        },
-      ],
-      [
-        {
-          icon: <Globe className="w-8 h-8" />,
-          title: "Network Security",
-          desc: "Infrastructure protection solutions",
-        },
-        {
-          icon: <Zap className="w-8 h-8" />,
-          title: "Incident Response",
-          desc: "Rapid threat mitigation services",
-        },
-        {
-          icon: <CheckCircle className="w-8 h-8" />,
-          title: "Compliance",
-          desc: "Regulatory compliance management",
-        },
-        {
-          icon: <AlertTriangle className="w-8 h-8" />,
-          title: "Risk Assessment",
-          desc: "Comprehensive security auditing",
-        },
-      ],
-    ];
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
-    const serviceCards = [
+  const services = [
+    [
       {
-        icon: "/images/rocket/service6.png",
-        title: "UI/UX",
-        subtitle: "Design",
+        icon: <Shield className="w-8 h-8" />,
+        title: "Cyber Security",
         desc: "Advanced threat protection and monitoring",
       },
       {
-        icon: "/images/rocket/service1.png",
-        title: "Web",
-        subtitle: "Development",
+        icon: <Lock className="w-8 h-8" />,
+        title: "Data Protection",
         desc: "Secure data management and encryption",
       },
       {
-        icon: "/images/rocket/service2.png",
-        title: "Brand",
-        subtitle: "Identity",
-        desc: "Round-the-clock surveillance and alerts",
+        icon: <Eye className="w-8 h-8" />,
+        title: "24/7 Monitoring",
+        desc: "Round-the-clock system surveillance",
       },
       {
-        icon: "/images/rocket/service3.png",
-        title: "Digital",
-        subtitle: "Marketing",
+        icon: <Users className="w-8 h-8" />,
+        title: "Expert Consulting",
         desc: "Professional security guidance",
       },
+    ],
+    [
       {
-        icon: "/images/rocket/service4.png",
-        title: "Network",
-        subtitle: "Security",
+        icon: <Globe className="w-8 h-8" />,
+        title: "Network Security",
         desc: "Infrastructure protection solutions",
       },
       {
-        icon: "/images/rocket/service6.png",
-        title: "Incident",
-        subtitle: "Response",
-        desc: "Rapid threat mitigation",
+        icon: <Zap className="w-8 h-8" />,
+        title: "Incident Response",
+        desc: "Rapid threat mitigation services",
       },
       {
-        icon: "/images/rocket/service1.png",
+        icon: <CheckCircle className="w-8 h-8" />,
         title: "Compliance",
-        subtitle: "Design",
         desc: "Regulatory compliance management",
       },
       {
-        icon: "/images/rocket/service2.png",
-        title: "Risk",
-        subtitle: "Assessment",
+        icon: <AlertTriangle className="w-8 h-8" />,
+        title: "Risk Assessment",
         desc: "Comprehensive security auditing",
       },
-      {
-        icon: "/images/rocket/service3.png",
-        title: "24/7",
-        subtitle: "Support",
-        desc: "Always-on assistance",
-      },
-      {
-        icon: "/images/rocket/service4.png",
-        title: "Security",
-        subtitle: "Training",
-        desc: "Employee awareness programs",
-      },
-    ];
+    ],
+  ];
 
-    return (
-      <div
-        className="min-h-screen bg-black text-white overflow-x-hidden "
-        style={{ fontFamily: "Arial, sans-serif" }}
-      >
-        <ToastContainer />
-        <HeroSection serviceList={serviceList} />
-        <NavigatingSection
-          serviceList={serviceList}
-          rocketRef={rocketRef}
-          className="relative z-20"
-        />
-        <WhySecure365Section
-          containerRef={containerRef}
-          serviceList={serviceList.butWhySecureSection}
-          className="relative z-20"
-        />
+  const serviceCards = [
+    {
+      icon: "/images/rocket/service6.png",
+      title: "UI/UX",
+      subtitle: "Design",
+      desc: "Advanced threat protection and monitoring",
+    },
+    {
+      icon: "/images/rocket/service1.png",
+      title: "Web",
+      subtitle: "Development",
+      desc: "Secure data management and encryption",
+    },
+    {
+      icon: "/images/rocket/service2.png",
+      title: "Brand",
+      subtitle: "Identity",
+      desc: "Round-the-clock surveillance and alerts",
+    },
+    {
+      icon: "/images/rocket/service3.png",
+      title: "Digital",
+      subtitle: "Marketing",
+      desc: "Professional security guidance",
+    },
+    {
+      icon: "/images/rocket/service4.png",
+      title: "Network",
+      subtitle: "Security",
+      desc: "Infrastructure protection solutions",
+    },
+    {
+      icon: "/images/rocket/service6.png",
+      title: "Incident",
+      subtitle: "Response",
+      desc: "Rapid threat mitigation",
+    },
+    {
+      icon: "/images/rocket/service1.png",
+      title: "Compliance",
+      subtitle: "Design",
+      desc: "Regulatory compliance management",
+    },
+    {
+      icon: "/images/rocket/service2.png",
+      title: "Risk",
+      subtitle: "Assessment",
+      desc: "Comprehensive security auditing",
+    },
+    {
+      icon: "/images/rocket/service3.png",
+      title: "24/7",
+      subtitle: "Support",
+      desc: "Always-on assistance",
+    },
+    {
+      icon: "/images/rocket/service4.png",
+      title: "Security",
+      subtitle: "Training",
+      desc: "Employee awareness programs",
+    },
+  ];
 
-      
+  return (
+    <div
+      className="min-h-screen bg-black text-white overflow-x-hidden "
+      style={{ fontFamily: "Arial, sans-serif" }}
+    >
+      <ToastContainer />
+      <HeroSection serviceList={serviceList} />
+      <NavigatingSection
+        serviceList={serviceList}
+        rocketRef={rocketRef}
+        className="relative z-20"
+      />
+      <WhySecure365Section
+        containerRef={containerRef}
+        serviceList={serviceList.butWhySecureSection}
+        className="relative z-20"
+      />
 
-        <AchievementsSection
-          achievementCards={serviceCards}
-          serviceList={serviceList}
-          className="relative z-20"
-        />
 
-<ContactFormHome/>
 
-        {/* <section className="bg-[#02050f] relative z-20 website-audit-form">
+      <AchievementsSection
+        achievementCards={serviceCards}
+        serviceList={serviceList}
+        className="relative z-20"
+      />
+
+      {/* <EarthSection className="relative z-20" /> */}
+
+      {/* <ContactFormHome/> */}
+
+      {/* <section className="bg-[#02050f] relative z-20 website-audit-form">
           <div className="audit-form-box relative">
             <div className="flex flex-col">
               <div className="flex top-audit-head">
@@ -362,7 +365,7 @@
           </div>
         </section> */}
 
-        <FooterFour className="relative z-20" />
-      </div>
-    );
-  }
+      <FooterFour className="relative z-20" />
+    </div>
+  );
+}

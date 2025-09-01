@@ -55,21 +55,21 @@ const WorksSection = () => {
       description:
         'Innovating sustainable solutions to power the future responsibly and efficiently.',
       image: 'Sellmac.png',
-      link: '/work/sellmac', // Link for this card
+      link: '/project/sellmac', // Link for this card
     },
     {
       title: 'Apple Tech',
       description:
         'A full-stack marketing agency delivering engaging digital experiences.',
       image: 'ipad-pro-mockup (2).png',
-      link: '/work/apple-tech', // Link for this card
+      link: '/project/apple-tech', // Link for this card
     },
     {
       title: 'Techable',
       description:
         'Specialized in providing high-quality refurbished Apple products at competitive prices.',
       image: '/images/techable.png',
-      link: '/work/techable', // Link for this card
+      link: '/project/techable', // Link for this card
     },
   ];
   return (

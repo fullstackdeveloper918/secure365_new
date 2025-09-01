@@ -1,55 +1,54 @@
 "use client";
 import { useEffect, useState } from "react";
-import PreLoader from "@/components/preLoader";
 import AnimationHeader from "./animation_header";
 import Login from "@/components/Login/page";
 import { config } from "../../config";
 
 export default function ClientWrapper({ children }) {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [showPreloader, setShowPreloader] = useState(true);
+  const [isCheckingAuth, setIsCheckingAuth] = useState(true); // new state
   const [data, setData] = useState(null);
-  console.log(data, "qweqwefsd");
-  useEffect(() => {
-    const timeout = setTimeout(() => {
-      setShowPreloader(false); // Hide preloader after 10 seconds
-    }, 7000);
-    return () => clearTimeout(timeout); // Clean up the timeout on component unmount
-  }, []);
-  console.log(showPreloader, "showPreloader");
+
   useEffect(() => {
     const token = localStorage.getItem("token");
     if (token) {
       setIsLoggedIn(true);
-      fetch(`${config.APP_URL}/secure-plugin/v1/home`, { cache: "no-store" })
-        .then((res) => {
-          if (!res.ok) throw new Error(`Status ${res.status}`);
-          return res.json();
-        })
-        .then((result) => {
-          setData(result);
-        })
-        .catch((err) => {
-          console.error("Error fetching home data:", err);
-        });
+      fetchHomeData().finally(() => setIsCheckingAuth(false));
+    } else {
+      setIsCheckingAuth(false); // done checking, user not logged in
     }
   }, []);
-  const handleLoginSuccess = () => {
-    localStorage.setItem("token", "true");
-    window.location.reload(); // triggers PreLoader again
+
+  const fetchHomeData = async () => {
+    try {
+      const res = await fetch(`${config.APP_URL}/secure-plugin/v1/home`, { cache: "no-store" });
+      if (!res.ok) throw new Error(`Status ${res.status}`);
+      const result = await res.json();
+      setData(result);
+    } catch (err) {
+      console.error("Error fetching home data:", err);
+    }
   };
-  console.log(showPreloader, "showPreloader");
-  // :exclamation: Show PreLoader once per refresh (and run only one loop)
-  if (showPreloader) {
-    return <PreLoader onComplete={() => setShowPreloader(false)} />;
+
+  const handleLoginSuccess = () => {
+    localStorage.setItem("token", "true"); // store login status
+    setIsLoggedIn(true); // update state immediately
+    fetchHomeData(); // fetch data after login
+  };
+
+  // Wait until we finish checking auth
+  if (isCheckingAuth) {
+    return null; // or you can return a small loader if you want
   }
+
   if (!isLoggedIn) {
     return <Login onSuccess={handleLoginSuccess} />;
   }
-  console.log(isLoggedIn, "children");
+
   return (
     <>
-      {isLoggedIn && <AnimationHeader />}
+      <AnimationHeader />
+
       {typeof children === "function" ? children(data) : children}
     </>
   );

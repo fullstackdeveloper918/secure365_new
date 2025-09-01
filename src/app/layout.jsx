@@ -14,6 +14,7 @@ import Script from "next/script";
 import AnimationHeader from "../components/animation_header";
 import ClientWrapper from "@/components/ClientWrapper";
 import FullscreenVideoSection from "@/components/VideoBanner";
+import Preloader from "../components/Preloader";
 
 const gellery = localFont({
   src: [
@@ -179,6 +180,8 @@ export default function RootLayout({ children }) {
               <ClientWrapper>
                 {/* <AnimationHeader/> */}
                 {/* <FullscreenVideoSection /> */}
+                <Preloader />
+
                 {children}
               </ClientWrapper>
             </div>
