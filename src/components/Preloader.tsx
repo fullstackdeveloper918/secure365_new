@@ -105,7 +105,7 @@ export default function Preloader() {
     <motion.div
       role="status"
       aria-live="polite"
-      className="fixed inset-0 z-[60] text-white"
+      className="fixed inset-0 z-[2000] text-white"
       style={{
         // backgroundImage: `url('/galaxy-glowing-earth.jpg')`,
         backgroundImage: `url('/space-bg-Contact.png')`,
