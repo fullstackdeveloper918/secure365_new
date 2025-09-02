@@ -1,9 +1,7 @@
 "use client";
 // import * as React from "react";
 import React from "react";
-
 import { motion, useAnimation } from "framer-motion";
-
 export default function Preloader() {
   const [show, setShow] = React.useState(true);
   const [percent, setPercent] = React.useState(1);
@@ -105,19 +103,20 @@ export default function Preloader() {
     <motion.div
       role="status"
       aria-live="polite"
-      className="fixed inset-0 z-[2000] text-white"
+      className="fixed inset-0 z-[2000] bg-black text-white"
       style={{
-        // backgroundImage: `url('/galaxy-glowing-earth.jpg')`,
-        backgroundImage: `url('/space-bg-Contact.png')`,
+        backgroundImage: `url('/galaxy-glowing-earth.jpg')`,
+        // backgroundImage: `url('/images/space-bg-1.png')`,
+        // backgroundImage: `url('/space-bg-Contact.png')`,
         backgroundSize: "cover",
         backgroundPosition: "center",
         backgroundRepeat: "no-repeat",
       }}
-      initial={{ opacity: 1 }}
+      initial={{ opacity: 2 }}
       animate={overlayControls}
     >
       {/* Container: Centered Rocket + Progress Section */}
-      <div className="absolute inset-0 flex flex-col items-center justify-center pointer-events-none select-none">
+      <div className="absolute inset-0 flex flex-col items-center justify-center pointer-events-none select-none pt-[120px]">
         {/* Rocket */}
         <motion.div animate={bobControls}>
           <motion.div animate={rocketControls}>
@@ -141,12 +140,12 @@ export default function Preloader() {
         {/* Space between rocket and counter */}
         <div className="h-4 md:h-6" />
         {/* Percent + Progress Bar */}
-        <div className="flex flex-col items-center gap-4 w-full max-w-md px-6">
+        <div className="flex flex-col items-center gap-4 w-full max-w-[80%] px-6 mt-[60px]">
           <div className="flex items-baseline gap-1 font-mono">
-            <span className="text-4xl md:text-5xl lg:text-6xl tabular-nums">
+            <span className="text-4xl md:text-5xl lg:text-6xl tabular-nums font-semibold">
               {percent}
             </span>
-            <span className="text-2xl md:text-3xl lg:text-4xl">%</span>
+            <span className="text-xl md:text-3xl lg:text-4xl">%</span>
           </div>
           <div
             className="w-full"
@@ -156,9 +155,9 @@ export default function Preloader() {
             aria-valuenow={percent}
             aria-label="Secure365 loading progress"
           >
-            <div className="h-4 w-full rounded-full bg-cyan-900/30">
+            <div className="h-3 w-full rounded-full bg-cyan-900/30">
               <motion.div
-                className="h-4 rounded-full bg-cyan-400"
+                className="h-3 rounded-full bg-cyan-400"
                 initial={{ width: "1%" }}
                 animate={barControls}
               />
@@ -170,3 +169,12 @@ export default function Preloader() {
     </motion.div>
   );
 }
+
+
+
+
+
+
+
+
+

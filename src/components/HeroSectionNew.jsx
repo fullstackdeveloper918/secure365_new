@@ -143,7 +143,8 @@ export default function HeroSection({ serviceList }) {
           >
             <img
               ref={imageRef}
-              src="/hero2.png"
+              // src="/hero2.png"
+              src="/planet/New-Banner-Window.png"
               alt="Airplane window view"
               className="w-full h-full object-cover"
               draggable={false}

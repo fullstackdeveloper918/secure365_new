@@ -6042,7 +6042,7 @@ p.benfits_content {
   top: 100%; /* right below the header link */
   left: 0;
   background: #272727;
-  padding: 20px 30px;
+  padding: 25px 30px;
   border-radius: 15px;
   min-width: 420px;
   z-index: 1;
@@ -6063,10 +6063,10 @@ p.benfits_content {
 .classic-menu .flexnav .header-link .sub-menu {
   display: none;
   position: absolute;
-  padding-block: 20px;
+  padding-block: 25px;
   padding-inline: 30px;
-  background: #272727;
-  top: 40px;
+  background: #01AAEB;
+  top: 20px;
   z-index: 1;
   min-width: 420px;
   border-radius: 15px;
@@ -10100,6 +10100,17 @@ footer.footer {
 }
 
 @media screen and (max-width: 1480px) {
+  .classic-menu .flexnav .header-link .sub-menu {
+  display: none;
+  position: absolute;
+  padding-block: 25px;
+  padding-inline: 30px;
+  background: #01AAEB;
+  top: 30px;
+  z-index: 1;
+  min-width: 420px;
+  border-radius: 15px;
+}
   .project-del-contBox p {
     font-size: 18px;
     margin-bottom: 40px;
