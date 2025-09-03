@@ -20,6 +20,7 @@ import SecureWay from "@/components/projectSlider/SecureWay";
 import CtaSection from "@/components/projectSlider/CtaSection";
 // import ProjectFive from "@/components/project/project-five";
 import WorksSection from "@/components/project/WorksSection";
+import FooterFour from "@/layouts/footers/footer-four";
 // import ProjectFour from "@/components/project/project-four";
 // import ProjectOne from "@/components/project/project-one";
 // import ProjectSix from "@/components/project/project-six";
@@ -308,6 +309,7 @@ const Page = () => {
             {/* <ProjectSlider /> */}
             {/* <TechableProject />
             <AppleTech /> */}
+            <FooterFour className="relative z-20" />
           </div>
         </div>
       </main>

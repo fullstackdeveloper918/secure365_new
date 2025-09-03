@@ -5,6 +5,7 @@ import Link from "next/link";
 import { Rocket } from "lucide-react";
 
 export default function AboutUsHero({ bannerResponse }) {
+  console.log(bannerResponse,"banner response herer")
   const scrollTo = () => {
     scroller.scrollTo('about-info', {
       duration: 800,
