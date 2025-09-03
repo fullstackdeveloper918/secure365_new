@@ -5,7 +5,7 @@ import Link from "next/link"
 import { Rocket } from "lucide-react"
 
 export default function AboutUsArea({ aboutResponse }) {
-  console.log(aboutResponse, "aboutResponse")
+  // console.log(aboutResponse, "aboutResponse")
 
   const images = [
   "/images/about-us.png",

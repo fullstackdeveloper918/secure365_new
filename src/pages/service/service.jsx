@@ -23,8 +23,8 @@ import BrandLogos from "@/components/service/service-logo"
 
 const ServiceMain = ({ serviceData, serviceBannerData }) => {
   useScrollSmooth();
-  console.log("serviceData here", serviceBannerData);
-  console.log("serviceData  2", serviceData);
+  // console.log("serviceData here", serviceBannerData);
+  // console.log("serviceData  2", serviceData);
   useGSAP(() => {
     const timer = setTimeout(() => {
       charAnimation();

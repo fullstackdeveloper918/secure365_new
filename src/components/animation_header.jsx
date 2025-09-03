@@ -131,7 +131,7 @@ const AnimationHeader = () => {
 
   const isHomePage = pathname === "/";
 
-  console.log("isSubmenuOpen", isSubmenuOpen); // 👈 for debugging
+  // console.log("isSubmenuOpen", isSubmenuOpen); // 👈 for debugging
 
   return (
     <>

@@ -28,7 +28,7 @@ import { config } from "../../../config";
 const ServiceDetailsMain = ({ serviceBannerData }) => {
   const [contactData, setContactData] = React.useState(null);
   useScrollSmooth();
-  console.log("serviceBannerDatadd", serviceBannerData);
+  // console.log("serviceBannerDatadd", serviceBannerData);
   useGSAP(() => {
     const timer = setTimeout(() => {
       charAnimation();
@@ -53,7 +53,7 @@ const ServiceDetailsMain = ({ serviceBannerData }) => {
         setContactData(data?.data);
 
         // Handle the contactData as needed, e.g., updating state
-        console.log(contactData);
+        // console.log(contactData);
       } catch (error) {
         console.error('Error fetching contact data:', error);
       }

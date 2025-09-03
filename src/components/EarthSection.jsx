@@ -1,58 +1,50 @@
+"use client";
+
 import React, { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import ScrollTrigger from 'gsap/ScrollTrigger';
 import { ContactFormHome } from './ContactFormHome';
-
 gsap.registerPlugin(ScrollTrigger);
-
 const EarthSection = () => {
     const sectionRef = useRef(null);
     const imgRef = useRef(null);
     const circleRef = useRef(null);
     const textRef = useRef(null);
     const formRef = useRef(null);
-
     useEffect(() => {
         const section = sectionRef.current;
         const img = imgRef.current;
         const circle = circleRef.current;
-        // const text = textRef.current;
         const form = formRef.current;
-
         const ctx = gsap.context(() => {
             // Initial states
             gsap.set(img, { scale: 0.5, transformOrigin: '50% 50%', zIndex: 10 });
             gsap.set(circle, { scale: 1, autoAlpha: 0, transformOrigin: '50% 50%', zIndex: 20 });
-            // gsap.set(text, { scale: 2, autoAlpha: 0, zIndex: 30 });
-            gsap.set(form, { autoAlpha: 0, y: 50, zIndex: 30 }); // form hidden initially
-
-            // One timeline controls everything (also pins the section)
+            gsap.set(form, { autoAlpha: 0, y: 50, zIndex: 30 });
+            // Timeline with ScrollTrigger
             gsap.timeline({
                 scrollTrigger: {
                     trigger: section,
                     start: 'top top',
-                    end: '+=2200',
-                    scrub: true,
+                    end: '+=2200', // Adjust end for scroll distance
+                    scrub: 1.5, // Smooth scrubbing with slight delay
                     pin: true,
-                    // markers: true, // remove when done
+                    anticipatePin: 1, // Prevents layout shifts
+                    // markers: true, // Uncomment for debugging
                 },
             })
-                // 1) Earth zooms to 2
-                .to(img, { scale: 1, duration: 0.9, ease: 'power3.inOut' })
-                // 2) Earth fades out, white circle appears and grows a bit
-                .to(img, { autoAlpha: 1, duration: 0.1 }, '>')
-                .to(circle, { autoAlpha: 1, scale: 1, duration: 0.2, ease: 'power3.inOut' }, '<')
-                // 3) White circle explodes to 20
-                .to(circle, { scale: 10, duration: 0.7, ease: 'power3.inOut' })
-                // 4) Text appears on top
-                // .to(text, { autoAlpha: 1, scale: 3, duration: 0.1, ease: 'power3.out' }, '-=0.2');
-                // 4) Show ContactFormHome component
-                .to(form, { autoAlpha: 1, y: 0, duration: 0.8, ease: 'power3.out' }, '-=0.3');
+                // 1) Earth zooms to full size
+                .to(img, { scale: 1, duration: 1, ease: 'power2.inOut' })
+                // 2) Earth fades, circle appears
+                .to(img, { autoAlpha: 0, duration: 0.3, ease: 'power2.inOut' }, '+=0.1')
+                .to(circle, { autoAlpha: 1, scale: 1.2, duration: 0.4, ease: 'power2.inOut' }, '<')
+                // 3) Circle expands
+                .to(circle, { scale: 10, duration: 1, ease: 'power3.inOut' })
+                // 4) Form appears
+                .to(form, { autoAlpha: 1, y: 0, duration: 1, ease: 'power3.out' }, '-=0.5');
         }, section);
-
-        return () => ctx.revert();
+        return () => ctx.revert(); // Cleanup
     }, []);
-
     return (
         <div ref={sectionRef} className="h-screen relative overflow-hidden bg-black">
             {/* Background Video (behind everything) */}
@@ -65,14 +57,10 @@ const EarthSection = () => {
             >
                 <source src="/navigateVideoOne.mp4" type="video/mp4" />
             </video>
-
-
             {/* Initial Heading */}
-            <div className="absolute top-40 left-1/2 w-full flex justify-center -translate-x-1/2 -translate-y-1/2 transform z-10 text-white text-[80px] font-bold pointer-events-none">
+            <div className="absolute top-40 left-1/2 w-full flex justify-center -translate-x-1/2 -translate-y-1/2 transform z-10 text-white text-[80px] font-semibold pointer-events-none">
                 You Arrived Your Destination
             </div>
-
-
             {/* Earth */}
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 transform z-10 pointer-events-none">
                 <img
@@ -82,14 +70,11 @@ const EarthSection = () => {
                     className="w-60 h-60 will-change-transform"
                 />
             </div>
-
             {/* White Circle */}
             <div
                 ref={circleRef}
                 className="absolute top-1/2 left-1/2 w-60 h-60 rounded-full bg-white -translate-x-1/2 -translate-y-1/2 transform z-20 pointer-events-none will-change-transform"
             />
-
-
             {/* Contact Form */}
             <div ref={formRef} className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-full z-30">
                 <ContactFormHome />
@@ -97,5 +82,4 @@ const EarthSection = () => {
         </div>
     );
 };
-
 export default EarthSection;

@@ -27,8 +27,8 @@ import AboutWork from "@/components/work/about-work";
 
 const AboutUsMain = ({ aboutResponse, bannerResponse }) => {
   useScrollSmooth();
-  console.log("fetch aboutus data", aboutResponse);
-  console.log("fetch banneron aboutus data", bannerResponse);
+  // console.log("fetch aboutus data", aboutResponse);
+  // console.log("fetch banneron aboutus data", bannerResponse);
   useGSAP(() => {
     const timer = setTimeout(() => {
       charAnimation();

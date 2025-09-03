@@ -1,126 +1,129 @@
 "use client";
-
-import {
-  motion,
-  AnimatePresence,
-} from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
-
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+// Register ScrollTrigger plugin
+gsap.registerPlugin(ScrollTrigger);
 export default function HeroSection({ serviceList }) {
   const [videoStarted, setVideoStarted] = useState(false);
   const [showLeftText, setShowLeftText] = useState(false);
   const [showRightText, setShowRightText] = useState(false);
   const [showButton, setShowButton] = useState(false);
   const [imageVisible, setImageVisible] = useState(true);
-  const [scrollLocked, setScrollLocked] = useState(true);
-  const [scalingDone, setScalingDone] = useState(false);
-
+  const sectionRef = useRef(null);
   const videoRef = useRef(null);
   const imageRef = useRef(null);
-
-  // Lock scroll on mount during image scaling phase
+  // GSAP ScrollTrigger for smooth scaling
   useEffect(() => {
-    if (scrollLocked) {
-      const preventScroll = (e) => {
-        e.preventDefault();
-      };
-      document.body.style.overflow = "hidden";
-      window.scrollTo(0, 0);
-      window.addEventListener("wheel", preventScroll, { passive: false });
-      window.addEventListener("touchmove", preventScroll, { passive: false });
-
-      return () => {
-        document.body.style.overflow = "";
-        window.removeEventListener("wheel", preventScroll);
-        window.removeEventListener("touchmove", preventScroll);
-      };
-    }
-  }, [scrollLocked]);
-
-  // Handle the first scroll wheel event for immediate full scaling
-  useEffect(() => {
-    if (!scrollLocked || scalingDone) return;
-
-    const maxDelta = 100; // max pixels scroll to scale image fully
-    const minScale = 1;
-    const maxScale = 3;
-
-    const onWheel = (e) => {
-      if (scalingDone) return;
-
-      if (e.deltaY <= 0) return; // ignore scroll up
-
-      // Calculate scale proportionally from deltaY capped at maxDelta
-      const cappedDelta = Math.min(e.deltaY, maxDelta);
-      const scale =
-        minScale + ((cappedDelta / maxDelta) * (maxScale - minScale));
-
-      if (imageRef.current) {
-        imageRef.current.style.transform = `scale(${scale})`;
-      }
-
-      // If user scrolls enough in this single event, finish scaling
-      if (e.deltaY >= maxDelta) {
-        setScalingDone(true);
-        setScrollLocked(false);
-        setImageVisible(false);
-      }
-    };
-
-    window.addEventListener("wheel", onWheel, { passive: false });
-
+    if (!imageRef.current || !sectionRef.current) return;
+    const image = imageRef.current;
+    const section = sectionRef.current;
+    // GSAP timeline for scaling
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: section,
+        start: "top top",
+        end: "+=500", // Adjusted scroll distance for better UX
+        scrub: 4.5, // Smooth scrubbing
+        pin: true, // Pin the section
+        anticipatePin: 1,
+        onUpdate: (self) => {
+          // Check if animation is complete (progress === 1)
+          if (self.progress === 1) {
+            setImageVisible(false); // Trigger fade-out
+          }
+        },
+        onComplete: () => {
+          console.log("ScrollTrigger completed: scale reached 20");
+        },
+      },
+    });
+    // Scale image from 1 to 20
+    tl.to(image, {
+      scale: 4,
+      ease: "none",
+      transformOrigin: "center center",
+    });
+    // tl.to({}, { duration: 1.5 });
     return () => {
-      window.removeEventListener("wheel", onWheel);
-      if (imageRef.current) {
-        imageRef.current.style.transform = "";
-      }
+      ScrollTrigger.getAll().forEach((st) => st.kill());
+      tl.kill();
     };
-  }, [scrollLocked, scalingDone]);
-
-  // When image faded out, start video and text animations
+  }, []);
+  // When image fades out, start video and text animations
   useEffect(() => {
+    console.log("imageVisible:", imageVisible, "videoStarted:", videoStarted);
     if (!imageVisible && !videoStarted) {
       const video = videoRef.current;
       if (video) {
+        console.log("Attempting to play video");
         const playPromise = video.play();
-
         if (playPromise !== undefined) {
           playPromise
             .then(() => {
+              console.log("Video started successfully");
               setVideoStarted(true);
-              setTimeout(() => setShowLeftText(true), 500);
-              setTimeout(() => setShowRightText(true), 1500);
-              setTimeout(() => setShowButton(true), 2500);
+              setTimeout(() => {
+                console.log("Showing left text");
+                setShowLeftText(true);
+              }, 500);
+              setTimeout(() => {
+                console.log("Showing right text");
+                setShowRightText(true);
+              }, 1500);
+              setTimeout(() => {
+                console.log("Showing button");
+                setShowButton(true);
+              }, 2500);
             })
-            .catch(() => {
-              setVideoStarted(true);
-              setTimeout(() => setShowLeftText(true), 500);
-              setTimeout(() => setShowRightText(true), 1500);
-              setTimeout(() => setShowButton(true), 2500);
+            .catch((error) => {
+              console.error("Video play error:", error);
+              setVideoStarted(true); // Proceed even if video fails
+              setTimeout(() => {
+                console.log("Showing left text (on error)");
+                setShowLeftText(true);
+              }, 500);
+              setTimeout(() => {
+                console.log("Showing right text (on error)");
+                setShowRightText(true);
+              }, 1500);
+              setTimeout(() => {
+                console.log("Showing button (on error)");
+                setShowButton(true);
+              }, 2500);
             });
         }
+      } else {
+        console.log("No video ref, triggering text animations");
+        setVideoStarted(true);
+        setTimeout(() => setShowLeftText(true), 500);
+        setTimeout(() => setShowRightText(true), 1500);
+        setTimeout(() => setShowButton(true), 2500);
       }
     }
   }, [imageVisible, videoStarted]);
-
-  // Setup video playback rate and event handlers once on mount
+  // Setup video playback rate and event handlers
   useEffect(() => {
     const video = videoRef.current;
     if (video) {
       video.playbackRate = 0.8;
       video.onloadedmetadata = () => {
         video.currentTime = 0;
+        console.log("Video metadata loaded, reset to start");
       };
       video.onerror = (e) => {
         console.error("Video error:", e);
       };
     }
   }, []);
-
   return (
-    <section className="hero-sec relative min-h-[100vh] flex items-center main-secure-banner z-0 overflow-hidden">
-      {/* Background video fixed and full cover */}
+    <section
+      ref={sectionRef}
+      className="hero-sec relative min-h-[100vh] flex items-center main-secure-banner z-0 overflow-hidden"
+    >
+      {/* Background video */}
       <div className="absolute inset-0 w-full h-full z-0 pointer-events-none">
         <video
           {...(videoStarted ? { autoPlay: true, loop: true } : {})}
@@ -131,7 +134,6 @@ export default function HeroSection({ serviceList }) {
           playsInline
         />
       </div>
-
       {/* Image overlay */}
       <AnimatePresence>
         {imageVisible && (
@@ -143,7 +145,6 @@ export default function HeroSection({ serviceList }) {
           >
             <img
               ref={imageRef}
-              // src="/hero2.png"
               src="/planet/New-Banner-Window.png"
               alt="Airplane window view"
               className="w-full h-full object-cover"
@@ -151,14 +152,12 @@ export default function HeroSection({ serviceList }) {
               style={{
                 transformOrigin: "center center",
                 willChange: "transform",
-                position: "absolute",
               }}
             />
           </motion.div>
         )}
       </AnimatePresence>
-
-      {/* Content container with text and button */}
+      {/* Content container */}
       <div className="relative z-20 w-full">
         <div className="container mx-auto px-6">
           <div className="flex gap-12 items-end min-h-screen ban-inner-wrapper">
@@ -184,7 +183,6 @@ export default function HeroSection({ serviceList }) {
                 )}
               </AnimatePresence>
             </div>
-
             {/* Right Text and Button */}
             <div className="space-y-8 ban-content-box">
               <AnimatePresence>
@@ -202,7 +200,6 @@ export default function HeroSection({ serviceList }) {
                   </motion.div>
                 )}
               </AnimatePresence>
-
               <div className="relative z-20 min-h-[56px] flex items-center">
                 <AnimatePresence>
                   {showButton && (
@@ -214,7 +211,7 @@ export default function HeroSection({ serviceList }) {
                     >
                       <Link
                         href={"/contact-us"}
-                        className="bg-[#00AEEF] hover:bg-[#0099d4] text-white rounded-lg start-mission-btn px-6 py-3 inline-block"
+                        className="bg-[#00AEEF] hover:bg-[#0099D4] text-white rounded-lg start-mission-btn px-6 py-3 inline-block"
                       >
                         {serviceList.home_advanced_it_and_cyber_security_fourth}
                       </Link>
@@ -224,7 +221,6 @@ export default function HeroSection({ serviceList }) {
               </div>
             </div>
           </div>
-
           {/* Scroll down indicator */}
           <div className="absolute z-10 scroll-down-button">
             <motion.div

@@ -21,7 +21,7 @@ import AnimationHeader from "@/components/animation_header";
 
 const ContactMain = ({ contactData }) => {
 
-  console.log(contactData, 'contactData')
+  // console.log(contactData, 'contactData')
   useScrollSmooth();
 
   useGSAP(() => {

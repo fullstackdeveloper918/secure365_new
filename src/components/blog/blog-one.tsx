@@ -33,7 +33,7 @@ export default function BlogOne() {
     const fetchBlogData = async () => {
       try {
         const response = await fetch(
-          "https://sellmac.cybersify.tech/secure365/wp-json/secure-plugin/v1/news"
+          "https://adminsecure.techable.com/wp-json/secure-plugin/v1/news"
         );
         if (!response.ok) {
           throw new Error(`HTTP error! Status: ${response.status}`);

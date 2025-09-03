@@ -10271,6 +10271,9 @@ footer.footer {
   .inner-serv-banpara {
     max-width: 70%;
   }
+  .serviceCardMobile {
+    width: 50% !important;
+  }
   #navigate-section {
     padding-top: 0px !important;
   }
@@ -10830,6 +10833,9 @@ footer.footer {
 @media screen and (max-width: 575px) {
   .inner-serv-banpara {
     max-width: 98%;
+  }
+  .serviceCardMobile {
+    width: 100% !important;
   }
   .ban-inner-wrapper {
     gap: 12px !important;

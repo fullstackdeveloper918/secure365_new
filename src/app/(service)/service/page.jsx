@@ -25,7 +25,7 @@ const ServicePage = async () => {
   const serviceData = await data.json();
   const serviceBannerData = await bannerData.json();
 
-  console.log("serviceData here", serviceData);
+  // console.log("serviceData here", serviceData);
 
   return (
     <>
