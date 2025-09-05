@@ -31,7 +31,7 @@ export default function SingleProKeyAppleTech() {
       <div className="stars-background absolute inset-0 pointer-events-none">
         <div className="stars-container">
           {[...Array(20)].map((_, i) => (
-            <div key={i} className={`star star-${i+1}`}></div>
+            <div key={i} className={`star star-${i + 1}`}></div>
           ))}
         </div>
         <div className="radial-gradient"></div>
@@ -44,7 +44,7 @@ export default function SingleProKeyAppleTech() {
           <div className="about-title text-center">
             <div className="ab-about-content p-relative">
               <p className="tp_fade_bottom p-0 core-val-head fw-semibold text-white">
-                Key Feature
+                Apple Tech Problem
               </p>
             </div>
           </div>

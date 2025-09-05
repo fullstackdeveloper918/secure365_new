@@ -46,53 +46,53 @@ const slider_setting = {
   },
 };
 
-export const Service_data =
-{
-  title: "Our Services Include",
-  subtitle: "Core Services Tailored for Businesses Like Yours",
-  service_data: [
-    {
-      id: 1,
-      icon: sv_1,
-      title: "Cloud Migration & Setup",
-      subtitle: "Migrate securely to AWS, Azure, or GCP — optimized for performance and compliance.",
-    },
-    {
-      id: 2,
-      icon: sv_2,
-      title: "Server Configuration & Optimization",
-      subtitle: "Configure and optimize Linux, Windows, or cloud servers for speed, uptime, and security.",
-    },
-    {
-      id: 3,
-      icon: sv_3,
-      title: "Data Security & Backup Solutions",
-      subtitle: "Automated backups, encrypted data pipelines, and disaster recovery systems built for peace of mind.",
-    },
-    {
-      id: 4,
-      icon: sv_4,
-      title: "Predictive Analytics & Business Intelligence",
-      subtitle: "Tailored dashboards and AI analysis for smarter decisions and deeper insights.",
-    },
-    {
-      id: 5,
-      icon: sv_5,
-      title: "Custom API & AI Integrations",
-      subtitle: "Sync apps and systems — CRMs, ERPs, websites — with bespoke APIs and intelligent automations.",
-    },
-    {
-      id: 6,
-      icon: sv_6,
-      title: "AI Automation via n8n & Make.com",
-      subtitle: "Design custom workflows with no‑code/low‑code automations for tools like CRMs, Slack, and email.",
-    },
-  ]
-}
+// export const Service_data =
+// {
+//   // title: "Our Services Include",
+//   title: "Core Services Tailored for Businesses Like Yours",
+//   subtitle: "Core Services Tailored for Businesses Like Yours",
+//   service_data: [
+//     {
+//       id: 1,
+//       icon: sv_1,
+//       title: "Cloud Migration & Setup",
+//       subtitle: "Migrate securely to AWS, Azure, or GCP — optimized for performance and compliance.",
+//     },
+//     {
+//       id: 2,
+//       icon: sv_2,
+//       title: "Server Configuration & Optimization",
+//       subtitle: "Configure and optimize Linux, Windows, or cloud servers for speed, uptime, and security.",
+//     },
+//     {
+//       id: 3,
+//       icon: sv_3,
+//       title: "Data Security & Backup",
+//       subtitle: "Automated backups, encrypted data pipelines, and disaster recovery systems built for peace of mind.",
+//     },
+//     {
+//       id: 4,
+//       icon: sv_4,
+//       title: "Predictive Analytics & Business Intelligence",
+//       subtitle: "Tailored dashboards and AI analysis for smarter decisions and deeper insights.",
+//     },
+//     {
+//       id: 5,
+//       icon: sv_5,
+//       title: "Custom API & AI Integrations",
+//       subtitle: "Sync apps and systems — CRMs, ERPs, websites — with bespoke APIs and intelligent automations.",
+//     },
+//     {
+//       id: 6,
+//       icon: sv_6,
+//       title: "AI Automation via n8n & Make.com",
+//       subtitle: "Design custom workflows with no‑code/low‑code automations for tools like CRMs, Slack, and email.",
+//     },
+//   ]
+// }
 
 
-export default function ServiceThree({ serviceBannerData }) {
-  console.log("serviceBannerData", serviceBannerData)
+export default function ServiceThree({ Service_data }) {
   return (
     <div
       className="tp-service-4-area fix our-service-outer-box"
@@ -141,10 +141,10 @@ export default function ServiceThree({ serviceBannerData }) {
                     <Link href="/service">{item?.title}</Link>
                   </h2>
                   <p>{item?.subtitle}</p>
-                  <Link className="tp-service-4-link" href="/service">
-                    {/* {item?.button} */}
+                  {/* <Link className="tp-service-4-link" href="/service">
                     Read More
-                  </Link>
+                  </Link> */}
+                  {/* {item?.button} */}
                 </div>
               </div>
             </SwiperSlide>

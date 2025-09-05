@@ -3,22 +3,22 @@ import Link from "next/link";
 
 export default function ContactForm({ aboutResponse }) {
   return (
-    <div className="contact">
+    <div className="contact bg-[#000]">
       <div className="container container-1480">
         <div className="row">
           <div className="contact-wrap flex flex-col md:flex-row justify-between items-start gap-40 contact-why-last">
             <div className="contact-col md:w-1/3 md:text-left mt-0">
-              <h2>Contact us</h2>
-              <p>
+              <h2 className="text-white">Contact us</h2>
+              <p className="text-white">
                 Your inquiries matter to us! Whether you’re a potential client,
                 a partner, or just curious about what we do, we’re always happy
                 to chat. Send us a message, and let’s connect.
               </p>
-              <p>Or reach us directly at:</p>
-              <a href=":mailto" className="block text-black font-semibold">
+              <p className="text-white">Or reach us directly at:</p>
+              <a href=":mailto" className="block text-white font-semibold">
                 SECURE@GMAIL.COM
               </a>
-              <a href=":tel" className="block text-black font-semibold mb-0">
+              <a href=":tel" className="block text-white font-semibold mb-0">
                 +6 314 678 886
               </a>
             </div>

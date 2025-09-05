@@ -103,9 +103,9 @@ export default function ServiceSix({ serviceData }) {
             }}
             className="absolute inset-0 w-full h-screen"
           >
-            <div className="flex h-full">
+            <div className="flex h-full max-ser-slide-card">
               {/* Left side - Image */}
-              <div className="w-1/2 relative overflow-hidden">
+              <div className="w-1/2 relative overflow-hidden max-slide-image-wrap">
                 <Image
                   src={
                     item?.service_page_all_services_image ||
@@ -121,10 +121,10 @@ export default function ServiceSix({ serviceData }) {
               </div>
 
               {/* Right side - Content */}
-              <div className="w-1/2 bg-slate-900 flex items-center justify-center p-16">
+              <div className="w-1/2 bg-slate-900 flex items-center justify-center p-16 max-rightSlide-wrap">
                 <div className="max-w-lg text-white">
-                  <div className="mb-8">
-                    <div className="flex items-center gap-4 mb-4">
+                  <div className="mb-8 head-num-wrap">
+                    <div className="flex items-center gap-4 mb-4 top-num-wrap">
                       <span className="text-4xl font-light text-gray-400">
                         {index < 9 ? "0" + (index + 1) : index + 1}
                       </span>
@@ -132,11 +132,11 @@ export default function ServiceSix({ serviceData }) {
                         {item?.service_page_all_sub_heading}
                       </span>
                     </div>
-                    <h2 className="text-4xl font-bold leading-tight mb-6 text-white">{item?.service_page_all_heading}</h2>
+                    <h2 className="text-4xl font-semibold leading-tight mb-6 text-white">{item?.service_page_all_heading}</h2>
                   </div>
 
                   <div className="space-y-8">
-                    <p className="text-gray-300 text-lg leading-relaxed">{item?.service_page_all_paragraph}</p>
+                    <p className="text-gray-300 text-lg leading-relaxed max-cont-slide-para">{item?.service_page_all_paragraph}</p>
 
                     <ul className="space-y-3">
                       <li className="flex items-center text-gray-300">

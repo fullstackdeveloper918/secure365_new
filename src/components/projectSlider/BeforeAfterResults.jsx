@@ -12,27 +12,27 @@ export default function BeforeAfterResults() {
       cardsRef.current[index] = el;
     }
   };
- const Before_vs_After_Results =
-{
-  title: "Before & After / Impact",
-  before:"Before Secure365",
-  para:" Average improvement across all clients:",
-  para2:"+187%",
-  para3:"in key metrics",
-  beforeData: [
-                ["Manual data handling", "5.2s", "30%"],
-                ["Slow payment processing", "Poor", "20%"],
-                ["Security concerns", "1.2%", "12%"],
-                // ["SEO Ranking", "Page 3+", "15%"],
-              ],
-  after:"After Secure365",
-  afterData: [
-                ["Automated secure workflows", "0.8s", "95%"],
-                ["Instant payment processing", "Excellent", "98%"],
-                ["Enhanced user trust & compliance", "4.8%", "85%"],
-                // ["SEO Ranking", "Top 5", "90%"],
-              ],
-      }
+  const Before_vs_After_Results =
+  {
+    title: "Our Outcomes",
+    before: "Before Secure365",
+    para: " Average improvement across all clients:",
+    para2: "+187%",
+    para3: "in key metrics",
+    beforeData: [
+      ["Manual data handling", "5.2s", "30%"],
+      ["Slow payment processing", "Poor", "20%"],
+      ["Security concerns", "1.2%", "12%"],
+      // ["SEO Ranking", "Page 3+", "15%"],
+    ],
+    after: "After Secure365",
+    afterData: [
+      ["Automated secure workflows", "0.8s", "95%"],
+      ["Instant payment processing", "Excellent", "98%"],
+      ["Enhanced user trust & compliance", "4.8%", "85%"],
+      // ["SEO Ranking", "Top 5", "90%"],
+    ],
+  }
   useEffect(() => {
     const timeout = setTimeout(() => {
       const ctx = gsap.context(() => {
@@ -58,10 +58,10 @@ export default function BeforeAfterResults() {
   return (
     <section className="relative before-after-sec" ref={sectionRef}>
       <div className="container mx-auto px-4">
-        <h2 className="text-3xl md:text-4xl font-semibold text-center text-white bf-result-head relative">
+        <h1 className="text-3xl md:text-4xl font-semibold text-center text-white bf-result-head relative">
           {/* Before vs After Results */}
           {Before_vs_After_Results.title}
-        </h2>
+        </h1>
         {/* <p className="text-white text-lg text-center mb-4">Average improvement across all clients: +187% in key metrics</p> */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
           {/* BEFORE Card */}

@@ -135,7 +135,7 @@ export default function AchievementsSection({ serviceList }) {
       </section>
       {/* ===== Horizontal Service Cards Section ===== */}
       <section
-        className="relative w-full h-screen overflow-hidden"
+        className="relative w-full h-screen overflow-hidden our-service-main-sec"
         ref={containerRef}
       >
         {/* Video background */}
@@ -154,7 +154,7 @@ export default function AchievementsSection({ serviceList }) {
         </div>
         <div className="relative z-10 flex flex-col justify-center container mx-auto px-6 py-20 h-full">
           <motion.h2
-            className="our-service-heading text-white font-semibold mb-10 text-left"
+            className="our-service-heading text-white font-semibold mb-10 text-left capitalize"
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -168,7 +168,7 @@ export default function AchievementsSection({ serviceList }) {
             style={{ touchAction: isMobile ? "none" : "auto" }}
           >
             {serviceList?.ourServiceSection?.serviceCards?.map((card, idx) => (
-              <div key={idx} className="w-[25%] flex-shrink-0 p-3 serviceCardMobile">
+              <div key={idx} className="w-[25%] flex-shrink-0 p-1 serviceCardMobile">
                 <div className="h-full flex flex-col bg-transparent backdrop-blur-sm border border-gray-700 rounded-lg p-6 py-8 hover:border-[#00AEEF] transition-all duration-300 relative">
                   <div className="absolute inset-0 bg-gradient-to-r from-[#1A1A1A] via-[#3A4A65] to-[#B2B2B2] opacity-60 rounded-lg -z-10"></div>
                   <div className="flex justify-left mb-4 relative z-10">
@@ -193,7 +193,7 @@ export default function AchievementsSection({ serviceList }) {
             ))}
           </div>
           {/* Arrow Icons for Mobile/Tablet */}
-          <div className="lg:hidden flex justify-end gap-6 mb-4">
+          <div className="lg:hidden flex justify-end gap-6 mt-3 our-serv-slideBtn">
             <button
               onClick={() => handleArrowClick("left")}
               className="w-10 h-10 rounded-full bg-white/10 border border-white/20 text-white hover:bg-white/20 transition-all duration-300"

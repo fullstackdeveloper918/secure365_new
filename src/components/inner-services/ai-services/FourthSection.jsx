@@ -6,15 +6,15 @@ import Link from "next/link";
 import { motion, useInView } from "framer-motion";
 import { Rocket } from "lucide-react";
 
-const Ready_to_Transform_Your_Business = 
-{
-  title: "Ready to Transform Your Business?",
-  desc: " Book a discovery call today and learn how our integrated services can drive growth for your business.",
-  button: "Book a Discovery Call"
-}
+// const Ready_to_Transform_Your_Business = 
+// {
+//   title: "Ready to Transform Your Business?",
+//   desc: " Book a discovery call today and learn how our integrated services can drive growth for your business.",
+//   button: "Book a Discovery Call"
+// }
 
 // let text = "Ready to Transform Your Business?";
-export const FourthSection = () => {
+export const FourthSection = ({ Ready_to_Transform_Your_Business }) => {
   useEffect(() => {
     AOS.init({ duration: 1000, once: false });
   }, []);
@@ -58,14 +58,14 @@ export const FourthSection = () => {
 
       <div className="flex flex-col items-center z-10">
         <h2
-        data-aos="fade-up"
+          data-aos="fade-up"
           ref={ref}
           variants={container}
           initial="hidden"
           animate={isInView ? "visible" : "hidden"}
           className=" ready-head-txt text-center sm:text-4xl text-white z-[99] font-semibold tracking-tighter md:text-6xl md:leading-[4rem] flex flex-wrap justify-center xl:px-64"
         >
-         {Ready_to_Transform_Your_Business.title}
+          {Ready_to_Transform_Your_Business.title}
         </h2>
 
         <motion.p
@@ -76,13 +76,13 @@ export const FourthSection = () => {
           drive growth for your business. */}
           {Ready_to_Transform_Your_Business.desc}
         </motion.p>
-           <Link href={"/contact-us"} className="bg-[#00AEEF] hover:bg-[#0099d4] text-white rounded-lg global-primary-btn z-10 mt-4">
-                          {/* Book a Discovery Call */}
-                          {Ready_to_Transform_Your_Business.button}
-                </Link>
+        <Link href={"/contact-us"} className="bg-[#00AEEF] hover:bg-[#0099d4] text-white rounded-lg global-primary-btn z-10 mt-4">
+          {/* Book a Discovery Call */}
+          {Ready_to_Transform_Your_Business.button}
+        </Link>
       </div>
 
-          {/* <div className="cta-project-btn service-all-btn">
+      {/* <div className="cta-project-btn service-all-btn">
                             <button className="relative z-[99] bannerbtn mt-14 mx-auto flex items-center justify-center">
                               <Link className="header-button ajax-link" href="/contact-us">
                                 <div className="button-icon-link right">
@@ -100,7 +100,7 @@ export const FourthSection = () => {
                               </Link>
                             </button>
                           </div> */}
-                       
+
 
       {/* <button  class="newBtnOne z-[10] relative bg-transparent text-white border-2 hover:bg-cyan-100 px-4 py-3 rounded-md text-lg font-medium hover:text-cyan-900 hover:bg-white border mt-4 rounded-pill">Book a Discovery Call</button> */}
     </div>

@@ -6065,10 +6065,10 @@ p.benfits_content {
   position: absolute;
   padding-block: 25px;
   padding-inline: 30px;
-  background: #01AAEB;
-  top: 20px;
+  background: #01aaeb;
+  top: 25px;
   z-index: 1;
-  min-width: 420px;
+  min-width: 340px;
   border-radius: 15px;
 }
 
@@ -6078,6 +6078,7 @@ p.benfits_content {
 
 .classic-menu .flexnav li .sub-menu a {
   color: #ffffff !important;
+  font-size: 16px !important;
 }
 
 /* Header CSS Start here end */
@@ -7004,6 +7005,8 @@ section.cyber-serv-sec .cb-btn-prc {
   padding: 16px 28px !important;
   border-radius: 30px;
   font-size: 16px;
+  display: inline-block;
+  width: auto;
 }
 
 .threat-head {
@@ -7461,6 +7464,57 @@ div#singleSerivce .conatct-col {
   font-size: 86px;
 }
 
+section.rotation-timeline-sec::after {
+  position: absolute;
+  content: "";
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 90px;
+  background: linear-gradient(180deg, #02020200, #020202);
+  z-index: 1;
+}
+.what-make-different-sec::before {
+  position: absolute;
+  content: "";
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 90px;
+  background: linear-gradient(360deg, #02020200, #020202);
+  z-index: 1;
+}
+.what-make-different-sec::after {
+  position: absolute;
+  content: "";
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 90px;
+  background: linear-gradient(180deg, #02020200, #020202);
+  z-index: 1;
+}
+.our-service-main-sec::before {
+  position: absolute;
+  content: "";
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 90px;
+  background: linear-gradient(360deg, #02020200, #020202);
+  z-index: 1;
+}
+.our-service-main-sec::after {
+  position: absolute;
+  content: "";
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 90px;
+  background: linear-gradient(180deg, #02020200, #020202);
+  z-index: 1;
+}
+
 @media (min-width: 2800px) {
   .bottomContent h2 {
     font-size: 4rem;
@@ -7580,6 +7634,9 @@ div#singleSerivce .conatct-col {
 }
 
 @media screen and (max-width: 1480px) {
+  .benefit-card-inner {
+    padding: 35px 30px !important;
+  }
   .our-serv-cont-area {
     margin-left: 30px;
   }
@@ -8029,6 +8086,12 @@ div#singleSerivce .conatct-col {
 }
 
 @media screen and (max-width: 767px) {
+  .use-case-section {
+    padding: 60px 0 20px;
+  }
+  .our-work-sec-inner {
+    margin: 0px auto 20px;
+  }
   .our-serv-main-sec span.text-white {
     font-size: 30px !important;
   }
@@ -9557,6 +9620,7 @@ header.clapat-header.classic-menu.invert-header.scrolled div#header-container {
 }
 .main-secure-banner .ban-content-box {
   width: 40%;
+  padding-bottom: 54px;
 }
 .main-secure-banner .main-banner-para-box {
   padding-bottom: 54px;
@@ -9699,7 +9763,7 @@ section.our-services-sec {
   backdrop-filter: blur(50px);
   min-height: 161px;
 }
-.what-make-gradient::after {
+/* .what-make-gradient::after {
   position: absolute;
   content: "";
   left: 0;
@@ -9708,7 +9772,7 @@ section.our-services-sec {
   height: 100px;
   background: linear-gradient(180deg, #02020200, #020202);
   z-index: 1;
-}
+} */
 .what-make-card-box:before {
   border: 1px solid;
   border-image: linear-gradient(
@@ -9848,6 +9912,16 @@ z
   width: 100%;
   height: 200px;
   background: linear-gradient(360deg, #04071400, #000000);
+  z-index: 1;
+}
+.navigate-second-sec::after {
+  position: absolute;
+  content: "";
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 70px;
+  background: linear-gradient(180deg, #04071400, #000000);
   z-index: 1;
 }
 .arrieved-destination {
@@ -10015,6 +10089,9 @@ footer.footer {
 
 .website-audit-form {
   padding: 100px 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .website-audit-form select option {
   color: #000;
@@ -10099,18 +10176,39 @@ footer.footer {
   border-radius: 10px !important;
 }
 
-@media screen and (max-width: 1480px) {
-  .classic-menu .flexnav .header-link .sub-menu {
-  display: none;
-  position: absolute;
-  padding-block: 25px;
-  padding-inline: 30px;
-  background: #01AAEB;
-  top: 30px;
-  z-index: 1;
-  min-width: 420px;
-  border-radius: 15px;
+.login-btn-main {
+  font-size: 16px;
+  margin-top: 30px !important;
 }
+.login-para-text {
+  line-height: normal;
+  font-size: 18px;
+  margin-bottom: 40px;
+  color: #fff;
+}
+.contactDiv .innerDivConatct img {
+  height: auto;
+}
+
+@media screen and (max-width: 1480px) {
+  .main-secure-banner .start-mission-btn {
+    padding: 20px 30px !important;
+  }
+  .dest-head {
+    font-size: 56px !important;
+  }
+  .classic-menu .flexnav .header-link .sub-menu {
+    display: none;
+    position: absolute;
+    padding-block: 25px;
+    padding-inline: 30px;
+    background: #01aaeb;
+    top: 50px;
+    left: 10px;
+    z-index: 1;
+    min-width: 350px;
+    border-radius: 15px;
+  }
   .project-del-contBox p {
     font-size: 18px;
     margin-bottom: 40px;
@@ -10242,8 +10340,31 @@ footer.footer {
     font-size: 56px;
   }
 }
+@media screen and (max-width: 1280px) {
+  .menu-link-call-action nav.clapat-nav-wrapper ul.flexnav li a {
+    font-size: 16px;
+    line-height: normal;
+  }
+  #clapat-logo {
+    position: relative;
+    display: block;
+    pointer-events: initial;
+    z-index: 10;
+    width: 25%;
+  }
+  .classic-menu .flexnav .header-link {
+    padding: 0 15px;
+    position: relative;
+  }
+}
 
 @media screen and (max-width: 1100px) {
+  .menu-link-call-action nav.clapat-nav-wrapper ul.flexnav li a {
+    font-size: 14px !important;
+  }
+  .classic-menu .flexnav .header-link {
+    padding: 0 13px !important;
+  }
   div#singleSerivce .conatct-col .cn-contactform-wrap {
     margin-left: 0px;
   }
@@ -10268,11 +10389,33 @@ footer.footer {
 }
 
 @media screen and (max-width: 991px) {
+  .classic-menu .flexnav .header-link .sub-menu {
+    top: 50px;
+    left: 0px !important;
+  }
+  .fq-faq-area
+    .tp-service-2-accordion-box
+    .accordion-header
+    .accordion-buttons
+    .accordion-icon {
+    top: 38px;
+  }
+  .dest-head {
+    font-size: 50px !important;
+  }
+  section.our-service-main-sec {
+    height: 100% !important;
+    padding: 80px 0;
+  }
+  .ban-btn-wrapper {
+    justify-content: center;
+  }
   .inner-serv-banpara {
     max-width: 70%;
   }
   .serviceCardMobile {
     width: 50% !important;
+    padding: 0px !important;
   }
   #navigate-section {
     padding-top: 0px !important;
@@ -10555,9 +10698,66 @@ footer.footer {
     margin: 10px auto 50px;
     font-size: 18px;
   }
+
+  .max-ser-slide-card {
+    flex-direction: column;
+  }
+  .max-rightSlide-wrap {
+    width: 100%;
+    padding: 40px 24px;
+  }
+  .max-slide-image-wrap {
+    width: 100%;
+  }
+  .max-rightSlide-wrap h2 {
+    font-size: 26px;
+    line-height: normal;
+    margin-bottom: 10px;
+  }
+  .max-cont-slide-para {
+    font-size: 15px;
+  }
+  .head-num-wrap {
+    margin-bottom: 0px;
+  }
+  .top-num-wrap {
+    gap: 12px !important;
+  }
 }
 
 @media screen and (max-width: 767px) {
+  .fq-faq-area {
+    padding-top: 20px;
+  }
+  section.login-section {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 20px !important;
+  }
+  section.login-section h2 {
+    text-align: center;
+  }
+  .login-para-text {
+    text-align: center;
+    line-height: normal;
+    font-size: 18px;
+    margin-bottom: 40px;
+    color: #fff;
+  }
+  section.login-section form label {
+    font-size: 15px;
+    margin: 20px 0 10px !important;
+  }
+  .image-login-Box {
+    display: none;
+  }
+  .dest-head {
+    font-size: 40px !important;
+    text-align: center;
+    line-height: normal;
+  }
   .inner-serv-banpara {
     max-width: 90%;
     line-height: 26px;
@@ -10689,7 +10889,7 @@ footer.footer {
   .why-hero-section .card-box h3 {
     font-size: 20px;
     margin-bottom: 10px;
-    max-width: 100%;
+    max-width: 100% !important;
   }
   .project-top-heading span {
     font-size: 32px;
@@ -10737,7 +10937,8 @@ footer.footer {
     line-height: normal !important;
   }
   .right-audit-cont {
-    margin-left: 0px;
+    margin-left: 0px !important;
+    margin-right: 0px !important;
   }
   .audit-para {
     font-size: 16px;
@@ -10749,6 +10950,8 @@ footer.footer {
   }
   .audit-form-box form input {
     font-size: 16px !important;
+    padding: 0 !important;
+    height: 40px;
   }
   .destination-head {
     font-size: 40px;
@@ -10795,6 +10998,7 @@ footer.footer {
   }
   .timeline-inner-box {
     margin-top: 100px;
+    min-height: 1260px;
   }
   .navigate-heading {
     font-size: 32px !important;
@@ -10831,6 +11035,51 @@ footer.footer {
 }
 
 @media screen and (max-width: 575px) {
+  .classic-menu .flexnav .header-link .sub-menu {
+    min-width: 100%;
+    top: 40px !important;
+    gap: 3px !important;
+  }
+  .fq-faq-area
+    .tp-service-2-accordion-box
+    .accordion-header
+    .accordion-buttons
+    .accordion-icon {
+    top: 30px;
+  }
+  .fq-faq-area div#accordionExample {
+    max-width: 100% !important;
+  }
+  .earth-dest-img {
+    width: 240px;
+  }
+  .dest-head {
+    font-size: 32px !important;
+    text-align: center;
+    line-height: normal;
+  }
+  .our-serv-slideBtn {
+    justify-content: center !important;
+    gap: 15px !important;
+  }
+  section.our-service-main-sec {
+    padding: 60px 0;
+  }
+  .what-make-gradient {
+    padding-bottom: 65px !important;
+  }
+  .what-make-different-sec {
+    padding: 0px 0px;
+  }
+  .second-rotate-rolbox {
+    top: 470px;
+  }
+  .third-rotate-rolbox {
+    top: 740px;
+  }
+  .fourth-rotate-rolbox {
+    bottom: 150px !important;
+  }
   .inner-serv-banpara {
     max-width: 98%;
   }
@@ -10880,6 +11129,7 @@ footer.footer {
   .our-service-heading {
     font-size: 32px;
     margin-bottom: 25px;
+    text-align: center;
   }
   .what-make-card-box {
     gap: 10px;
@@ -10947,7 +11197,6 @@ footer.footer {
 .preload-startTxt {
   font-size: 56px;
 }
-
 
 .milestone-hidden {
   pointer-events: none;

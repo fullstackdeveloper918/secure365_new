@@ -7,57 +7,57 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 
 
-const Benefits_of_Choosing =
-{
-  title: "Why Brands Choose Secure365 for Site Design & Development",
-  subtitle: "Secure365",
-  para: "We blend visual creativity with backend efficiency — every website we build is fast, secure, mobile-first, and optimized to drive measurable results.",
-cards : [
-  {
-    id: 1,
-    title: "Enhanced Security",
-    description:
-      "Your website is your digital front door — and we build it like a fortress.",
-    listItems: [
-      "Enterprise-grade Data Encryption",
-      "Multi-Factor Authentication (MFA)",
-      "Continuous Real-Time Threat Detection",
-      "Proactive Security Audits",
-    ],
-    bgImage: "/Astro1.jpg?height=450&width=1300",
-  },
-  {
-    id: 2,
-    title: "Scalability & Flexibility",
-    description:
-      "Built to grow with you. Whether you’re adding new products, locations, or services — your site won’t slow you down.",
-    listItems: [
-      "Modular development frameworks",
-      "Scalable content architecture ",
-      "SEO-first structure & schema markup",
-      "Easy CMS control for non-tech users",
-    ],
-    bgImage: "/Astro2.jpg?height=450&width=1300",
-  },
-  {
-    id: 3,
-    title: "Optimized for Performance",
-    description:
-      "Performance isn’t a feature — it’s a foundation.",
-    listItems: [
-      "90+ Google Lighthouse scores",
-      "Built-in technical SEO",
-      "Cloud-native infrastructure",
-      "Image optimization, caching, & CDN-ready",
-    ],
-    bgImage: "/Astro3.jpg?height=450&width=1300",
-  },
-]
-}
+// const Benefits_of_Choosing =
+// {
+//   title: "Why Brands Choose Secure365 for Site Design & Development",
+//   subtitle: "Secure365",
+//   para: "We blend visual creativity with backend efficiency — every website we build is fast, secure, mobile-first, and optimized to drive measurable results.",
+// cards : [
+//   {
+//     id: 1,
+//     title: "Enhanced Security",
+//     description:
+//       "Your website is your digital front door — and we build it like a fortress.",
+//     listItems: [
+//       "Enterprise-grade Data Encryption",
+//       "Multi-Factor Authentication (MFA)",
+//       "Continuous Real-Time Threat Detection",
+//       "Proactive Security Audits",
+//     ],
+//     bgImage: "/Astro1.jpg?height=450&width=1300",
+//   },
+//   {
+//     id: 2,
+//     title: "Scalability & Flexibility",
+//     description:
+//       "Built to grow with you. Whether you’re adding new products, locations, or services — your site won’t slow you down.",
+//     listItems: [
+//       "Modular development frameworks",
+//       "Scalable content architecture ",
+//       "SEO-first structure & schema markup",
+//       "Easy CMS control for non-tech users",
+//     ],
+//     bgImage: "/Astro2.jpg?height=450&width=1300",
+//   },
+//   {
+//     id: 3,
+//     title: "Optimized for Performance",
+//     description:
+//       "Performance isn’t a feature — it’s a foundation.",
+//     listItems: [
+//       "90+ Google Lighthouse scores",
+//       "Built-in technical SEO",
+//       "Cloud-native infrastructure",
+//       "Image optimization, caching, & CDN-ready",
+//     ],
+//     bgImage: "/Astro3.jpg?height=450&width=1300",
+//   },
+// ]
+// }
 
 
 
-export default function CardStackingSection() {
+export default function CardStackingSection({ Benefits_of_Choosing }) {
   const cardsRef = useRef([]);
   const headerRef = useRef(null);
   const canvasRef = useRef(null);

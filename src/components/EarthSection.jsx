@@ -38,6 +38,7 @@ const EarthSection = () => {
                 // 2) Earth fades, circle appears
                 .to(img, { autoAlpha: 0, duration: 0.3, ease: 'power2.inOut' }, '+=0.1')
                 .to(circle, { autoAlpha: 1, scale: 1.2, duration: 0.4, ease: 'power2.inOut' }, '<')
+                // .to(circle, {scale: 1.2, }, '<')
                 // 3) Circle expands
                 .to(circle, { scale: 10, duration: 1, ease: 'power3.inOut' })
                 // 4) Form appears
@@ -58,11 +59,11 @@ const EarthSection = () => {
                 <source src="/navigateVideoOne.mp4" type="video/mp4" />
             </video>
             {/* Initial Heading */}
-            <div className="absolute top-40 left-1/2 w-full flex justify-center -translate-x-1/2 -translate-y-1/2 transform z-10 text-white text-[80px] font-semibold pointer-events-none">
+            <div className="dest-head absolute top-40 left-1/2 w-full flex justify-center -translate-x-1/2 -translate-y-1/2 transform z-10 text-white text-[80px] font-semibold pointer-events-none">
                 You Arrived Your Destination
             </div>
             {/* Earth */}
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 transform z-10 pointer-events-none">
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 transform z-10 pointer-events-none earth-dest-img">
                 <img
                     ref={imgRef}
                     src="/images/mainearth.webp"
@@ -73,7 +74,7 @@ const EarthSection = () => {
             {/* White Circle */}
             <div
                 ref={circleRef}
-                className="absolute top-1/2 left-1/2 w-60 h-60 rounded-full bg-white -translate-x-1/2 -translate-y-1/2 transform z-20 pointer-events-none will-change-transform"
+                className="absolute top-1/2 left-1/2 w-60 h-60 rounded-full bg-white -translate-x-1/2 -translate-y-1/2 transform z-20 pointer-events-none will-change-transform earth-imgBox"
             />
             {/* Contact Form */}
             <div ref={formRef} className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-full z-30">

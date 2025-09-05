@@ -26,10 +26,10 @@ const PricingCards = () => {
         title: "Basic",
         icon: "/assets/img/inner-service/service/Basic-plan-icon-main.png",
         features: [
-          "3 user request",
-          "10 downloads per day",
-          "Daily content updates",
-          "Fully editable files",
+          "Ideal for solo users",
+          "includes limited automation runs",
+          "essential templates",
+          // "Fully editable files",
         ],
       },
       {
@@ -68,6 +68,7 @@ const PricingCards = () => {
         {/* Pricing tiers */}
         {Pricing_Tier.title}
       </h2>
+      <p className="price-top-head text-white text-center fw-semibold">{Pricing_Tier.intro}</p>
 
       <section className="container relative mx-auto px-4 py-10 grid grid-cols-1 lg:grid-cols-3 gap-8 md:gap-8 pricing-serv-tier">
         {Pricing_Tier?.PricingTier?.map((card, index) => (

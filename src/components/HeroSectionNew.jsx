@@ -200,7 +200,7 @@ export default function HeroSection({ serviceList }) {
                   </motion.div>
                 )}
               </AnimatePresence>
-              <div className="relative z-20 min-h-[56px] flex items-center">
+              <div className="relative z-20 min-h-[56px] flex items-center ban-btn-wrapper">
                 <AnimatePresence>
                   {showButton && (
                     <motion.div

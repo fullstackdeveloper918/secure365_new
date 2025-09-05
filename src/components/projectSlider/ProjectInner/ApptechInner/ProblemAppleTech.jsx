@@ -3,81 +3,87 @@ import React from "react"
 import Link from "next/link"
 import { Rocket } from "lucide-react"
 
-export default function SingleProKeyFeature() {
-  const KeyFetureProject = [
-    {
-      image: "/images/projects/sellamc02.png",
-      title: "Instant Online Quotes",
-      description: "Users get accurate device pricing instantly, improving user experience."
-    },
-    {
-      image: "/images/projects/sellamc03.png",
-      title: "Secure Data Handling",
-      description: "Personal info wiped safely before devices are resold."
-    },
-    {
-      image: "/sellmac.png",
-      title: "Fast & Reliable Payments",
-      description: "Multiple payment methods supported and processed quickly."
-    },
-    {
-      image: "/images/projects/sellamc01.png",
-      title: "Wide Device Coverage",
-      description: "Supports MacBook, iPad, iPhone, iMac, Mac Mini, and Apple Watch."
-    }
-  ];
+export default function ProblemTech() {
+    const KeyFetureProject = [
+        {
+            image: "/images/projects/appletech01.png",
+            title: "Get Instant Quotes",
+            description: "Quickly receive accurate trade-in values for your Apple devices online."
+        },
+        {
+            image: "/images/projects/appletechslide01.png",
+            title: "Safe Data Wipe",
+            description: "All personal data is securely erased before your device is resold or recycled."
+        },
+        {
+            image: "/images/projects/appletechslide02.png",
+            title: "Fast Payment Guarantee",
+            description: "Choose from multiple payment options and get paid within 24–48 hours."
+        },
+        {
+            image: "/images/projects/appletechslide03.png",
+            title: "All Apple Devices Covered",
+            description: "Sell or trade MacBooks, iMacs, iPads, iPhones, Apple Watches, and more."
+        },
+        // {
+        //     image: "/images/projects/appletechslide04.png",
+        //     title: "Custom Branding & Integrations",
+        //     description: "Elevate your brand with custom domains, code snippets, advanced theme control, and seamless integrations via App Hub."
+        // }
+    ];
 
-  return (
-    <div className="ab-about-area ab-about-mt z-index-5 our-core-sec relative overflow-hidden bg-black">
-      {/* Radial Stars Background */}
-      <div className="stars-background absolute inset-0 pointer-events-none">
-        <div className="stars-container">
-          {[...Array(20)].map((_, i) => (
-            <div key={i} className={`star star-${i + 1}`}></div>
-          ))}
-        </div>
-        <div className="radial-gradient"></div>
-      </div>
-      <div className="bg-full-about absolute">
-        <img src="/galaxy-spiral.jpeg" alt="Background" />
-      </div>
-      <div className="container container-1480 relative z-10">
-        <div id="about-info" className="about-info-wrap row">
-          <div className="about-title text-center">
-            <div className="ab-about-content p-relative">
-              <h1 className="tp_fade_bottom p-0 core-val-head fw-semibold text-white">
-                Sellmac Problems
-              </h1>
-            </div>
-          </div>
-          <div className="row mt-7">
-            <div className="col-xl-12">
-              <div className="about-inner row">
-                <div className="about-category core-card-outer">
-                  <div className="row">
-                    <div className="ab-about-category-list category-space-1 tp_fade_bottom">
-                      <ul className="md:flex gap-4 ms-0 core-value-cards">
-                        {KeyFetureProject.map((item, index) => (
-                          <li key={index} className="relative overflow-hidden group">
-                            <img className="core-val-img w-full h-auto object-cover" src={item.image} alt={item.title} />
-                            <div className="core-content-box absolute bottom-0 left-0 right-0 bg-black/60 bg-opacity-40 p-4 transform translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-in-out">
-                              <h3 className="h5-title text-white">{item.title}</h3>
-                              <p className="mb-0 text-gray-300">{item.description}</p>
-                            </div>
 
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  </div>
+    return (
+        <div className="ab-about-area ab-about-mt z-index-5 our-core-sec relative overflow-hidden bg-black">
+            {/* Radial Stars Background */}
+            <div className="stars-background absolute inset-0 pointer-events-none">
+                <div className="stars-container">
+                    {[...Array(20)].map((_, i) => (
+                        <div key={i} className={`star star-${i + 1}`}></div>
+                    ))}
                 </div>
-              </div>
+                <div className="radial-gradient"></div>
             </div>
-          </div>
-        </div>
-      </div>
-      {/* Styles */}
-      <style jsx>{`
+            <div className="bg-full-about absolute">
+                <img src="/galaxy-spiral.jpeg" alt="Background" />
+            </div>
+            <div className="container container-1480 relative z-10">
+                <div id="about-info" className="about-info-wrap row">
+                    <div className="about-title text-center">
+                        <div className="ab-about-content p-relative">
+                            <h1 className="tp_fade_bottom p-0 core-val-head fw-semibold text-white">
+                                Apple Tech Problems
+                            </h1>
+                        </div>
+                    </div>
+                    <div className="row mt-7">
+                        <div className="col-xl-12">
+                            <div className="about-inner row">
+                                <div className="about-category core-card-outer">
+                                    <div className="row">
+                                        <div className="ab-about-category-list category-space-1 tp_fade_bottom">
+                                            <ul className="md:flex gap-4 ms-0 core-value-cards">
+                                                {KeyFetureProject.map((item, index) => (
+                                                    <li key={index} className="relative overflow-hidden group">
+                                                        <img className="core-val-img w-full h-100% object-cover" src={item.image} alt={item.title} />
+                                                        <div className="core-content-box absolute bottom-0 left-0 right-0 bg-black/60 bg-opacity-40 p-4 transform translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-in-out">
+                                                            <h3 className="h5-title text-white">{item.title}</h3>
+                                                            <p className="mb-0 text-gray-300">{item.description}</p>
+                                                        </div>
+
+                                                    </li>
+                                                ))}
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {/* Styles */}
+            <style jsx>{`
         .bg-full-about {
           position: absolute;
           top: 50%;
@@ -180,6 +186,6 @@ export default function SingleProKeyFeature() {
           .star { transform: scale(0.6); }
         }
       `}</style>
-    </div>
-  )
+        </div>
+    )
 }

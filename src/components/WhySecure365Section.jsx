@@ -95,8 +95,8 @@ export default function WhySecure365Section({ containerRef, serviceList }) {
     return () => unsub();
   }, [scrollYProgress]);
 
-  
-  
+
+
 
   console.log("service list on whysecure", serviceList);
 
@@ -205,7 +205,7 @@ export default function WhySecure365Section({ containerRef, serviceList }) {
               ))}
             </svg>
 
-      
+
             {/* Content Block 1 */}
             {serviceList?.blocks[0] && (
               <motion.div
@@ -252,7 +252,7 @@ export default function WhySecure365Section({ containerRef, serviceList }) {
                 whileInView={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.8, delay: 0.2 }}
                 viewport={{ once: true }}
-                className="absolute top-[500px] left-32"
+                className="absolute top-[500px] left-32 second-rotate-rolbox"
               >
                 <div className="relative text-left">
                   <div className="absolute -top-6 -left-8 text-[#00AEEF] text-xl">
@@ -291,7 +291,7 @@ export default function WhySecure365Section({ containerRef, serviceList }) {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.3 }}
                 viewport={{ once: true }}
-                className="absolute top-[800px] right-40 transform -translate-x-1/2"
+                className="absolute top-[800px] right-40 transform -translate-x-1/2 third-rotate-rolbox"
               >
                 <div className="relative text-left">
                   <div className="absolute -top-4 -right-12 text-[#00AEEF] text-2xl">
@@ -330,7 +330,7 @@ export default function WhySecure365Section({ containerRef, serviceList }) {
                 whileInView={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.8, delay: 0.4 }}
                 viewport={{ once: true }}
-                className="absolute bottom-0 left-32 transform -translate-x-1/2"
+                className="absolute bottom-0 left-32 transform -translate-x-1/2 fourth-rotate-rolbox"
               >
                 <div className="relative text-left">
                   <div className="absolute -top-2 right-8 text-[#00AEEF] text-xl">

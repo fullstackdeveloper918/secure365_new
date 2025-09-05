@@ -6,37 +6,41 @@ import SingleProKeyAppleTech from "./SingleProKeyAppleTech"
 import BeforeAfterAppleTech from './BeforeAfterAppleTech'
 import FooterFour from "@/layouts/footers/footer-four";
 import { FourthSection } from "../inner-services/ai-services/FourthSection";
+import AppletechGallery from "./ProjectInner/ApptechInner/ApptechGallery"
+import ContactTwo from "@/components/contact/contact-two";
+import { config } from "../../../config"
+import ProblemTech from "./ProjectInner/ApptechInner/ProblemAppleTech"
 
-    // Cards animation
-    gsap.utils.toArray(".why-hero-section .card-box").forEach((card, i) => {
-      const duration = 0.8;
-      gsap.set(card, { x: -100, opacity: 0 });
-      gsap.to(card, {
-        x: 0,
-        opacity: 1,
-        duration,
-        ease: "power3.out",
-        scrollTrigger: {
-          trigger: ".cards-container",
-          start: "top 80%",
-          toggleActions: "play none none none",
-          once: true,
-        },
-        delay: i * 0.2,
-      });
-    });
+// Cards animation
+gsap.utils.toArray(".why-hero-section .card-box").forEach((card, i) => {
+  const duration = 0.8;
+  gsap.set(card, { x: -100, opacity: 0 });
+  gsap.to(card, {
+    x: 0,
+    opacity: 1,
+    duration,
+    ease: "power3.out",
+    scrollTrigger: {
+      trigger: ".cards-container",
+      start: "top 80%",
+      toggleActions: "play none none none",
+      once: true,
+    },
+    delay: i * 0.2,
+  });
+});
 
-    // Parallax image scroll
-    gsap.to(".why-hero-section .content-right img", {
-      yPercent: -20,
-      ease: "none",
-      scrollTrigger: {
-        trigger: ".why-hero-section",
-        start: "top bottom",
-        end: "bottom top",
-        scrub: true,
-      },
-    });
+// Parallax image scroll
+gsap.to(".why-hero-section .content-right img", {
+  yPercent: -20,
+  ease: "none",
+  scrollTrigger: {
+    trigger: ".why-hero-section",
+    start: "top bottom",
+    end: "bottom top",
+    scrub: true,
+  },
+});
 
 // Scramble text function
 const scrambleText = (element, finalText, duration = 1.5) => {
@@ -72,9 +76,30 @@ const AppleTech = () => {
   const titleRef = useRef(null);
   const spanRef = useRef(null);
   const intervalsRef = useRef([]);
+  const [contactData, setContactData] = React.useState(null);
 
   const imageSectionRef = useRef(null);
   const imageRef = useRef(null);
+
+  useEffect(() => {
+    const fetchContactData = async () => {
+      try {
+        const response = await fetch(`${config.APP_URL}/secure-plugin/v1/contact`, {
+          cache: "no-store",
+        });
+        const data = await response.json();
+        // const contactData = data?.data;
+        setContactData(data?.data);
+
+        // Handle the contactData as needed, e.g., updating state
+        console.log(contactData, "contact data herereer");
+      } catch (error) {
+        console.error('Error fetching contact data:', error);
+      }
+    };
+
+    fetchContactData();
+  }, []);
 
   useEffect(() => {
     // Scramble text on banner when it enters viewport
@@ -118,20 +143,20 @@ const AppleTech = () => {
     };
   }, []);
 
-  
+
 
   return (
-    
+
     <>
-    
- <style>{`
+
+      <style>{`
 
   .why-hero-section {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 100px 20px 100px;
+    padding: 10px 20px 100px;
     box-sizing: border-box;
     background:#000;
   }
@@ -285,8 +310,8 @@ const AppleTech = () => {
              height:550px;
              justify-content: end;
              padding-bottom: 60px;
-             background-image:url('/Project-single-banimage.webp');
-             background-position: bottom;
+             background-image:url('/images/projects/appletechslide02.png');
+             background-position: center;
              background-size: cover;
           }
         .card-icon {
@@ -339,20 +364,32 @@ const AppleTech = () => {
       {/* Banner with scramble text */}
       <div
         ref={sectionRef}
-        className="project-single-banner-sec flex flex-col justify-center items-center text-center bg-[#000] px-4"
+        className="project-single-banner-sec relative flex flex-col justify-center items-center text-center bg-[#000] px-4"
       >
-        <h1 ref={titleRef} className="text-6xl font-semibold mb-4 text-[#00AEEF]"></h1>
-        <span ref={spanRef} className="text-2xl text-white mb-3"></span>
-        <p className="max-w-2xl mx-auto text-gray-300 mb-8">
-              Secure365 helped apple.techable.com deliver detailed technical specs and serial number lookup tools securely and reliably.
+        {/* Overlay */}
+        <div className="absolute inset-0 bg-black/60 z-0"></div>
+
+        {/* Content */}
+        <h1
+          ref={titleRef}
+          className="relative z-10 text-6xl font-semibold mb-4 text-[#02aae7]"
+        ></h1>
+        <span
+          ref={spanRef}
+          className="relative z-10 text-2xl text-white mb-3"
+        ></span>
+        <p className="relative z-10 max-w-2xl mx-auto text-white mb-8">
+          Secure365 helped apple.techable.com deliver detailed technical specs and serial number lookup tools securely and reliably.
         </p>
       </div>
 
-      {/* About Project */}
-      <section className="pt-16 px-6 bg-black" data-aos="fade-up">
-        <div className="container">
-          <div className="about-proj-wrapper flex flex-col md:flex-row items-center gap-5">
-            <div className="about-single-projectCont">
+
+      <section className="pt-16 px-6 bg-black">
+        <div className="container mx-auto">
+          <div className="about-proj-wrapper flex flex-col md:flex-row items-center gap-8">
+
+            {/* Left: Text Content (50%) */}
+            <div className="about-single-projectCont w-full md:w-1/2">
               <h2 className="text-3xl font-semibold mb-4">About the Project</h2>
               <p className="text-gray-300 mb-4 cont-first-para">
                 apple.techable.com offers a comprehensive repository of Apple product specifications, including vintage models, and a powerful lookup tool to decode serial numbers and reveal detailed hardware info.
@@ -360,177 +397,89 @@ const AppleTech = () => {
               <p className="text-white mb-4 about-ch-head">
                 Challenges faced before Secure365:
               </p>
-              <ul className="list-disc list-inside text-gray-400 about-list ms-0">
-                <li>Handling secure user data</li>
-                <li>Fast payment processing</li>
-                <li>Scaling operations safely</li>
+              <ul className="list-disc list-inside text-white about-list ms-0">
+                <li className="text-white">Handling secure user data</li>
+                <li className="text-white">Fast payment processing</li>
+                <li className="text-white">Scaling operations safely</li>
               </ul>
             </div>
-            <div className="about-single-Projimg mt-6 md:mt-0 text-center">
-              <img src="/About-Sellmac-image.png" alt="Devices" className="rounded-lg shadow-lg mx-auto" />
+
+            {/* Right: Image (50%) */}
+            <div className="about-single-Projimg w-full md:w-1/2 mt-6 md:mt-0 text-center">
+              <img
+                src="/images/projects/appletech01.png"
+                alt="Devices"
+                className="rounded-lg shadow-lg mx-auto"
+              />
             </div>
+
           </div>
         </div>
       </section>
-
-      {/* Secure365 Contribution */}
+      <ProblemTech />
       <section className="why-hero-section">
-          <div className="content-left">
-            <h1 className="hero-title mb-[50px]">
-             How <span className="highlight">Secure365</span> Helped
-            </h1>
+        <div className="content-left">
+          <h1 className="hero-title mb-[50px]">
+            How <span className="highlight">Secure365</span> Helped
+          </h1>
+        </div>
+
+        <div className="cards-container">
+          <div className="card-box">
+            <div className="icon-circle">
+              <svg width="28" height="28" fill="none" stroke="#3eaced" strokeWidth="2" viewBox="0 0 24 24">
+                <path d="M4.5 19.5l5.4-5.4M14.5 5.5L12 12l-2 2-6.5 1.5L3 17l1.5-3.5L7 10l2-2 6.5-2.5z" />
+                <path d="M15 4l5 5" />
+              </svg>
+            </div>
+            <h3>Secure Data Delivery</h3>
+            <p>
+              Ensured that device specs and serial-decoded data are delivered with encryption and reliability.
+            </p>
           </div>
 
-       <div className="cards-container">
-  <div className="card-box">
-    <div className="icon-circle">
-      <svg width="28" height="28" fill="none" stroke="#3eaced" strokeWidth="2" viewBox="0 0 24 24">
-  <path d="M4.5 19.5l5.4-5.4M14.5 5.5L12 12l-2 2-6.5 1.5L3 17l1.5-3.5L7 10l2-2 6.5-2.5z" />
-  <path d="M15 4l5 5" />
-</svg>
-    </div>
-    <h3>Secure Data Delivery</h3>
-    <p>
-      Ensured that device specs and serial-decoded data are delivered with encryption and reliability.
-    </p>
-  </div>
+          <div className="card-box">
+            <div className="icon-circle">
+              <svg width="28" height="28" fill="none" stroke="#3eaced" strokeWidth="2" viewBox="0 0 24 24">
+                <path d="M12 2l7 4v6c0 5-3.5 9-7 10-3.5-1-7-5-7-10V6l7-4z" />
+                <path d="M9 12v-1a3 3 0 016 0v1m-6 0h6m-3 3v2" />
+              </svg>
+            </div>
+            <h3>Scalability & Speed</h3>
+            <p>
+              Optimized backend performance to handle high-volume lookups quickly.
+            </p>
+          </div>
 
-  <div className="card-box">
-    <div className="icon-circle">
-   <svg width="28" height="28" fill="none" stroke="#3eaced" strokeWidth="2" viewBox="0 0 24 24">
-  <path d="M12 2l7 4v6c0 5-3.5 9-7 10-3.5-1-7-5-7-10V6l7-4z" />
-  <path d="M9 12v-1a3 3 0 016 0v1m-6 0h6m-3 3v2" />
-</svg>
-    </div>
-    <h3>Scalability & Speed</h3>
-    <p>
-      Optimized backend performance to handle high-volume lookups quickly.
-    </p>
-  </div>
+          <div className="card-box">
+            <div className="icon-circle">
+              <svg width="28" height="28" fill="none" stroke="#3eaced" strokeWidth="2" viewBox="0 0 24 24">
+                <path d="M12 2l7 4v6c0 5-3.5 9-7 10-3.5-1-7-5-7-10V6l7-4z" />
+                <path d="M9 12l2 2 4-4" />
+              </svg>
+            </div>
+            <h3>Trust & Accuracy</h3>
+            <p>
+              Maintained data integrity and accuracy, building user trust in specs and lookup results.
+            </p>
+          </div>
+        </div>
 
-  <div className="card-box">
-    <div className="icon-circle">
-     <svg width="28" height="28" fill="none" stroke="#3eaced" strokeWidth="2" viewBox="0 0 24 24">
-  <path d="M12 2l7 4v6c0 5-3.5 9-7 10-3.5-1-7-5-7-10V6l7-4z" />
-  <path d="M9 12l2 2 4-4" />
-</svg>
-    </div>
-    <h3>Trust & Accuracy</h3>
-    <p>
-     Maintained data integrity and accuracy, building user trust in specs and lookup results.
-    </p>
-  </div>
-</div>
-
-{/* <div className="container gap-0 p-0 mt-5">
+        {/* <div className="container gap-0 p-0 mt-5">
 <img src="/Protect-Secure.png" alt="" className="project-big-img" />
 </div> */}
       </section>
-      
-      {/* Key Features */}
-      {/* <section className="py-16 px-6 project-key-feature" data-aos="fade-up">
-        <h2 className="text-3xl font-semibold mb-8 text-center">Key Features</h2>
-        <div className="grid md:grid-cols-2 gap-6 max-w-5xl mx-auto">
-          {[
-            {
-              title: "Instant Online Quotes",
-              desc: "Users get accurate device pricing instantly, improving user experience.",
-            },
-            {
-              title: "Secure Data Handling",
-              desc: "Personal info wiped safely before devices are resold.",
-              delay: 100,
-            },
-            {
-              title: "Fast & Reliable Payments",
-              desc: "Multiple payment methods supported and processed quickly.",
-              delay: 200,
-            },
-            {
-              title: "Wide Device Coverage",
-              desc: "Supports MacBook, iPad, iPhone, iMac, Mac Mini, and Apple Watch.",
-              delay: 300,
-            },
-          ].map((feature, idx) => (
-            <div
-              key={idx}
-              className="p-6 bg-gray-800 rounded-lg shadow"
-              data-aos="fade-up"
-              data-aos-delay={feature.delay || 0}
-            >
-              <h3 className="font-bold mb-2">{feature.title}</h3>
-              <p className="text-gray-300">{feature.desc}</p>
-            </div>
-          ))}
-        </div>
-      </section> */}
-      <SingleProKeyAppleTech />
 
-      {/* Before & After */}
-     <BeforeAfterAppleTech />
 
-      {/* Testimonials */}
-      {/* <section className="py-16 px-6" data-aos="fade-up">
-        <h2 className="text-3xl font-semibold mb-8 text-center">Testimonials</h2>
-        <div className="max-w-3xl mx-auto text-center">
-          <p className="text-xl text-gray-300 italic mb-4">
-            “Secure365’s solutions allowed us to focus on growing our business while keeping our users’ data safe and payments fast.”
-          </p>
-          <p className="text-gray-500 font-semibold">– SellMac CEO</p>
-          <img
-            src="https://via.placeholder.com/600x200"
-            alt="Client Screenshot"
-            className="mx-auto mt-6 rounded-lg shadow-lg"
-            data-aos="fade-up"
-            data-aos-delay={200}
-          />
-        </div>
-      </section> */}
-
-      {/* Technology & Tools */}
-      <section className="py-16 px-6 bg-black" data-aos="fade-up">
-        <h2 className="text-3xl font-semibold mb-8 text-center">Technology & Tools Used</h2>
-        <div className="grid md:grid-cols-3 gap-6 max-w-6xl mx-auto text-center">
-          {[
-            {
-              title: "Secure365 Backend",
-              desc: "APIs, encrypted data delivery, scalable infrastructure",
-              icon: "https://via.placeholder.com/40",
-            },
-            {
-              title: "Specs Database",
-              desc: "Curated library with both current and vintage Apple model data",
-              icon: "https://via.placeholder.com/40",
-              delay: 100,
-            },
-            {
-              title: "Front-End Interface",
-              desc: "User-friendly search, serial lookup, and data display UI",
-              icon: "https://via.placeholder.com/40",
-              delay: 200,
-            },
-          ].map((tool, idx) => (
-            <div
-              key={idx}
-              className="p-6 bg-gray-800 rounded-lg shadow"
-              data-aos="fade-up"
-              data-aos-delay={tool.delay || 0}
-            >
-              <img src={tool.icon} className="card-icon mx-auto" alt={tool.title} />
-              <h3 className="font-semibold text-3xl mb-2">{tool.title}</h3>
-              <p className="text-gray-300">{tool.desc}</p>
-            </div>
-          ))}
-        </div>
-      </section>
-
-     
-
-       <div
-                    className="bg-[#fff] mt-[0px] relative z-10"
-                  ><FourthSection />
-                  </div>
-            <FooterFour className="relative z-20" />
+      <BeforeAfterAppleTech />
+      <AppletechGallery />
+      <div
+        className="bg-[#009dd610] singleSerivce mt-[0px]"
+        id="singleSerivce"
+      >
+        <ContactTwo contactData={contactData} />
+      </div>
+      <FooterFour className="relative z-20" />
     </>
   );
 };
